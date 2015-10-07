@@ -286,7 +286,7 @@ Responsive.prototype = {
 
 	/**
 	 * Create the internal `columns` array with information about the columns
-	 * for the table. This includes determining which breakpoints the column
+	 * for the table. This include determining which breakpoints the column
 	 * will appear in, based upon class names in the column, which makes up the
 	 * vast majority of this method.
 	 *
@@ -463,7 +463,7 @@ Responsive.prototype = {
 				}
 			}
 
-			// $().closest() includes itself in its check
+			// $().closest() include itself in its check
 			var row = dt.row( $(this).closest('tr') );
 
 			if ( row.child.isShown() ) {
@@ -630,7 +630,7 @@ Responsive.prototype = {
 		$( dt.table().footer() ).clone( false ).appendTo( clonedTable );
 
 		// This is a bit slow, but we need to get a clone of each row that
-		// includes all columns. As such, try to do this as little as possible.
+		// include all columns. As such, try to do this as little as possible.
 		dt.rows( { page: 'current' } ).indexes().flatten().each( function ( idx ) {
 			var clone = dt.row( idx ).node().cloneNode( true );
 			

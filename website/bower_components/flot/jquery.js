@@ -6923,7 +6923,7 @@ function augmentWidthOrHeight( elem, name, extra, isBorderBox ) {
 
 		// From this point on we use curCSS for maximum performance (relevant in animations)
 		if ( isBorderBox ) {
-			// border-box includes padding, so remove it if we want content
+			// border-box include padding, so remove it if we want content
 			if ( extra === "content" ) {
 				val -= parseFloat( curCSS( elem, "padding" + cssExpand[ i ] ) ) || 0;
 			}

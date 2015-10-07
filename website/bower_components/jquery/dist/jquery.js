@@ -315,7 +315,7 @@ jQuery.extend({
 		code = jQuery.trim( code );
 
 		if ( code ) {
-			// If the code includes a valid, prologue position
+			// If the code include a valid, prologue position
 			// strict mode pragma, execute code by injecting a
 			// script tag into the document.
 			if ( code.indexOf("use strict") === 1 ) {
@@ -5784,7 +5784,7 @@ function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
 		}
 
 		if ( isBorderBox ) {
-			// border-box includes padding, so remove it if we want content
+			// border-box include padding, so remove it if we want content
 			if ( extra === "content" ) {
 				val -= jQuery.css( elem, "padding" + cssExpand[ i ], true, styles );
 			}

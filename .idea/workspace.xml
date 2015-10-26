@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56bd1e84-0f73-493f-89a7-581458cd6b4c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/website/include/leftmenulinks.json" />
-      <change type="DELETED" beforePath="C:\wamp\www\GitHub\Group6\website\index.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/pages/forms.html" afterPath="$PROJECT_DIR$/website/pages/forms.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/include/bottomwrapper.php" afterPath="$PROJECT_DIR$/website/include/bottomwrapper.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/include/header.php" afterPath="$PROJECT_DIR$/website/include/header.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/pages/index.php" afterPath="$PROJECT_DIR$/website/pages/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/include/topnavbar.php" afterPath="$PROJECT_DIR$/website/include/topnavbar.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Group6.iws" />
@@ -45,18 +43,38 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/pages/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.607595" vertical-offset="0" max-vertical-offset="675">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state vertical-scroll-proportion="-2.3076923" vertical-offset="0" max-vertical-offset="225">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="topnavbar.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="bottomwrapper.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/website/include/bottomwrapper.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-14.423077" vertical-offset="0" max-vertical-offset="465">
+              <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="topnavbar.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/include/topnavbar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6923077" vertical-offset="3600" max-vertical-offset="4185">
-              <caret line="267" column="0" selection-start-line="267" selection-start-column="0" selection-end-line="267" selection-end-column="0" />
+            <state vertical-scroll-proportion="-7.5" vertical-offset="3240" max-vertical-offset="4185">
+              <caret line="243" column="0" selection-start-line="243" selection-start-column="0" selection-end-line="243" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/website/include/header.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4968051" vertical-offset="184" max-vertical-offset="810">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -65,8 +83,8 @@
       <file leaf-file-name="leftmenulinks.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/include/leftmenulinks.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.3076923" vertical-offset="0" max-vertical-offset="180">
-              <caret line="4" column="95" selection-start-line="4" selection-start-column="95" selection-end-line="4" selection-end-column="95" />
+            <state vertical-scroll-proportion="-0.5769231" vertical-offset="0" max-vertical-offset="180">
+              <caret line="1" column="78" selection-start-line="1" selection-start-column="78" selection-end-line="1" selection-end-column="78" />
               <folding />
             </state>
           </provider>
@@ -96,9 +114,11 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/website/pages/forms.html" />
+        <option value="$PROJECT_DIR$/website/include/topnavbar.php" />
+        <option value="$PROJECT_DIR$/website/include/header.php" />
+        <option value="$PROJECT_DIR$/website/include/bottomwrapper.php" />
         <option value="$PROJECT_DIR$/website/include/leftmenulinks.json" />
         <option value="$PROJECT_DIR$/website/pages/index.php" />
-        <option value="$PROJECT_DIR$/website/include/topnavbar.php" />
       </list>
     </option>
   </component>
@@ -347,26 +367,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/website/include/topnavbar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5" vertical-offset="3240" max-vertical-offset="4185">
+          <caret line="243" column="0" selection-start-line="243" selection-start-column="0" selection-end-line="243" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/include/bottomwrapper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.423077" vertical-offset="0" max-vertical-offset="465">
+          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/website/include/leftmenulinks.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.3076923" vertical-offset="0" max-vertical-offset="180">
-          <caret line="4" column="95" selection-start-line="4" selection-start-column="95" selection-end-line="4" selection-end-column="95" />
+        <state vertical-scroll-proportion="-0.5769231" vertical-offset="0" max-vertical-offset="180">
+          <caret line="1" column="78" selection-start-line="1" selection-start-column="78" selection-end-line="1" selection-end-column="78" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/pages/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.607595" vertical-offset="0" max-vertical-offset="675">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state vertical-scroll-proportion="-2.3076923" vertical-offset="0" max-vertical-offset="225">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/include/topnavbar.php">
+    <entry file="file://$PROJECT_DIR$/website/include/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6923077" vertical-offset="3600" max-vertical-offset="4185">
-          <caret line="267" column="0" selection-start-line="267" selection-start-column="0" selection-end-line="267" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.4968051" vertical-offset="184" max-vertical-offset="810">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
         </state>
       </provider>

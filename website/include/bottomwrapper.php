@@ -3,6 +3,11 @@
 
 </div>
 <!-- /#wrapper -->
+
+
+</body>
+
+
 <!-- jQuery -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -21,6 +26,5 @@
 <script src="../dist/js/sb-admin-2.js"></script>
 
 
-</body>
 
 </html>

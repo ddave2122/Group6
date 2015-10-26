@@ -1,7 +1,8 @@
 {
-    "0" : {"url":"index.php", "cssClass":"fa fa-dashboard", "title":"Dashboard", "accessLevel":"3"},
-    "1" : {"url":"deployments.php", "cssClass":"fa fa-upload", "title":"Deployments", "accessLevel":"1"},
-    "2" : {"url":"alerts.php", "cssClass":"fa fa-exclamation-circle", "title":"Alerts", "accessLevel":"3"},
-    "3" : {"url":"data.php", "cssClass":"fa fa-bar-chart-o", "title":"Data", "accessLevel":"2"}
+    "0" : {"url":"index.php", "cssClass":"fa fa-dashboard", "title":"Dashboard", "accessLevel":"4"},
+    "1" : {"url":"usermanagement.php", "cssClass":"fa fa-upload", "title":"User Management", "accessLevel":"2"},
+    "2" : {"url":"clockinandout.php", "cssClass":"fa fa-exclamation-circle", "title":"Clock In\\Out", "accessLevel":"4"},
+    "3" : {"url":"createschedule.php", "cssClass":"fa fa-bar-chart-o", "title":"Create Schedule", "accessLevel":"2"},
+    "3" : {"url":"linkcompaniestoemployees.php", "cssClass":"fa fa-bar-chart-o", "title":"Link Companies to Users", "accessLevel":"1"}
 
 }

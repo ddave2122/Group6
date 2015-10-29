@@ -1,0 +1,44 @@
+/* Custom CSS */
+
+.welcome {
+	text-align: center;
+	padding-top: 50px;
+}
+
+.clockStyle {
+	position: relative;
+	text-align: center;
+	
+}
+
+.clockStyle a {
+	max-width: 300px;
+	font-size: 35px;
+}
+
+.clockStyle .btn-block {
+	display: inline-block;
+}
+
+.clockStyle #clock {
+	font-size: 60px;
+	font-weight: bold;
+	padding-bottom: 400px;
+}
+
+#buttonBox {
+	padding-top: 40px;
+}
+
+#alertBox {
+	display: none;
+	margin-top: 40px;
+	padding:10px;
+	font-size: 30px;
+	/*border: 2px solid #000;*/
+	border-radius: 5px;
+}
+
+#time {
+	color: red;
+}

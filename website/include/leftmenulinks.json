@@ -1,6 +1,6 @@
 {
     "0" : {"url":"index.php", "cssClass":"fa fa-dashboard", "title":"Dashboard", "accessLevel":"3"},
-    "1" : {"url":"deployments.php", "cssClass":"fa fa-upload", "title":"Deployments", "accessLevel":"1"},
+    "1" : {"url":"clock.php", "cssClass":"fa fa-clock-o", "title":"Clock In / Clock Out", "accessLevel":"1"},
     "2" : {"url":"alerts.php", "cssClass":"fa fa-exclamation-circle", "title":"Alerts", "accessLevel":"3"},
     "3" : {"url":"data.php", "cssClass":"fa fa-bar-chart-o", "title":"Data", "accessLevel":"2"}
 

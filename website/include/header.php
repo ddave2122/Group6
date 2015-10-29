@@ -19,6 +19,7 @@
 
     <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../dist/css/custom.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -32,7 +33,7 @@
 
 </head>
 
-<body>
+<body onload="updateClock(); setInterval('updateClock()', 1000 )">
 
 <div id="wrapper">
 

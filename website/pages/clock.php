@@ -5,7 +5,7 @@
 
 	<div class="row">
 		<div class="col-md-12"> 
-			<span id="clock">&nbsp;</span>
+			<h1 id="clock">&nbsp;</h1>
 		</div>
 	</div>
 	<br>

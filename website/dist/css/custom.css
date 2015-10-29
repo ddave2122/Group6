@@ -22,7 +22,7 @@
 .clockStyle #clock {
 	font-size: 4em;
 	font-weight: bold;
-	padding-bottom: 400px;
+	
 }
 
 @media only screen and (max-width: 480px) {
@@ -32,12 +32,10 @@
 }
 
 #alertBox {
-	
 	margin-top: 40px;
-	padding:10px;
+	padding: 10px 20px 10px 20px;
 	font-size: 2em;
-	/*border: 2px solid #000;*/
-	border-radius: 5px;
+	border-radius: 30px;
 }
 
 #time {

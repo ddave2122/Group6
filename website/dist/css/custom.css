@@ -13,6 +13,7 @@
 
 .clockStyle a {
 	font-size: 2em;
+	box-shadow: 0 2px 5px #888;
 }
 
 .clockStyle .btn-block {
@@ -22,7 +23,7 @@
 .clockStyle #clock {
 	font-size: 4em;
 	font-weight: bold;
-	
+	text-shadow: 0 2px 5px #888;
 }
 
 @media only screen and (max-width: 480px) {
@@ -36,6 +37,7 @@
 	padding: 10px 20px 10px 20px;
 	font-size: 2em;
 	border-radius: 30px;
+	box-shadow: 0 1px 5px #888;
 }
 
 #time {

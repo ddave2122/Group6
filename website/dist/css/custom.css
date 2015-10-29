@@ -12,8 +12,7 @@
 }
 
 .clockStyle a {
-	max-width: 300px;
-	font-size: 35px;
+	font-size: 2em;
 }
 
 .clockStyle .btn-block {
@@ -21,24 +20,26 @@
 }
 
 .clockStyle #clock {
-	font-size: 60px;
+	font-size: 4em;
 	font-weight: bold;
 	padding-bottom: 400px;
 }
 
-#buttonBox {
-	padding-top: 40px;
+@media only screen and (max-width: 480px) {
+
+   .clockStyle #clock  { font-size: 2em; }
+
 }
 
 #alertBox {
-	display: none;
+	
 	margin-top: 40px;
 	padding:10px;
-	font-size: 30px;
+	font-size: 2em;
 	/*border: 2px solid #000;*/
 	border-radius: 5px;
 }
 
 #time {
-	color: red;
+	color: blue;
 }

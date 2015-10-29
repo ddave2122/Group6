@@ -3,8 +3,11 @@
 
 <div class="clockStyle"> 
 
-	<span id="clock">&nbsp;</span>
-
+	<div class="row">
+		<div class="col-md-12"> 
+			<span id="clock">&nbsp;</span>
+		</div>
+	</div>
 	<br>
 
 	<script type="text/javascript">
@@ -12,18 +15,39 @@
 			var y = "Out";
 	</script>
 
-	<div id="buttonBox">
-		<a href="#" class="btn btn-lg btn-primary btn-block" onclick="updateAlert(x)">Clock In</a>
+	<div class="row">
+		<div class="col-md-4">
+		</div> 
 
-		<br><br>
+		<div class="col-md-4"> 
+			<div id="buttonBox">
+				<a href="#" class="btn btn-lg btn-primary btn-block" onclick="updateAlert(x)">Clock In</a>
 
-		<a href="#" class="btn btn-lg btn-primary btn-block"  onclick="updateAlert(y)">Clock Out</a>
+				<br><br>
+
+				<a href="#" class="btn btn-lg btn-primary btn-block"  onclick="updateAlert(y)">Clock Out</a>
+			</div>
+
+		</div>
+
+		<div class="col-md-4">
+		</div>
+
 	</div>
 
-	<div id="alertBox" class="jumbotron"> 
+	<div class="row">
+		<div class="col-md-2">
+		</div>
 
-		<span id="time">&nbsp;</span>
+		<div class="col-md-8"> 
+			<div id="alertBox" class="jumbotron"> 
+				Did You Know You're Awesome?!
+				<span id="time">&nbsp;</span>
 
+			</div>
+		</div>
+		<div class="col-md-2">
+		</div>
 	</div>
 
 </div>

@@ -20,7 +20,7 @@
 		<a href="#" class="btn btn-lg btn-primary btn-block"  onclick="updateAlert(y)">Clock Out</a>
 	</div>
 
-	<div id="alertBox"> 
+	<div id="alertBox" class="jumbotron"> 
 
 		<span id="time">&nbsp;</span>
 

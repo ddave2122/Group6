@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.mschyb.clockingapp" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/clocking2"
+        android:label="Clocking App"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".LoginScreenActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".HomeScreenActivity"
+            android:label="Home" >
+        </activity>
+        <activity
+            android:name=".SetAlarmsActivity"
+            android:label="Set Alarms" >
+        </activity>
+        <activity
+            android:name=".ViewScheduleActivity"
+            android:label="View Schedule" >
+        </activity>
+        <activity
+            android:name=".HoursWorkedActivity"
+            android:label="Hours Worked" >
+        </activity>
+        <activity
+            android:name=".ClockInOutActivity"
+            android:label="Clock In/Out" >
+        </activity>
+    </application>
+
+</manifest>

@@ -1,14 +1,3 @@
-<!-- 
-database host:
-frankencluster.com:3306
-
-g06dbf15admin
-}Q5)f$NS9WMB
-
-g06dbf15webuser
-;$B)R9+sA=lh
-
--->
 <?php
 session_start();
 
@@ -17,10 +6,10 @@ if (isset($_POST['submit'])) {
 	$user = $_POST['username'];
     $pass = $_POST['password'];
 
-	$servername = "frankencluster.com:3306/g06dbf15";
-	$username = "g06dbf15admin";
-	$password = "}Q5)f\$NS9WMB";
-	$dbname = "g06dbf15";
+	$servername = DB_ENDPOINT;
+	$username = DB_USERNAME;
+	$password = DB_PASSWORD;
+	$dbname = DB_NAME
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password);

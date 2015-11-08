@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +32,8 @@ public class LoginScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
 
+
+
         if(SaveSharedPreference.getUserName(LoginScreenActivity.this).length() == 0)
         {}
         else
@@ -44,31 +47,45 @@ public class LoginScreenActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
+                   TextView loginError = (TextView) findViewById(R.id.loginErrorBox);
+                   loginError.setText("Signing in...");
+
                    EditText loginET = (EditText) findViewById(R.id.editLogin);
                    EditText passwordET = (EditText) findViewById(R.id.editPassword);
 
                    login = loginET.getText().toString();
                    password = passwordET.getText().toString();
 
-                   new checkDatabase().execute();
-
-                   TextView loginError = (TextView) findViewById(R.id.loginErrorBox);
-                   loginError.setText("Signing in...");
-                   try {
-                       Thread.sleep(2000);
-                   }
-                   catch(Exception e)
-                   {}
-
-                   if (isUser == true) {
-
+                   if(new Utilities().checkCredentials(login, password))
+                   {
+                       loginError.setText("Success!");
                        Intent intent = new Intent(getApplicationContext(), HomeScreenActivity.class);
-                      // intent.putExtras(bundle);
+//                      // intent.putExtras(bundle);
                        startActivity(intent);
                    }
-                   else {
+                   else
+                   {
                        loginError.setText("Login or password is incorrect, please re-enter");
                    }
+
+//
+//                   new checkDatabase().execute();
+//
+//                   try {
+//                       Thread.sleep(2000);
+//                   }
+//                   catch(Exception e)
+//                   {}
+//
+//                   if (isUser == true) {
+//
+//                       Intent intent = new Intent(getApplicationContext(), HomeScreenActivity.class);
+//                      // intent.putExtras(bundle);
+//                       startActivity(intent);
+//                   }
+//                   else {
+//                       loginError.setText("Login or password is incorrect, please re-enter");
+//                   }
                }
            }
         );//end loginButton.setOnClickListener

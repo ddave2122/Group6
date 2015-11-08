@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once('../../../db.config');
 
 if (isset($_POST['submit'])) {
 	//Grab login info
@@ -9,7 +10,7 @@ if (isset($_POST['submit'])) {
 	$servername = DB_ENDPOINT;
 	$username = DB_USERNAME;
 	$password = DB_PASSWORD;
-	$dbname = DB_NAME
+	$dbname = DB_NAME;
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password);
@@ -20,8 +21,8 @@ if (isset($_POST['submit'])) {
 	} 
 	echo "Connected successfully";
 
-	$sql = "SELECT * FROM g06dbf15.user";
-	$sql = "SELECT username, password_hash from g06dbf15.user WHERE username='$user' ";
+	$sql = "SELECT * FROM $dbname.user";
+	$sql = "SELECT username, password_hash from $dbname.user WHERE username='$user' ";
 
 	$result = $conn->query($sql);
 
@@ -42,8 +43,6 @@ if (isset($_POST['submit'])) {
 		    	$_SESSION['access_granted'] = $val;
 		        $errormessage = "Username or Password is incorrect.";
 		        echo $errormessage;
-		        
-		        
 		        die();
 		    }
 		}

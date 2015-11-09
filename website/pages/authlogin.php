@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
 	} 
 	echo "Connected successfully";
 
-	$sql = "SELECT * FROM $dbname.user";
+	/*$sql = "SELECT * FROM $dbname.user";*/
 	$sql = "SELECT username, password_hash from $dbname.user WHERE username='$user' ";
 
 	$result = $conn->query($sql);
@@ -36,6 +36,28 @@ if (isset($_POST['submit'])) {
 	        	header("Location: index.php");
 		        $val = "true";
 		        $_SESSION['access_granted'] = $val;
+
+		        $sql = "SELECT is_manager from $dbname.user WHERE username='$user' ";
+		        $result = $conn->query($sql);
+		        $row = $result->fetch_assoc();
+		        $manageraccess = "{$row['is_manager']}";
+		        
+		        $sql = "SELECT is_employee from $dbname.user WHERE username='$user' ";
+		        $result = $conn->query($sql);
+		        $row = $result->fetch_assoc();
+		        $empaccess = "{$row['is_employee']}";
+
+		        if ($manageraccess){
+		        	$_SESSION['accessLevel'] = $manageraccess + 1;
+		        } else {
+		        	$_SESSION['accessLevel'] = $empaccess;
+		        }
+
+		        $sql = "SELECT first_name from $dbname.user WHERE username='$user' ";
+		        $result = $conn->query($sql);
+		        $row = $result->fetch_assoc();
+		        $fname = "{$row['first_name']}";
+		        $_SESSION['firstname'] = $fname;
 		        echo $val;
 		        die();
 		    } else {

@@ -22,7 +22,7 @@ $sql = "SELECT scheduled_clock_in, scheduled_clock_out
     WHERE scheduled_clock_in > '$startDate'
     AND scheduled_clock_out < '$endDate';";
 
-echo $sql;
+//echo $sql;
 
 $result = $conn->query($sql);
 var_dump($result);
@@ -37,4 +37,6 @@ while($row = $result->fetch_assoc())
 }
 
 $jsonResponse = json_encode($schedule);
-print_r($jsonResponse );
+
+header('Content-Type: application/json');
+echo($jsonResponse );

@@ -7,12 +7,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.html">Group 6 Admin Portal </a>
+    <a class="navbar-brand" href="index.php">Clock Web App Portal</a>
 </div>
 <!-- /.navbar-header -->
 
 <ul class="nav navbar-top-links navbar-right">
-<li class="dropdown">
+<!-- <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
         <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
     </a>
@@ -60,9 +60,9 @@
             </a>
         </li>
     </ul>
-    <!-- /.dropdown-messages -->
+  
 </li>
-<!-- /.dropdown -->
+
 <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
         <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
@@ -139,10 +139,10 @@
             </a>
         </li>
     </ul>
-    <!-- /.dropdown-tasks -->
+   
 </li>
-<!-- /.dropdown -->
-<li class="dropdown">
+
+ <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
         <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
     </a>
@@ -199,8 +199,8 @@
             </a>
         </li>
     </ul>
-    <!-- /.dropdown-alerts -->
-</li>
+    
+</li> -->
 <!-- /.dropdown -->
 <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -212,7 +212,7 @@
         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
         </li>
         <li class="divider"></li>
-        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
         </li>
     </ul>
     <!-- /.dropdown-user -->
@@ -232,8 +232,8 @@
             foreach($links as $link)
             {
                 //Uploader OR Root
-//                if($_SESSION['accessLevel'] > 100 || $_SESSION['accessLevel'] == 0)
-//                {
+                /*if($_SESSION['accessLevel'] > 100 || $_SESSION['accessLevel'] == 0)
+                {
                     if(strpos($_SERVER['REQUEST_URI'], $link['url']))
                     {
                         print('<li class="active">');
@@ -246,9 +246,9 @@
                         "<i class=\"" . $link['cssClass'] ."\" ></i> <span>" . $link['title'] . "</span>" .
                         "</a></li>");
                     continue;
-//                }
+                }*/
                 //Not Authorized
-                if($link['accessLevel'] < $_SESSION['accessLevel'] || $link['accessLevel'] > 100)
+                if($link['accessLevel'] > $_SESSION['accessLevel'] || $link['accessLevel'] > 100)
                     continue;
 
                 if(strpos($_SERVER['REQUEST_URI'], $link['url']))

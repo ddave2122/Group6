@@ -2,9 +2,9 @@
 include_once("../include/transporter.php");
 
 //only for testing
-$_GET['userId'] = "2";
-$_GET['startDate'] = "2010-01-01 00:00:00";
-$_GET['endDate'] = "2020-01-01 00:00:00";
+//$_GET['userId'] = "2";
+//$_GET['startDate'] = "2010-01-01 00:00:00";
+//$_GET['endDate'] = "2020-01-01 00:00:00";
 
 
 if(!isset($_GET["userId"]) || !isset($_GET["startDate"]) || !isset($_GET["endDate"]))

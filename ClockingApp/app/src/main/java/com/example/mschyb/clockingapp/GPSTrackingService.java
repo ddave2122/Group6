@@ -7,6 +7,7 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -56,15 +57,29 @@ public class GPSTrackingService extends Service {
         }
     };
 
-
     @Override
     public IBinder onBind(Intent intent) {
         // TODO Auto-generated method stub
         return null;
     }
 
+    private void turnGPSOn(){
+        String provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+
+        if(!provider.contains("gps")){ //if gps is disabled
+            final Intent poke = new Intent();
+            poke.setClassName("com.android.settings", "com.android.settings.widget.SettingsAppWidgetProvider");
+            poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
+            poke.setData(Uri.parse("3"));
+            sendBroadcast(poke);
+        }
+    }
+
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    public int onStartCommand(Intent intent, int flags, int startId)
+    {
+
+        turnGPSOn();
         super.onStartCommand(intent, flags, startId);
         try {
             Log.i(TAG, "Made it to onStartCommand");
@@ -89,6 +104,7 @@ public class GPSTrackingService extends Service {
                     locationManager.requestLocationUpdates(bestProvider, 100000, 0.000f, myLocationListener);
 
                 } catch (SecurityException e) {
+                    Log.e(TAG, "Security Exception");
                     Log.e(TAG, e.toString());
                 }
             }
@@ -97,7 +113,6 @@ public class GPSTrackingService extends Service {
 
         return START_STICKY;
     }
-
 
     @Override
     public void onCreate() {

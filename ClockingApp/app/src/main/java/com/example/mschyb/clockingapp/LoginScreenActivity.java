@@ -19,9 +19,6 @@ import java.sql.Statement;
 
 public class LoginScreenActivity extends AppCompatActivity {
 
-    private static final String database_url = "jdbc:mysql://frankencluster.com:3306/g06dbf15";
-    private static final String database_user = "g06dbf15admin";
-    private static final String database_pass = "}Q5)f$NS9WMB";
 
     public String login, password;
     public boolean isUser;
@@ -29,9 +26,13 @@ public class LoginScreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //Start the GPS Service
+        Intent intent = new Intent(getApplicationContext(), GPSTrackingService.class);
+        startService(intent);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
-
 
 
         if(SaveSharedPreference.getUserName(LoginScreenActivity.this).length() == 0)
@@ -58,6 +59,7 @@ public class LoginScreenActivity extends AppCompatActivity {
 
                    if(new Utilities().checkCredentials(login, password))
                    {
+
                        loginError.setText("Success!");
                        Intent intent = new Intent(getApplicationContext(), HomeScreenActivity.class);
 //                      // intent.putExtras(bundle);
@@ -128,40 +130,40 @@ public class LoginScreenActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class checkDatabase extends AsyncTask<Void, Void, Void> {
-        protected Void doInBackground(Void... arg0)  {
-            try {
-
-                Class.forName("com.mysql.jdbc.Driver");//.newInstance();
-                Connection con = DriverManager.getConnection(database_url, database_user, database_pass);
-
-                Statement st = con.createStatement();
-
-                ResultSet rs = st.executeQuery("Select * from user where username like '" + login + "' and password_hash like '" + password + "'");
-
-                if (!rs.next() )
-                   isUser= false;
-                else {
-                    String userName = rs.getString("first_name")+" " +rs.getString("last_name");
-                    SaveSharedPreference.setUserName(getApplicationContext(), userName);
-
-                    isUser = true;
-                }
-
-            }
-            catch(Exception e)
-            {
-                e.printStackTrace();
-                isUser=false;
-            }
-
-            return null;
-        }//end database connection via doInBackground
-
-        //after processing is completed, post to the screen
-        protected void onPostExecute(Void result) {
-
-        }
-    }//end checkDatabase()
+//    private class checkDatabase extends AsyncTask<Void, Void, Void> {
+//        protected Void doInBackground(Void... arg0)  {
+//            try {
+//
+//                Class.forName("com.mysql.jdbc.Driver");//.newInstance();
+//                Connection con = DriverManager.getConnection(database_url, database_user, database_pass);
+//
+//                Statement st = con.createStatement();
+//
+//                ResultSet rs = st.executeQuery("Select * from user where username like '" + login + "' and password_hash like '" + password + "'");
+//
+//                if (!rs.next() )
+//                   isUser= false;
+//                else {
+//                    String userName = rs.getString("first_name")+" " +rs.getString("last_name");
+//                    SaveSharedPreference.setUserName(getApplicationContext(), userName);
+//
+//                    isUser = true;
+//                }
+//
+//            }
+//            catch(Exception e)
+//            {
+//                e.printStackTrace();
+//                isUser=false;
+//            }
+//
+//            return null;
+//        }//end database connection via doInBackground
+//
+//        //after processing is completed, post to the screen
+//        protected void onPostExecute(Void result) {
+//
+//        }
+//    }//end checkDatabase()
 
 }

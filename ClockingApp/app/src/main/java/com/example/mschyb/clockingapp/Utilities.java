@@ -2,11 +2,15 @@ package com.example.mschyb.clockingapp;
 
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import java.util.concurrent.ExecutionException;
+import org.json.JSONArray;
 
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class Utilities
 {
@@ -22,8 +26,24 @@ public class Utilities
         {
             Log.e(Config.TAG, "Error when trying to convert string to JSON object");
         }
-
-        return jsonObject.get("authenticated").toString().equals("true");
+        if(jsonObject.get("authenticated").toString().equals("true"))
+        {
+            try
+            {
+                Config.setUserId(Integer.getInteger(jsonObject.get("userId").toString()));
+                Config.setEastEndpoint(Double.parseDouble(jsonObject.get("eastEndpoint").toString()));
+                Config.setNorthEndpoint(Double.parseDouble(jsonObject.get("northEndpoint").toString()));
+                Config.setSouthEndpoint(Double.parseDouble(jsonObject.get("southEndpoint").toString()));
+                Config.setWestEndpoint(Double.parseDouble(jsonObject.get("westEndpoint").toString()));
+            }
+            catch(Exception e)
+            {
+                Log.e(Config.TAG, "Error when trying to get values from JSON object");
+            }
+            return true;
+        }
+        else
+            return false;
     }
 
 
@@ -51,8 +71,16 @@ public class Utilities
 
     private JsonObject convertStringToJson(String stringToConvert)
     {
+        JsonObject jsonResult = null;
         JsonParser jsonParser = new JsonParser();
-        JsonObject jsonResult = (JsonObject)jsonParser.parse(stringToConvert);
+        try
+        {
+            jsonResult = (JsonObject)jsonParser.parse(stringToConvert);
+        }
+        catch (Exception e)
+        {
+            Log.e(Config.TAG, " JSON response cann't be read.." + stringToConvert);
+        }
 
         if(jsonResult == null)
         {

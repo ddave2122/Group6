@@ -19,8 +19,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         TextView  helloText = (TextView)findViewById(R.id.helloText);
         if(SaveSharedPreference.getUserName(getApplicationContext()).length() == 0)
         {
-            startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
-
+//            startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
 
         } else
         {

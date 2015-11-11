@@ -12,6 +12,7 @@ public class Utilities
 {
     public boolean checkCredentials(String username, String password)
     {
+
         String params = "username=" + username + "&password=" + password;
         Transporter transporter = new Transporter();
         transporter.execute(Config.CHECK_CREDENTIALS_ENDPOINT, "POST", params);
@@ -60,5 +61,35 @@ public class Utilities
             return null;
         }
         return  jsonResult;
+    }
+    public String[] getSchedule(String userID, String date) {
+     /*   String[] arr = new String[2];
+        String params = "user_id=" + userID + "&schedule_clock_in" + date;
+        Transporter transporter = new Transporter();
+        transporter.execute(Config.GET_SCHEDULE_ENDPOINT, "POST", params);
+
+        JsonObject jsonResult = null;
+        try {
+            JsonParser jsonParser = new JsonParser();
+            jsonResult = (JsonObject) jsonParser.parse(transporter.get());
+        } catch (InterruptedException | ExecutionException e) {
+            Log.e(Config.TAG, "Error when trying to get result from Transporter");
+        }
+
+        if (jsonResult == null) {
+            Log.e(Config.TAG, "Result  check is null");
+            arr = null;
+
+        } else {
+            arr[0] = jsonResult.get("startTime").toString();
+            arr[1] = jsonResult.get("endTime").toString();
+
+        }
+        return arr;
+        */
+
+        String arr[]={"01//02/2004 03:00:00:00","22//03/2005 22:30:00:00"};
+        //String arr[]=null;
+        return arr;
     }
 }

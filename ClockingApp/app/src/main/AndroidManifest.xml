@@ -38,6 +38,10 @@
             android:name=".ClockInOutActivity"
             android:label="Clock In/Out" >
         </activity>
+        <activity
+            android:name=".ScheduleDateActivity"
+            android:label="ScheduleDateActivity">
+        </activity>
     </application>
 
 </manifest>

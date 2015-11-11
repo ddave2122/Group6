@@ -68,5 +68,5 @@ public class Config
     public static void setNorthEndpoint(double northEndpoint) {
         Config.northEndpoint = northEndpoint;
     }
-    
+
 }

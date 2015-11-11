@@ -15,14 +15,14 @@ public class ViewScheduleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_schedule);
-/*
+
         if(SaveSharedPreference.getUserName(getApplicationContext()).length() == 0)
         {
             startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
         }
         else
         {}
-*/
+
         Button backButton = (Button) findViewById(R.id.backButton);
         //set the onClick listener for the button
         backButton.setOnClickListener(new View.OnClickListener() {

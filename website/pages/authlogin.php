@@ -1,25 +1,22 @@
 <?php
 session_start();
-include_once('../../../db.config');
+
+include_once('../include/transporter.php');
 
 if (isset($_POST['submit'])) {
 	//Grab login info
 	$user = $_POST['username'];
     $pass = $_POST['password'];
 
-	$servername = DB_ENDPOINT;
-	$username = DB_USERNAME;
-	$password = DB_PASSWORD;
-	$dbname = DB_NAME;
+    $transporter = new Transporter();
 
-	// Create connection
-	$conn = new mysqli($servername, $username, $password);
+    $conn = $transporter->getConnection();
 
 	// Check connection
 	if ($conn->connect_error) {
 	    die("Connection failed: " . $conn->connect_error);
 	} 
-	echo "Connected successfully";
+//	echo "Connected successfully";
 
 	/*$sql = "SELECT * FROM $dbname.user";*/
 	$sql = "SELECT username, password_hash from $dbname.user WHERE username='$user' ";
@@ -65,7 +62,6 @@ if (isset($_POST['submit'])) {
 		    	$_SESSION['access_granted'] = $val;
 		        $errormessage = "Username or Password is incorrect.";
 		        echo $errormessage;
-		        die();
 		    }
 		}
 	   
@@ -78,8 +74,7 @@ if (isset($_POST['submit'])) {
 	//Post not set
     header("Location: login.php");
     $errormessage = "Post not set. Could not connect: " . mysql_error();
-    
-    die();
+
 }
 
 ?>

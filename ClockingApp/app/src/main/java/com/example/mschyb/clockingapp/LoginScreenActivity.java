@@ -91,7 +91,7 @@ public class LoginScreenActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    
+
 //    private class checkDatabase extends AsyncTask<Void, Void, Void> {
 //        protected Void doInBackground(Void... arg0)  {
 //            try {

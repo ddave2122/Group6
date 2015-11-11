@@ -17,24 +17,50 @@ public class Utilities
         Transporter transporter = new Transporter();
         transporter.execute(Config.CHECK_CREDENTIALS_ENDPOINT, "POST", params);
 
-        JsonObject jsonResult = null;
+        JsonObject jsonObject = convertStringToJson(readTransporter(transporter));
+
+        if(jsonObject == null)
+        {
+            Log.e(Config.TAG, "Error when trying to convert string to JSON object");
+        }
+
+        return jsonObject.get("authenticated").toString().equals("true");
+    }
+
+
+    public static void clockUser(int isClockingIn)
+    {
+        String params = "userId=" + Config.getUserId() + "&isClockingIn=" + isClockingIn;
+        Transporter transporter = new Transporter();
+        transporter.execute(Config.LOG_TIME_ENDPOINT, "POST", params);
+    }
+
+
+    private String readTransporter(Transporter transporter)
+    {
+        String result = null;
         try
         {
-            JsonParser jsonParser = new JsonParser();
-            jsonResult = (JsonObject)jsonParser.parse(transporter.get());
+            result = transporter.get();
         }
         catch(InterruptedException | ExecutionException e)
         {
-            Log.e(Config.TAG, "Error when trying to get result from Transporter");
+            Log.e(Config.TAG, "Exception when trying to get result from transporter class");
         }
+        return result;
+    }
+
+    private JsonObject convertStringToJson(String stringToConvert)
+    {
+        JsonParser jsonParser = new JsonParser();
+        JsonObject jsonResult = (JsonObject)jsonParser.parse(stringToConvert);
 
         if(jsonResult == null)
         {
-            Log.e(Config.TAG, "Result from credentials check is null");
-            return false;
+            Log.e(Config.TAG, "Unable to convert string to JsonObject");
+            return null;
         }
-
-        return jsonResult.get("authenticated").toString().equals("true");
+        return  jsonResult;
     }
     public String[] getSchedule(String userID, String date) {
      /*   String[] arr = new String[2];

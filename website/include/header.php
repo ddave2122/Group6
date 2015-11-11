@@ -1,3 +1,12 @@
+<?php 
+session_start();
+if(empty($_SESSION['access_granted']) || (!empty($_SESSION['access_granted']) && $_SESSION['access_granted'] != true)) { 
+    header("Location: login.php");
+    $errormessage = "Access Denied" . mysql_error();
+    die();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

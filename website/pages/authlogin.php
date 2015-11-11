@@ -1,27 +1,25 @@
 <?php
 session_start();
 
+include_once('../include/transporter.php');
+
 if (isset($_POST['submit'])) {
 	//Grab login info
 	$user = $_POST['username'];
     $pass = $_POST['password'];
 
-	$servername = DB_ENDPOINT;
-	$username = DB_USERNAME;
-	$password = DB_PASSWORD;
-	$dbname = DB_NAME
+    $transporter = new Transporter();
 
-	// Create connection
-	$conn = new mysqli($servername, $username, $password);
+    $conn = $transporter->getConnection();
 
 	// Check connection
 	if ($conn->connect_error) {
 	    die("Connection failed: " . $conn->connect_error);
 	} 
-	echo "Connected successfully";
+//	echo "Connected successfully";
 
-	$sql = "SELECT * FROM g06dbf15.user";
-	$sql = "SELECT username, password_hash from g06dbf15.user WHERE username='$user' ";
+	/*$sql = "SELECT * FROM $dbname.user";*/
+	$sql = "SELECT username, password_hash from $dbname.user WHERE username='$user' ";
 
 	$result = $conn->query($sql);
 
@@ -35,6 +33,28 @@ if (isset($_POST['submit'])) {
 	        	header("Location: index.php");
 		        $val = "true";
 		        $_SESSION['access_granted'] = $val;
+
+		        $sql = "SELECT is_manager from $dbname.user WHERE username='$user' ";
+		        $result = $conn->query($sql);
+		        $row = $result->fetch_assoc();
+		        $manageraccess = "{$row['is_manager']}";
+		        
+		        $sql = "SELECT is_employee from $dbname.user WHERE username='$user' ";
+		        $result = $conn->query($sql);
+		        $row = $result->fetch_assoc();
+		        $empaccess = "{$row['is_employee']}";
+
+		        if ($manageraccess){
+		        	$_SESSION['accessLevel'] = $manageraccess + 1;
+		        } else {
+		        	$_SESSION['accessLevel'] = $empaccess;
+		        }
+
+		        $sql = "SELECT first_name from $dbname.user WHERE username='$user' ";
+		        $result = $conn->query($sql);
+		        $row = $result->fetch_assoc();
+		        $fname = "{$row['first_name']}";
+		        $_SESSION['firstname'] = $fname;
 		        echo $val;
 		        die();
 		    } else {
@@ -42,9 +62,6 @@ if (isset($_POST['submit'])) {
 		    	$_SESSION['access_granted'] = $val;
 		        $errormessage = "Username or Password is incorrect.";
 		        echo $errormessage;
-		        
-		        
-		        die();
 		    }
 		}
 	   
@@ -57,8 +74,7 @@ if (isset($_POST['submit'])) {
 	//Post not set
     header("Location: login.php");
     $errormessage = "Post not set. Could not connect: " . mysql_error();
-    
-    die();
+
 }
 
 ?>

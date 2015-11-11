@@ -1,16 +1,12 @@
-<?php include_once("../include/header.php"); ?>
-
-<?php 
-
-	include_once('../../../db.config');
-
-	$servername = DB_ENDPOINT;
-	$username = DB_USERNAME;
-	$password = DB_PASSWORD;
-	$dbname = DB_NAME;
+<?php
+include_once("../include/header.php");
+include_once('../include/transporter.php');
+include_once('../../../db.config');
 
 	// Create connection
-	$conn = new mysqli($servername, $username, $password);
+    $transporter = new Transporter();
+    $conn = $transporter->getConnection();
+
 
 	// Check connection
 	if ($conn->connect_error) {

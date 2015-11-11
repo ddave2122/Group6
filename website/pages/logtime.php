@@ -6,11 +6,13 @@ include_once("../include/transporter.php");
 //$_POST['isClockingIn'] = 1;
 
 //Grab clocking info
-if(isset($_POST['userId']))
-    $userId = $_POST['userId'];
+if(!isset($_POST['userId']))
+    return;
+$userId = $_POST['userId'];
 
-if(isset($_POST['isClockingIn']))
-    $clockingIn = $_POST['isClockingIn'];
+if(!isset($_POST['isClockingIn']))
+    return;
+$clockingIn = $_POST['isClockingIn'];
 
 $transporter = new Transporter();
 

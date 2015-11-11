@@ -19,12 +19,7 @@ import java.sql.Statement;
 
 public class LoginScreenActivity extends AppCompatActivity {
 
-    private static final String database_url = "jdbc:mysql://frankencluster.com:3306/g06dbf15";
-    private static final String database_user = "g06dbf15admin";
-    private static final String database_pass = "}Q5)f$NS9WMB";
-
     public String login, password;
-    public boolean isUser;
 
 
     @Override
@@ -56,56 +51,20 @@ public class LoginScreenActivity extends AppCompatActivity {
                    login = loginET.getText().toString();
                    password = passwordET.getText().toString();
 
-                   if(new Utilities().checkCredentials(login, password))
-                   {
+                   if (new Utilities().checkCredentials(login, password)) {
+                       //NEED TO SET SHAREDPREFERENCES FOR USER'S NAME AND USER ID SOMEWHERE DURING LOGIN
+                       // AFTER RETRIEVING THEM FROM THE DATABASE
                        loginError.setText("Success!");
                        Intent intent = new Intent(getApplicationContext(), HomeScreenActivity.class);
-//                      // intent.putExtras(bundle);
                        startActivity(intent);
-                   }
-                   else
-                   {
+                   } else {
                        loginError.setText("Login or password is incorrect, please re-enter");
                    }
-
-//
-//                   new checkDatabase().execute();
-//
-//                   try {
-//                       Thread.sleep(2000);
-//                   }
-//                   catch(Exception e)
-//                   {}
-//
-//                   if (isUser == true) {
-//
-//                       Intent intent = new Intent(getApplicationContext(), HomeScreenActivity.class);
-//                      // intent.putExtras(bundle);
-//                       startActivity(intent);
-//                   }
-//                   else {
-//                       loginError.setText("Login or password is incorrect, please re-enter");
-//                   }
                }
            }
         );//end loginButton.setOnClickListener
     }
-/*
-    @Override
-    public void onResume()
-    {
-        super.onResume();
 
-        if(SaveSharedPreference.getUserName(LoginScreenActivity.this).length() == 0)
-        {
-            onCreate(new Bundle());
-
-        } else
-        {
-             // SaveSharedPreference.removeUserName(getApplicationContext());
-            startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
-        }
-    } */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -128,40 +87,5 @@ public class LoginScreenActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class checkDatabase extends AsyncTask<Void, Void, Void> {
-        protected Void doInBackground(Void... arg0)  {
-            try {
-
-                Class.forName("com.mysql.jdbc.Driver");//.newInstance();
-                Connection con = DriverManager.getConnection(database_url, database_user, database_pass);
-
-                Statement st = con.createStatement();
-
-                ResultSet rs = st.executeQuery("Select * from user where username like '" + login + "' and password_hash like '" + password + "'");
-
-                if (!rs.next() )
-                   isUser= false;
-                else {
-                    String userName = rs.getString("first_name")+" " +rs.getString("last_name");
-                    SaveSharedPreference.setUserName(getApplicationContext(), userName);
-
-                    isUser = true;
-                }
-
-            }
-            catch(Exception e)
-            {
-                e.printStackTrace();
-                isUser=false;
-            }
-
-            return null;
-        }//end database connection via doInBackground
-
-        //after processing is completed, post to the screen
-        protected void onPostExecute(Void result) {
-
-        }
-    }//end checkDatabase()
 
 }

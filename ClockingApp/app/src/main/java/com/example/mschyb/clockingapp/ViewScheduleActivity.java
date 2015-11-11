@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
 
 public class ViewScheduleActivity extends AppCompatActivity {
 
@@ -14,14 +15,14 @@ public class ViewScheduleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_schedule);
-
+/*
         if(SaveSharedPreference.getUserName(getApplicationContext()).length() == 0)
         {
             startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
         }
         else
         {}
-
+*/
         Button backButton = (Button) findViewById(R.id.backButton);
         //set the onClick listener for the button
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -31,6 +32,20 @@ public class ViewScheduleActivity extends AppCompatActivity {
               }
           }
         );//end backButton.setOnClickListener
+
+        CalendarView calendar = (CalendarView) findViewById(R.id.calendarView);
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            public void onSelectedDayChange(CalendarView view, int year, int month, int day) {
+            Intent intent= new Intent(getApplicationContext(), ScheduleDateActivity.class);
+            //month++;
+            intent.putExtra("scheduleday",day );
+            intent.putExtra("schedulemonth", month);
+            intent.putExtra("scheduleyear",year);
+            startActivity(intent);
+
+            }
+        });
+
     }
 
     @Override

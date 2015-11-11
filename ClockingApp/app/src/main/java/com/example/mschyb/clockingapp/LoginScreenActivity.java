@@ -19,9 +19,7 @@ import java.sql.Statement;
 
 public class LoginScreenActivity extends AppCompatActivity {
 
-
     public String login, password;
-    public boolean isUser;
 
 
     @Override
@@ -57,57 +55,21 @@ public class LoginScreenActivity extends AppCompatActivity {
                    login = loginET.getText().toString();
                    password = passwordET.getText().toString();
 
-                   if(new Utilities().checkCredentials(login, password))
-                   {
+                   if (new Utilities().checkCredentials(login, password)) {
+                       //NEED TO SET SHAREDPREFERENCES FOR USER'S NAME AND USER ID SOMEWHERE DURING LOGIN
+                       // AFTER RETRIEVING THEM FROM THE DATABASE
 
                        loginError.setText("Success!");
                        Intent intent = new Intent(getApplicationContext(), HomeScreenActivity.class);
-//                      // intent.putExtras(bundle);
                        startActivity(intent);
-                   }
-                   else
-                   {
+                   } else {
                        loginError.setText("Login or password is incorrect, please re-enter");
                    }
-
-//
-//                   new checkDatabase().execute();
-//
-//                   try {
-//                       Thread.sleep(2000);
-//                   }
-//                   catch(Exception e)
-//                   {}
-//
-//                   if (isUser == true) {
-//
-//                       Intent intent = new Intent(getApplicationContext(), HomeScreenActivity.class);
-//                      // intent.putExtras(bundle);
-//                       startActivity(intent);
-//                   }
-//                   else {
-//                       loginError.setText("Login or password is incorrect, please re-enter");
-//                   }
                }
            }
         );//end loginButton.setOnClickListener
     }
-/*
-    @Override
-    public void onResume()
-    {
-        super.onResume();
 
-        if(SaveSharedPreference.getUserName(LoginScreenActivity.this).length() == 0)
-        {
-            onCreate(new Bundle());
-
-        } else
-        {
-             // SaveSharedPreference.removeUserName(getApplicationContext());
-            startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
-        }
-    } */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -129,7 +91,7 @@ public class LoginScreenActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
+    
 //    private class checkDatabase extends AsyncTask<Void, Void, Void> {
 //        protected Void doInBackground(Void... arg0)  {
 //            try {
@@ -165,5 +127,6 @@ public class LoginScreenActivity extends AppCompatActivity {
 //
 //        }
 //    }//end checkDatabase()
+
 
 }

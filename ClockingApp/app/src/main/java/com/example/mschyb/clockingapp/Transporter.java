@@ -22,6 +22,8 @@ public class Transporter extends AsyncTask<String, String, String>{
 
 
             if(uri[1] != null && uri[1].equals("POST"))
+
+
             {
                 conn = (HttpURLConnection) url.openConnection();
 

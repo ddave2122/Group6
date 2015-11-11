@@ -69,6 +69,7 @@ public class HomeScreenActivity extends AppCompatActivity {
               @Override
               public void onClick(View v) {
                   SaveSharedPreference.removeUserName(getApplicationContext());
+                  SaveSharedPreference.removeUserID(getApplicationContext());
                   startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
               }
           }

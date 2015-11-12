@@ -20,9 +20,8 @@ $conn = $transporter->getConnection();
 $sql = "SELECT scheduled_clock_in, scheduled_clock_out
     FROM user_schedule
     WHERE scheduled_clock_in > '$startDate'
-    AND scheduled_clock_out < '$endDate';";
-
-//echo $sql;
+    AND scheduled_clock_out < '$endDate'
+    AND user_id = '$userId';";
 
 $result = $conn->query($sql);
 var_dump($result);

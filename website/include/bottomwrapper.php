@@ -13,22 +13,26 @@
 
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
-<!-- User Management Form Handler -->
+
 <script>
+  
+  /* Schedule Tabs */
+  $('.btnNext').click(function(){
+    $('.nav-tabs > .active').next('li').find('a').trigger('click');
+  });
+
+  $('.btnPrevious').click(function(){
+    $('.nav-tabs > .active').prev('li').find('a').trigger('click');
+  });
+
+
   $(function () {
+
+    /* User Management Form Handler */
 
     $('#addForm').on('submit', function (e) {
 
       e.preventDefault();
-
-      $("#addForm input[required=true]").each(function(){
-            $(this).css('border-color',''); 
-            if(!$.trim($(this).val())){ //if this field is empty 
-                $(this).css('border-color','red'); //change border color to red   
-                proceed = false; //set do not proceed flag
-            }
-      });
-
       
       $.ajax({
         type: 'post',
@@ -42,16 +46,279 @@
 
     });
 
+    /* Create Schedule Handler*/
+
+    $('#submitWeek1').on('submit', function (e) {
+
+      e.preventDefault();
+      
+      mainObj = "";
+      var temp = "";
+
+      function allWorkNoPlay(dayofweek, json) {
+          
+        for (j = 0; j < 7; j++){
+        week = dayofweek + j;
+        var object = "";
+        var empArray = [];
+        var x = document.forms[week];
+        console.log(week);
+          
+          var i;
+          for (i = 0; i < x.length ;i++) {
+              if(x.elements[i].value == ''){
+                break;
+              } else{
+                empArray.push(x.elements[i].value);
+              }
+              
+          }
+          
+          if ( (empArray[0] != null) && (empArray[1] != null) && (empArray[2] != null) ) {
+            if (json == ''){
+              json += '{"id":"'+empArray[0]+'","clockIn":"'+empArray[1]+'","clockOut":"'+empArray[2]+':00"}';
+              console.log("mainObj: " + json);
+            }else{
+              json += ',{"id":"'+empArray[0]+'","clockIn":"'+empArray[1]+'","clockOut":"'+empArray[2]+':00"}';
+              console.log("mainObj: " + json);
+            }
+             
+          }
+         
+      }
+
+          return json;                
+      }
+
+      var week1 = "week1_";
+      var week2 = "week2_";
+      var week3 = "week3_";
+      var week4 = "week4_";
+
+      mainObj = allWorkNoPlay(week4,allWorkNoPlay(week3,allWorkNoPlay(week2,allWorkNoPlay(week1,mainObj))));
+      
+      if (mainObj != ''){
+        empJSON = '{"schedule":['+mainObj+']}';
+      }
+      console.log(empJSON);
+      
+      $.ajax({
+        type: 'post',
+        url: 'writeschedule.php',
+        data: {'schedule' : empJSON},
+        
+        success: function (data) {
+          $('form').each(function() { this.reset() });
+          $("#submitScheduleMsg").show();
+        }
+      });
+
+    });
+
+    $('#submitWeek2').on('submit', function (e) {
+
+      e.preventDefault();
+      
+      mainObj = "";
+      var temp = "";
+
+      function allWorkNoPlay(dayofweek, json) {
+          
+        for (j = 0; j < 7; j++){
+        week = dayofweek + j;
+        var object = "";
+        var empArray = [];
+        var x = document.forms[week];
+        console.log(week);
+          
+          var i;
+          for (i = 0; i < x.length ;i++) {
+              if(x.elements[i].value == ''){
+                break;
+              } else{
+                empArray.push(x.elements[i].value);
+              }
+              
+          }
+          
+          if ( (empArray[0] != null) && (empArray[1] != null) && (empArray[2] != null) ) {
+            if (json == ''){
+              json += '{"id":"'+empArray[0]+'","clockIn":"'+empArray[1]+'","clockOut":"'+empArray[2]+':00"}';
+              console.log("mainObj: " + json);
+            }else{
+              json += ',{"id":"'+empArray[0]+'","clockIn":"'+empArray[1]+'","clockOut":"'+empArray[2]+':00"}';
+              console.log("mainObj: " + json);
+            }
+             
+          }
+         
+      }
+
+          return json;                
+      }
+
+      var week1 = "week1_";
+      var week2 = "week2_";
+      var week3 = "week3_";
+      var week4 = "week4_";
+
+      mainObj = allWorkNoPlay(week4,allWorkNoPlay(week3,allWorkNoPlay(week2,allWorkNoPlay(week1,mainObj))));
+      
+      if (mainObj != ''){
+        empJSON = '{"schedule":['+mainObj+']}';
+      }
+      console.log(empJSON);
+      
+      $.ajax({
+        type: 'post',
+        url: 'writeschedule.php',
+        data: {'schedule' : empJSON},
+        
+        success: function (data) {
+          $('form').each(function() { this.reset() });
+          $("#submitScheduleMsg").show();
+        }
+      });
+
+    });
+
+    $('#submitWeek3').on('submit', function (e) {
+
+      e.preventDefault();
+      
+      mainObj = "";
+      var temp = "";
+
+      function allWorkNoPlay(dayofweek, json) {
+          
+        for (j = 0; j < 7; j++){
+        week = dayofweek + j;
+        var object = "";
+        var empArray = [];
+        var x = document.forms[week];
+        console.log(week);
+          
+          var i;
+          for (i = 0; i < x.length ;i++) {
+              if(x.elements[i].value == ''){
+                break;
+              } else{
+                empArray.push(x.elements[i].value);
+              }
+              
+          }
+          
+          if ( (empArray[0] != null) && (empArray[1] != null) && (empArray[2] != null) ) {
+            if (json == ''){
+              json += '{"id":"'+empArray[0]+'","clockIn":"'+empArray[1]+'","clockOut":"'+empArray[2]+':00"}';
+              console.log("mainObj: " + json);
+            }else{
+              json += ',{"id":"'+empArray[0]+'","clockIn":"'+empArray[1]+'","clockOut":"'+empArray[2]+':00"}';
+              console.log("mainObj: " + json);
+            }
+             
+          }
+         
+      }
+
+          return json;                
+      }
+
+      var week1 = "week1_";
+      var week2 = "week2_";
+      var week3 = "week3_";
+      var week4 = "week4_";
+
+      mainObj = allWorkNoPlay(week4,allWorkNoPlay(week3,allWorkNoPlay(week2,allWorkNoPlay(week1,mainObj))));
+      
+      if (mainObj != ''){
+        empJSON = '{"schedule":['+mainObj+']}';
+      }
+      console.log(empJSON);
+      
+      $.ajax({
+        type: 'post',
+        url: 'writeschedule.php',
+        data: {'schedule' : empJSON},
+        
+        success: function (data) {
+          $('form').each(function() { this.reset() });
+          $("#submitScheduleMsg").show();
+        }
+      });
+
+    });
+
+    $('#submitWeek4').on('submit', function (e) {
+
+      e.preventDefault();
+      
+      mainObj = "";
+      var temp = "";
+
+      function allWorkNoPlay(dayofweek, json) {
+          
+        for (j = 0; j < 7; j++){
+        week = dayofweek + j;
+        var object = "";
+        var empArray = [];
+        var x = document.forms[week];
+        console.log(week);
+          
+          var i;
+          for (i = 0; i < x.length ;i++) {
+              if(x.elements[i].value == ''){
+                break;
+              } else{
+                empArray.push(x.elements[i].value);
+              }
+              
+          }
+          
+          if ( (empArray[0] != null) && (empArray[1] != null) && (empArray[2] != null) ) {
+            if (json == ''){
+              json += '{"id":"'+empArray[0]+'","clockIn":"'+empArray[1]+'","clockOut":"'+empArray[2]+':00"}';
+              console.log("mainObj: " + json);
+            }else{
+              json += ',{"id":"'+empArray[0]+'","clockIn":"'+empArray[1]+'","clockOut":"'+empArray[2]+':00"}';
+              console.log("mainObj: " + json);
+            }
+             
+          }
+         
+      }
+
+          return json;                
+      }
+
+      var week1 = "week1_";
+      var week2 = "week2_";
+      var week3 = "week3_";
+      var week4 = "week4_";
+
+      mainObj = allWorkNoPlay(week4,allWorkNoPlay(week3,allWorkNoPlay(week2,allWorkNoPlay(week1,mainObj))));
+      
+      if (mainObj != ''){
+        empJSON = '{"schedule":['+mainObj+']}';
+      }
+      console.log(empJSON);
+      
+      $.ajax({
+        type: 'post',
+        url: 'writeschedule.php',
+        data: {'schedule' : empJSON},
+        
+        success: function (data) {
+          $('form').each(function() { this.reset() });
+          $("#submitScheduleMsg").show();
+        }
+      });
+
+    });
+
   });
 
-  /* Schedule Tabs */
-  $('.btnNext').click(function(){
-    $('.nav-tabs > .active').next('li').find('a').trigger('click');
-  });
-
-  $('.btnPrevious').click(function(){
-    $('.nav-tabs > .active').prev('li').find('a').trigger('click');
-  });
+  
 </script>
 
 <!-- Bootstrap Core JavaScript -->

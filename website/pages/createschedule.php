@@ -1,7 +1,7 @@
 <?php
 include_once("../include/header.php");
 include_once('../include/transporter.php');
-include_once('../../../db.config');
+
 
 	// Create connection
     $transporter = new Transporter();
@@ -13,18 +13,18 @@ include_once('../../../db.config');
 	    die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql = "SELECT * FROM $dbname.user";
+	$sql = "SELECT * FROM user";
 
 	$result = $conn->query($sql);
 
-	$options = "";
+	$options = '<option id="empId"></option>';
 	
 	while ($row = $result->fetch_assoc()) {
-        $options = $options.'<option>'.$row['last_name'].', '.$row['first_name'].'</option>';
+        $options = $options.'<option id="empId" value="'.$row['id'].'">'.$row['last_name'].', '.$row['first_name'].'</option>';
 	}
 
 	$conn->close();
-
+    
 ?>
 
 <ul class="nav nav-tabs" style="border-bottom: none !important;">
@@ -75,28 +75,28 @@ include_once('../../../db.config');
 
         			<div class="row">
 
-				        <form class="form-horizontal row-border" id="week1">
+				        <form class="form-horizontal row-border" id="week1_'.$i.'">
 					    	
 						    <h3 style="padding-left:15px;">'.$day.'</h3>
 						    
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label" for="employees">Employee</label>
-							        <select class="form-control" id="employees" name="employees">'.$options.'</select>
+							        <select class="form-control" id="employees'.$i.'" name="employees">'.$options.'</select>
 							    </div>
 						    </div>
 
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label">Start Date:</label>
-							        <input class="form-control" type="datetime-local" name="startdate" placeholder="" required="true">
+							        <input class="form-control" type="datetime-local" id="startdate'.$i.'" name="startdate" required="true">
 							     </div>
 						    </div>
 
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label">End Date:</label>
-							        <input class="form-control" type="datetime-local" name="enddate" placeholder="" required="true">
+							        <input class="form-control" type="datetime-local" id="enddate'.$i.'" name="enddate" placeholder="" required="true">
 							     </div>
 						    </div>
 
@@ -112,8 +112,10 @@ include_once('../../../db.config');
        		<div class="col-md-4">
        		</div> 
 			<div class="col-md-4">
-			    <button type="submit" name="submitWeek1" class="btn btn-lg btn-primary" style="width:100%;margin-top:30px;margin-bottom:30px;">Submit</button>
-		    </div>
+                <form class="form-horizontal row-border" id="submitWeek1">
+			     <button type="submit" name="submitWeek1" class="btn btn-lg btn-primary" style="width:100%;margin-top:30px;margin-bottom:30px;">Submit</button>
+		        </form>
+            </div>
 		    <div class="col-md-4">
        		</div> 
 		</div>
@@ -160,28 +162,28 @@ include_once('../../../db.config');
 
         			<div class="row">
 
-				        <form class="form-horizontal row-border" id="week2">
+				        <form class="form-horizontal row-border" id="week2_'.$i.'">
 					    	
 						    <h3 style="padding-left:15px;">'.$day.'</h3>
 						    
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label" for="employees">Employee</label>
-							        <select class="form-control" id="employees" name="employees">'.$options.'</select>
+							        <select class="form-control" id="employees'.$i.'" name="employees">'.$options.'</select>
 							    </div>
 						    </div>
 
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label">Start Date:</label>
-							        <input class="form-control" type="datetime-local" name="startdate" placeholder="" required="true">
+							        <input class="form-control" type="datetime-local" id="startdate'.$i.'" name="startdate" placeholder="" required="true">
 							     </div>
 						    </div>
 
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label">End Date:</label>
-							        <input class="form-control" type="datetime-local" name="enddate" placeholder="" required="true">
+							        <input class="form-control" type="datetime-local" id="enddate'.$i.'" name="enddate" placeholder="" required="true">
 							     </div>
 						    </div>
 
@@ -197,8 +199,10 @@ include_once('../../../db.config');
        		<div class="col-md-4">
        		</div> 
 			<div class="col-md-4">
-			    <button type="submit" name="submitWeek2" class="btn btn-lg btn-primary" style="width:100%;margin-top:30px;margin-bottom:30px;">Submit</button>
-		    </div>
+                <form class="form-horizontal row-border" id="submitWeek2">
+                 <button type="submit" name="submitWeek2" class="btn btn-lg btn-primary" style="width:100%;margin-top:30px;margin-bottom:30px;">Submit</button>
+                </form>
+            </div>
 		    <div class="col-md-4">
        		</div> 
 		</div>
@@ -245,28 +249,28 @@ include_once('../../../db.config');
 
         			<div class="row">
 
-				        <form class="form-horizontal row-border" id="week3">
+				        <form class="form-horizontal row-border" id="week3_'.$i.'">
 					    	
 						    <h3 style="padding-left:15px;">'.$day.'</h3>
 						    
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label" for="employees">Employee</label>
-							        <select class="form-control" id="employees" name="employees">'.$options.'</select>
+							        <select class="form-control" id="employees'.$i.'" name="employees">'.$options.'</select>
 							    </div>
 						    </div>
 
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label">Start Date:</label>
-							        <input class="form-control" type="datetime-local" name="startdate" placeholder="" required="true">
+							        <input class="form-control" type="datetime-local" id="startdate'.$i.'" name="startdate" placeholder="" required="true">
 							     </div>
 						    </div>
 
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label">End Date:</label>
-							        <input class="form-control" type="datetime-local" name="enddate" placeholder="" required="true">
+							        <input class="form-control" type="datetime-local" id="enddate'.$i.'" name="enddate" placeholder="" required="true">
 							     </div>
 						    </div>
 
@@ -282,8 +286,10 @@ include_once('../../../db.config');
        		<div class="col-md-4">
        		</div> 
 			<div class="col-md-4">
-			    <button type="submit" name="submitWeek3" class="btn btn-lg btn-primary" style="width:100%;margin-top:30px;margin-bottom:30px;">Submit</button>
-		    </div>
+                <form class="form-horizontal row-border" id="submitWeek3">
+                 <button type="submit" name="submitWeek3" class="btn btn-lg btn-primary" style="width:100%;margin-top:30px;margin-bottom:30px;">Submit</button>
+                </form>
+            </div>
 		    <div class="col-md-4">
        		</div> 
 		</div>
@@ -330,28 +336,28 @@ include_once('../../../db.config');
 
         			<div class="row">
 
-				        <form class="form-horizontal row-border" id="week4">
+				        <form class="form-horizontal row-border" id="week4_'.$i.'">
 					    	
 						    <h3 style="padding-left:15px;">'.$day.'</h3>
 						    
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label" for="employees">Employee</label>
-							        <select class="form-control" id="employees" name="employees">'.$options.'</select>
+							        <select class="form-control" id="employees'.$i.'" name="employees">'.$options.'</select>
 							    </div>
 						    </div>
 
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label">Start Date:</label>
-							        <input class="form-control" type="datetime-local" name="startdate" placeholder="" required="true">
+							        <input class="form-control" type="datetime-local" id="startdate'.$i.'" name="startdate" placeholder="" required="true">
 							     </div>
 						    </div>
 
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label">End Date:</label>
-							        <input class="form-control" type="datetime-local" name="enddate" placeholder="" required="true">
+							        <input class="form-control" type="datetime-local" id="enddate'.$i.'" name="enddate" placeholder="" required="true">
 							     </div>
 						    </div>
 
@@ -367,12 +373,18 @@ include_once('../../../db.config');
        		<div class="col-md-4">
        		</div> 
 			<div class="col-md-4">
-			    <button type="submit" name="submitWeek4" class="btn btn-lg btn-primary" style="width:100%;margin-top:30px;margin-bottom:30px;">Submit</button>
-		    </div>
+                <form class="form-horizontal row-border" id="submitWeek4">
+                 <button type="submit" name="submitWeek4" class="btn btn-lg btn-primary" style="width:100%;margin-top:30px;margin-bottom:30px;">Submit</button>
+                </form>
+            </div>
 		    <div class="col-md-4">
        		</div> 
 		</div>
 
+    </div>
+
+    <div id="submitScheduleMsg" class="text-center" style="margin-bottom:100px;display:none;">
+        <h3>Schedule updated successfully.</h3>
     </div>
 
 </div>

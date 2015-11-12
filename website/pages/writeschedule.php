@@ -31,9 +31,9 @@ include_once("../include/transporter.php");
 //EOT;
 
 //Grab clocking info
-if(!isset($_POST['userId']))
+/*if(!isset($_POST['userId']))
     return;
-$userId = $_POST['userId'];
+$userId = $_POST['userId'];*/
 
 if(!isset($_POST['schedule']))
     return;
@@ -53,6 +53,7 @@ $conn = $transporter->getConnection();
 $insertValues = "";
 foreach($jsonSchedule['schedule'] as $scheduleItem)
 {
+	$userId = $scheduleItem['id'];
     $clockIn = $scheduleItem['clockIn'];
     $clockOut = $scheduleItem['clockOut'];
     $insertValues .= "('$userId', '$clockIn', '$clockOut'),";

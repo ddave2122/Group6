@@ -77,26 +77,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         );//end viewScheduleButton.setOnClickListener
 
     }
-    /*
-    @Override
-    public void onResume()
-    {
-        super.onResume();
 
-        if(SaveSharedPreference.getUserName(getApplicationContext()).length() == 0)
-        {
-            startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
-
-        } else
-        {
-            TextView  helloText = (TextView)findViewById(R.id.helloText);
-            helloText.setText("Hello "+SaveSharedPreference.getUserName(getApplicationContext()));
-           // SaveSharedPreference.removeUserName(getApplicationContext());
-           // startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
-
-        }
-    }
-    */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

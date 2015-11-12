@@ -29,11 +29,10 @@ public class LoginScreenActivity extends AppCompatActivity {
 
 
 
-        if(SaveSharedPreference.getUserName(LoginScreenActivity.this).length() == 0)
+        if(Config.getUserId() == 0)
         {}
         else
         {
-            // SaveSharedPreference.removeUserName(getApplicationContext());
             startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
         }
 

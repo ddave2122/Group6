@@ -38,8 +38,8 @@ include_once('../include/transporter.php');
     <div class="tab-pane active" id="tab1">
         <a class="btn btn-primary btnNext" >>></a>
         <a class="btn btn-primary btnNext" style="float:right;visibility: hidden;" >>></a>
-        <h3 class="text-center" style="margin-top: -31px;">Week 1</h3>
-        
+        <h3 class="text-center" style="margin-top: -31px;margin-bottom: 35px;">Week 1</h3>
+        <div class="tab-pane-block">
         <?php
 
         	$day = "";
@@ -72,10 +72,10 @@ include_once('../include/transporter.php');
         		}
 
         		echo '
+                    
+        			<div class="row form-style-2">
 
-        			<div class="row">
-
-				        <form class="form-horizontal row-border" id="week1_'.$i.'">
+				        <form class="form-horizontal row-border" id="week1_'.$i.'"">
 					    	
 						    <h3 style="padding-left:15px;">'.$day.'</h3>
 						    
@@ -107,7 +107,7 @@ include_once('../include/transporter.php');
         	}
         	
         ?>
-
+        </div>
        <div class="row">
        		<div class="col-md-4">
        		</div> 
@@ -125,8 +125,8 @@ include_once('../include/transporter.php');
     <div class="tab-pane" id="tab2">
     	<a class="btn btn-primary btnNext" style="float:right;" >>></a>
         <a class="btn btn-primary btnPrevious" ><<</a>
-        <h3 class="text-center" style="margin-top: -31px;">Week 2</h3>
-        
+        <h3 class="text-center" style="margin-top: -31px;margin-bottom: 35px;">Week 2</h3>
+        <div class="tab-pane-block">
         <?php
 
         	$day = "";
@@ -160,7 +160,7 @@ include_once('../include/transporter.php');
 
         		echo '
 
-        			<div class="row">
+        			<div class="row form-style-2">
 
 				        <form class="form-horizontal row-border" id="week2_'.$i.'">
 					    	
@@ -194,7 +194,7 @@ include_once('../include/transporter.php');
         	}
         	
         ?>
-        
+        </div>
        <div class="row">
        		<div class="col-md-4">
        		</div> 
@@ -212,8 +212,8 @@ include_once('../include/transporter.php');
     <div class="tab-pane" id="tab3">
     	<a class="btn btn-primary btnNext" style="float:right;" >>></a>
         <a class="btn btn-primary btnPrevious" ><<</a>
-        <h3 class="text-center" style="margin-top: -31px;">Week 3</h3>
-        
+        <h3 class="text-center" style="margin-top: -31px;margin-bottom: 35px;">Week 3</h3>
+        <div class="tab-pane-block">
         <?php
 
         	$day = "";
@@ -247,7 +247,7 @@ include_once('../include/transporter.php');
 
         		echo '
 
-        			<div class="row">
+        			<div class="row form-style-2">
 
 				        <form class="form-horizontal row-border" id="week3_'.$i.'">
 					    	
@@ -281,7 +281,7 @@ include_once('../include/transporter.php');
         	}
         	
         ?>
-        
+        </div>
        <div class="row">
        		<div class="col-md-4">
        		</div> 
@@ -299,8 +299,8 @@ include_once('../include/transporter.php');
     <div class="tab-pane" id="tab4">
     	<a class="btn btn-primary btnPrevious" style="visibility: hidden;">Null</a>
         <a class="btn btn-primary btnPrevious" style="float:right;" ><<</a>
-        <h3 class="text-center" style="margin-top: -31px;">Week 4</h3>
-        
+        <h3 class="text-center" style="margin-top: -31px;margin-bottom: 35px;">Week 4</h3>
+        <div class="tab-pane-block">
         <?php
 
         	$day = "";
@@ -334,7 +334,7 @@ include_once('../include/transporter.php');
 
         		echo '
 
-        			<div class="row">
+        			<div class="row form-style-2">
 
 				        <form class="form-horizontal row-border" id="week4_'.$i.'">
 					    	
@@ -368,7 +368,7 @@ include_once('../include/transporter.php');
         	}
         	
         ?>
-        
+        </div> 
        <div class="row">
        		<div class="col-md-4">
        		</div> 

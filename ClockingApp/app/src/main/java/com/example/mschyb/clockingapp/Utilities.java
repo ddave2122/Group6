@@ -27,15 +27,26 @@ public class Utilities
         {
             Log.e(Config.TAG, "Error when trying to convert string to JSON object");
         }
-        if(jsonObject.get("authenticated").toString().equals("true"))
+        String userId = null;
+        try
+        {
+            userId = jsonObject.get("userid").toString();
+        }
+        catch(NullPointerException e)
+        {
+            Log.e(Config.TAG, "Null pointer in json object");
+        }
+        if(userId != null)
         {
             try
             {
                 Config.setUserId(Integer.getInteger(jsonObject.get("userId").toString()));
-                Config.setEastEndpoint(Double.parseDouble(jsonObject.get("eastEndpoint").toString()));
-                Config.setNorthEndpoint(Double.parseDouble(jsonObject.get("northEndpoint").toString()));
-                Config.setSouthEndpoint(Double.parseDouble(jsonObject.get("southEndpoint").toString()));
-                Config.setWestEndpoint(Double.parseDouble(jsonObject.get("westEndpoint").toString()));
+                Config.setEastEndpoint(Double.parseDouble(jsonObject.get("east").toString()));
+                Config.setNorthEndpoint(Double.parseDouble(jsonObject.get("north").toString()));
+                Config.setSouthEndpoint(Double.parseDouble(jsonObject.get("south").toString()));
+                Config.setWestEndpoint(Double.parseDouble(jsonObject.get("west").toString()));
+                Config.setIsManager(jsonObject.get("manager").toString().equals("1"));
+                Config.setUserFirstName(jsonObject.get("firstname").toString());
             }
             catch(Exception e)
             {

@@ -6,64 +6,64 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import javax.net.ssl.HttpsURLConnection;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 
 public class Transporter extends AsyncTask<String, String, String>{
 
     @Override
     protected String doInBackground(String... uri) {
-        String responseString = null;
-        try {
+
+        try
+        {
             URL url = new URL(uri[0]);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-
-
-            if(uri[1] != null && uri[1].equals("POST"))
-
-
+            Map<String,Object> params = new LinkedHashMap<>();
+            for(String item : uri[2].split("&"))
             {
-                conn = (HttpURLConnection) url.openConnection();
-
-                String urlParameters  = uri[2];
-                byte[] postData       = urlParameters.getBytes( StandardCharsets.UTF_8 );
-
-                conn.setDoOutput( true );
-                conn.setInstanceFollowRedirects( false );
-                conn.setRequestMethod( "POST" );
-                conn.setRequestProperty( "Content-Type", "application/x-www-form-urlencoded");
-                conn.setRequestProperty( "charset", "utf-8");
-                conn.setRequestProperty( "Content-Length", Integer.toString(uri[2].length()));
-                conn.setUseCaches( false );
-
-                try( DataOutputStream wr = new DataOutputStream( conn.getOutputStream())) {
-                    wr.write( postData );
-                }
+                params.put(item.split("=")[0], item.split("=")[1]);
             }
 
-            if(conn.getResponseCode() == HttpsURLConnection.HTTP_OK)
-            {
-                BufferedReader in =
-                        new BufferedReader(new InputStreamReader(url.openStream()));
-                String page = "";
-                String inLine;
-
-                while ((inLine = in.readLine()) != null) {
-                    page += inLine;
-                }
-
-                in.close();
-                responseString = page;
+            StringBuilder postData = new StringBuilder();
+            for (Map.Entry<String,Object> param : params.entrySet()) {
+                if (postData.length() != 0) postData.append('&');
+                postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
+                postData.append('=');
+                postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
             }
-            else {
-                Log.e(Config.TAG, "Unable to request from url: " + uri[0]);
+            byte[] postDataBytes = postData.toString().getBytes("UTF-8");
+
+            HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+            conn.setRequestMethod(uri[1]);
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
+            conn.setDoOutput(true);
+            conn.getOutputStream().write(postDataBytes);
+
+            BufferedReader in =
+                    new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+            String page = "";
+            String inLine;
+
+            while ((inLine = in.readLine()) != null) {
+                page += inLine;
             }
-        } catch (IOException e) {
-            //TODO Handle problems..
+
+            in.close();
+
+            return page;
         }
-        return responseString;
+        catch(Exception e)
+        {
+            Log.e(Config.TAG, "Exception when trying to send request");
+            Log.e(Config.TAG, e.getMessage());
+            return null;
+        }
     }
 
     @Override

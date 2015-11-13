@@ -23,6 +23,13 @@ public class ScheduleDateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_date);
 
+        if(Config.getUserId() == 0)
+        {
+            startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
+        }
+        else
+        {}
+
         TextView dateText = (TextView) findViewById(R.id.dateText);
         TextView startTimeText = (TextView) findViewById(R.id.startTimeText);
         TextView endTimeText = (TextView) findViewById(R.id.endTimeText);
@@ -43,24 +50,27 @@ public class ScheduleDateActivity extends AppCompatActivity {
         if(extras!=null)
         {
             String month="";
-            String date="";
+            String sDate="", eDate="";
             String[] times= new String[2];
             Date startDateTime=new Date();
             Date endDateTime=new Date();
 
             month = getMonthForInt(extras.getInt("schedulemonth"));
-            dateText.setText(month+" "+ extras.getInt("scheduleday")+", "+extras.getInt("scheduleyear"));
+            dateText.setText(month + " " + extras.getInt("scheduleday") + ", " + extras.getInt("scheduleyear"));
             dateText.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 
-            date=extras.getInt("scheduleday")+"/"+extras.getInt("schedulemonth")+"/"+extras.getInt("scheduleyear");
+            sDate=extras.getInt("scheduleyear")+"-"+extras.getInt("schedulemonth")+"-"+extras.getInt("scheduleday") +" 00:00:00";
+            eDate=extras.getInt("scheduleyear")+"-"+extras.getInt("schedulemonth")+"-"+(extras.getInt("scheduleday")+1) +" 00:00:00";
 
-            SaveSharedPreference.setUserID(getApplicationContext(), "1");
-            times =new  Utilities().getSchedule(SaveSharedPreference.getUserID(getApplicationContext()), date);
+           //hard coding id until login set id is finished
+           // Config.setUserId(2);
+
+            times =new  Utilities().getSchedule(Config.getUserId(),sDate,eDate);//SaveSharedPreference.getUserID(getApplicationContext()), sDate,eDate);
 
             if(times!=null) {
 
                 try {
-                    SimpleDateFormat parseFormat = new SimpleDateFormat("dd//MM/yyyy HH:mm:ss:SS");
+                    SimpleDateFormat parseFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
                     SimpleDateFormat printFormat = new SimpleDateFormat("h:mm a");
 
                     startDateTime = parseFormat.parse(times[0]);
@@ -96,6 +106,8 @@ public class ScheduleDateActivity extends AppCompatActivity {
         }
         return month;
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

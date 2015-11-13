@@ -5,7 +5,8 @@ public class Config
     public final static String TAG = "Group6";
     public final static String ENDPOINT = "http://group6project.com/api/";
     public final static String CHECK_CREDENTIALS_ENDPOINT = ENDPOINT + "checkcredentials.php";
-    public final static String GET_SCHEDULE_ENDPOINT = ENDPOINT + "getschedule.php";
+    public final static String GET_SCHEDULE_ENDPOINT = ENDPOINT + "readschedule.php";
+    public final static String GET_HOURS_ENDPOINT = ENDPOINT + "";
     public final static String LOG_TIME_ENDPOINT = ENDPOINT + "logtime.php";
 
     //GPS bounding box
@@ -15,6 +16,7 @@ public class Config
     private static double northEndpoint = 0;
 
     private static int userId;
+    private static String fullName;
 
     /**
      * Sanity check to see if the GPS is still set at default values
@@ -36,7 +38,13 @@ public class Config
     public static void setUserId(int userId) {
         Config.userId = userId;
     }
+    public static String getFullName() {
+        return fullName;
+    }
 
+    public static void setFullName(String name) {
+        Config.fullName = fullName;
+    }
     public static double getEastEndpoint() {
         return eastEndpoint;
     }

@@ -1,15 +1,14 @@
 package com.example.mschyb.clockingapp;
 
 import android.util.Log;
-
+import com.google.gson.JsonArray;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import org.json.JSONArray;
-
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class Utilities
@@ -31,7 +30,11 @@ public class Utilities
         {
             try
             {
-                Config.setUserId(Integer.getInteger(jsonObject.get("userId").toString()));
+                //Need to set user fullname static variable too
+
+                //Manually setting userid
+                Config.setUserId(2);
+                //Config.setUserId(Integer.getInteger(jsonObject.get("userId").toString()));
                 Config.setEastEndpoint(Double.parseDouble(jsonObject.get("eastEndpoint").toString()));
                 Config.setNorthEndpoint(Double.parseDouble(jsonObject.get("northEndpoint").toString()));
                 Config.setSouthEndpoint(Double.parseDouble(jsonObject.get("southEndpoint").toString()));
@@ -46,7 +49,65 @@ public class Utilities
         else
             return false;
     }
+    public String[] getSchedule(int userID, String sDate, String eDate) {
+        String[] arr = new String[2];
+        String params = "userId=" + userID + "&startDate=" + sDate + "&endDate=" + eDate;
+        Transporter transporter = new Transporter();
+        transporter.execute(Config.GET_SCHEDULE_ENDPOINT, "GET", params);
 
+        JsonObject jsonResult = convertStringToJson(readTransporter(transporter));
+
+        if(jsonResult == null)
+        {
+            Log.e(Config.TAG, "Result check is null");
+            arr = null;
+
+        } else {
+
+            //need to check for if there are no query results and return a null array
+            //arr = null;
+            JsonArray data = jsonResult.getAsJsonArray("schedule");
+            for (JsonElement el:data)
+            {
+                JsonObject obj=(JsonObject)el;
+                arr[0]=obj.get("startTime").toString();
+                arr[1]=obj.get("endTime").toString();
+            }
+
+        }
+       // arr[0] = "2015-06-12 08:00:00";
+        //arr[1] = "2015-06-12 08:00:00";
+        return arr;
+
+    }
+    public List<String[]>  getHoursWorked(int userID, String sDate, String eDate) {
+        List<String[]> stuff= new ArrayList<String[]>();
+        String params = "userId=" + userID + "&startDate=" + sDate + "&endDate=" + eDate;
+        Transporter transporter = new Transporter();
+        transporter.execute(Config.GET_HOURS_ENDPOINT, "GET", params);
+
+        JsonObject jsonResult = convertStringToJson(readTransporter(transporter));
+
+        if(jsonResult == null)
+        {
+            Log.e(Config.TAG, "Result check is null");
+
+        } else {
+
+            //need to check for if there are no query results and return a null array
+            //stuff = null;
+
+            JsonArray data = jsonResult.getAsJsonArray("schedule");
+            for (JsonElement el:data)
+            {
+                JsonObject obj=(JsonObject)el;
+                stuff.add(new String[]{obj.get("date").toString(), obj.get("hours").toString() });
+            }
+
+        }
+        return stuff;
+
+    }
 
     public static void clockUser(int isClockingIn)
     {
@@ -90,34 +151,5 @@ public class Utilities
         }
         return  jsonResult;
     }
-    public String[] getSchedule(String userID, String date) {
-     /*   String[] arr = new String[2];
-        String params = "user_id=" + userID + "&schedule_clock_in" + date;
-        Transporter transporter = new Transporter();
-        transporter.execute(Config.GET_SCHEDULE_ENDPOINT, "POST", params);
 
-        JsonObject jsonResult = null;
-        try {
-            JsonParser jsonParser = new JsonParser();
-            jsonResult = (JsonObject) jsonParser.parse(transporter.get());
-        } catch (InterruptedException | ExecutionException e) {
-            Log.e(Config.TAG, "Error when trying to get result from Transporter");
-        }
-
-        if (jsonResult == null) {
-            Log.e(Config.TAG, "Result  check is null");
-            arr = null;
-
-        } else {
-            arr[0] = jsonResult.get("startTime").toString();
-            arr[1] = jsonResult.get("endTime").toString();
-
-        }
-        return arr;
-        */
-
-        String arr[]={"01//02/2004 03:00:00:00","22//03/2005 22:30:00:00"};
-        //String arr[]=null;
-        return arr;
-    }
 }

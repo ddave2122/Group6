@@ -15,7 +15,7 @@ public class SetAlarmsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_alarms);
 
-        if(SaveSharedPreference.getUserName(getApplicationContext()).length() == 0)
+        if(Config.getUserId() == 0)
         {
             startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
         }

@@ -17,13 +17,28 @@ $endDate = $_GET['endDate'];
 $transporter = new Transporter();
 $conn = $transporter->getConnection();
 
-$sql = "SELECT scheduled_clock_in, scheduled_clock_out
+if ($userId == "all"){
+    $sql = "SELECT user_id, scheduled_clock_in, scheduled_clock_out
+    FROM user_schedule
+    WHERE scheduled_clock_in > '$startDate'
+    AND scheduled_clock_out < '$endDate'";
+}else {
+    $sql = "SELECT user_id, scheduled_clock_in, scheduled_clock_out
     FROM user_schedule
     WHERE scheduled_clock_in > '$startDate'
     AND scheduled_clock_out < '$endDate'
-    AND user_id = '$userId';";
+    AND user_id = '$userId'";
+}
+
+
+
 
 $result = $conn->query($sql);
+
+
+//var_dump($result);
+
+
 
 $schedule = array();
 
@@ -33,6 +48,16 @@ while($row = $result->fetch_assoc())
 {
     $counter++;
     $scheduleObject = array();
+    $id = $row['user_id'];
+
+    $sql2 = "SELECT first_name, last_name FROM user WHERE id = '$id'";
+    $result2 = $conn->query($sql2);
+
+    while($row2 = $result2->fetch_assoc()) {
+        $name = $row2['last_name'] . ", ". $row2['first_name'];
+    }
+
+    $scheduleObject['empName'] = $name;
     $scheduleObject['startTime'] = $row['scheduled_clock_in'];
     $scheduleObject['endTime'] = $row['scheduled_clock_out'];
 

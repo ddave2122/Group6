@@ -74,3 +74,11 @@ box-shadow: 0 1px 5px #888;
 .tab-pane-block > :last-child {
    border-bottom: none!important;
 }
+
+.form-control[disabled] {
+	pointer-events: none;
+}
+
+#content {
+	display:none;padding-top:60px;padding-bottom:60px;box-shadow: 0 1px 5px #888;
+}

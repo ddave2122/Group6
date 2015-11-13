@@ -17,14 +17,14 @@ public class HomeScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
 
         TextView  helloText = (TextView)findViewById(R.id.helloText);
-        if(SaveSharedPreference.getUserName(getApplicationContext()).length() == 0)
+        if(Config.getUserId() == 0)
         {
-//            startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
+            startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
 
         } else
         {
-            //  SaveSharedPreference.removeUserName(getApplicationContext());
-            helloText.setText("Hello "+SaveSharedPreference.getUserName(getApplicationContext()));
+
+            helloText.setText("Hello "+Config.getUserFirstName());
         }
 
 
@@ -68,34 +68,15 @@ public class HomeScreenActivity extends AppCompatActivity {
         logoutButton.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  SaveSharedPreference.removeUserName(getApplicationContext());
-                  SaveSharedPreference.removeUserID(getApplicationContext());
+                 Config.setUserId(0);
+                  Config.setUserFirstName("");
                   startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
               }
           }
         );//end viewScheduleButton.setOnClickListener
 
     }
-    /*
-    @Override
-    public void onResume()
-    {
-        super.onResume();
 
-        if(SaveSharedPreference.getUserName(getApplicationContext()).length() == 0)
-        {
-            startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
-
-        } else
-        {
-            TextView  helloText = (TextView)findViewById(R.id.helloText);
-            helloText.setText("Hello "+SaveSharedPreference.getUserName(getApplicationContext()));
-           // SaveSharedPreference.removeUserName(getApplicationContext());
-           // startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
-
-        }
-    }
-    */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

@@ -15,6 +15,15 @@ public class Config
     private static double northEndpoint = 0;
 
     private static int userId;
+    private static boolean userIsLoggedIn;
+
+    public static boolean isUserIsLoggedIn() {
+        return userIsLoggedIn;
+    }
+
+    public static void setUserIsLoggedIn(boolean userIsLoggedIn) {
+        Config.userIsLoggedIn = userIsLoggedIn;
+    }
 
     /**
      * Sanity check to see if the GPS is still set at default values

@@ -23,6 +23,13 @@ public class ScheduleDateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_date);
 
+        if(Config.getUserId() == 0)
+        {
+            startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
+        }
+        else
+        {}
+
         TextView dateText = (TextView) findViewById(R.id.dateText);
         TextView startTimeText = (TextView) findViewById(R.id.startTimeText);
         TextView endTimeText = (TextView) findViewById(R.id.endTimeText);
@@ -55,10 +62,10 @@ public class ScheduleDateActivity extends AppCompatActivity {
             sDate=extras.getInt("scheduleyear")+"-"+extras.getInt("schedulemonth")+"-"+extras.getInt("scheduleday") +" 00:00:00";
             eDate=extras.getInt("scheduleyear")+"-"+extras.getInt("schedulemonth")+"-"+(extras.getInt("scheduleday")+1) +" 00:00:00";
 
-           // SaveSharedPreference.setUserID(getApplicationContext(), "2");
-            Config.setUserId(2);
-            String userID= Config.getUserId()+"";
-            times =new  Utilities().getSchedule(userID,sDate,eDate);//SaveSharedPreference.getUserID(getApplicationContext()), sDate,eDate);
+           //hard coding id until login set id is finished
+           // Config.setUserId(2);
+
+            times =new  Utilities().getSchedule(Config.getUserId(),sDate,eDate);//SaveSharedPreference.getUserID(getApplicationContext()), sDate,eDate);
 
             if(times!=null) {
 
@@ -99,6 +106,8 @@ public class ScheduleDateActivity extends AppCompatActivity {
         }
         return month;
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

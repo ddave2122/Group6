@@ -24,10 +24,13 @@ public class LoginScreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //Start the GPS Service
+        Intent intent = new Intent(getApplicationContext(), GPSTrackingService.class);
+        startService(intent);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
-
-
 
         if(Config.getUserId() == 0)
         {}
@@ -51,8 +54,6 @@ public class LoginScreenActivity extends AppCompatActivity {
                    password = passwordET.getText().toString();
 
                    if (new Utilities().checkCredentials(login, password)) {
-                       //NEED TO SET SHAREDPREFERENCES FOR USER'S NAME AND USER ID SOMEWHERE DURING LOGIN
-                       // AFTER RETRIEVING THEM FROM THE DATABASE
                        loginError.setText("Success!");
                        Intent intent = new Intent(getApplicationContext(), HomeScreenActivity.class);
                        startActivity(intent);
@@ -62,6 +63,18 @@ public class LoginScreenActivity extends AppCompatActivity {
                }
            }
         );//end loginButton.setOnClickListener
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if(Config.getUserId() == 0)
+        {}
+        else
+        {
+            startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
+        }
     }
 
     @Override
@@ -85,6 +98,5 @@ public class LoginScreenActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 }

@@ -16,7 +16,7 @@ public class ViewScheduleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_schedule);
 
-        if(SaveSharedPreference.getUserName(getApplicationContext()).length() == 0)
+        if(Config.getUserId() == 0)
         {
             startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
         }

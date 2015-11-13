@@ -17,15 +17,14 @@ public class HomeScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
 
         TextView  helloText = (TextView)findViewById(R.id.helloText);
-        if(SaveSharedPreference.getUserName(getApplicationContext()).length() == 0)
+        if(Config.getUserId() == 0)
         {
             startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
 
-
         } else
         {
-            //  SaveSharedPreference.removeUserName(getApplicationContext());
-            helloText.setText("Hello "+SaveSharedPreference.getUserName(getApplicationContext()));
+
+            helloText.setText("Hello "+Config.getFullName());
         }
 
 

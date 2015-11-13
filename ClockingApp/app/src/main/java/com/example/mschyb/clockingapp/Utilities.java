@@ -1,17 +1,15 @@
 package com.example.mschyb.clockingapp;
 
 import android.util.Log;
-
 import com.google.gson.JsonArray;
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
-
 
 public class Utilities
 {
@@ -28,10 +26,30 @@ public class Utilities
         {
             Log.e(Config.TAG, "Error when trying to convert string to JSON object");
         }
+        if(jsonObject.get("authenticated").toString().equals("true"))
+        {
+            try
+            {
+                //Need to set user fullname static variable too
 
-        return jsonObject.get("authenticated").toString().equals("true");
+                //Manually setting userid
+                Config.setUserId(2);
+                //Config.setUserId(Integer.getInteger(jsonObject.get("userId").toString()));
+                Config.setEastEndpoint(Double.parseDouble(jsonObject.get("eastEndpoint").toString()));
+                Config.setNorthEndpoint(Double.parseDouble(jsonObject.get("northEndpoint").toString()));
+                Config.setSouthEndpoint(Double.parseDouble(jsonObject.get("southEndpoint").toString()));
+                Config.setWestEndpoint(Double.parseDouble(jsonObject.get("westEndpoint").toString()));
+            }
+            catch(Exception e)
+            {
+                Log.e(Config.TAG, "Error when trying to get values from JSON object");
+            }
+            return true;
+        }
+        else
+            return false;
     }
-    public String[] getSchedule(String userID, String sDate, String eDate) {
+    public String[] getSchedule(int userID, String sDate, String eDate) {
         String[] arr = new String[2];
         String params = "userId=" + userID + "&startDate=" + sDate + "&endDate=" + eDate;
         Transporter transporter = new Transporter();
@@ -62,11 +80,11 @@ public class Utilities
         return arr;
 
     }
-    public String[] getHoursWorked(String userID, String sDate, String eDate) {
-        String[] arr = new String[2];
+    public List<String[]>  getHoursWorked(int userID, String sDate, String eDate) {
+        List<String[]> stuff= new ArrayList<String[]>();
         String params = "userId=" + userID + "&startDate=" + sDate + "&endDate=" + eDate;
         Transporter transporter = new Transporter();
-        transporter.execute(Config.GET_SCHEDULE_ENDPOINT, "GET", params);
+        transporter.execute(Config.GET_HOURS_ENDPOINT, "GET", params);
 
         JsonObject jsonResult = convertStringToJson(readTransporter(transporter));
 
@@ -77,19 +95,17 @@ public class Utilities
         } else {
 
             //need to check for if there are no query results and return a null array
-            //arr = null;
+            //stuff = null;
+
             JsonArray data = jsonResult.getAsJsonArray("schedule");
             for (JsonElement el:data)
             {
                 JsonObject obj=(JsonObject)el;
-                arr[0]=obj.get("startTime").toString();
-                arr[1]=obj.get("endTime").toString();
+                stuff.add(new String[]{obj.get("date").toString(), obj.get("hours").toString() });
             }
 
         }
-        // arr[0] = "2015-06-12 08:00:00";
-        //arr[1] = "2015-06-12 08:00:00";
-        return arr;
+        return stuff;
 
     }
 
@@ -117,8 +133,16 @@ public class Utilities
 
     private JsonObject convertStringToJson(String stringToConvert)
     {
+        JsonObject jsonResult = null;
         JsonParser jsonParser = new JsonParser();
-        JsonObject jsonResult = (JsonObject)jsonParser.parse(stringToConvert);
+        try
+        {
+            jsonResult = (JsonObject)jsonParser.parse(stringToConvert);
+        }
+        catch (Exception e)
+        {
+            Log.e(Config.TAG, " JSON response cann't be read.." + stringToConvert);
+        }
 
         if(jsonResult == null)
         {

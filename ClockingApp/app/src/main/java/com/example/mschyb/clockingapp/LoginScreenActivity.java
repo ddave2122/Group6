@@ -53,7 +53,10 @@ public class LoginScreenActivity extends AppCompatActivity {
                    login = loginET.getText().toString();
                    password = passwordET.getText().toString();
 
-                   if (new Utilities().checkCredentials(login, password)) {
+                   if (new Utilities().checkCredentials(login, password))
+                   {
+
+                      // Config.setUserId(2);
                        loginError.setText("Success!");
                        Intent intent = new Intent(getApplicationContext(), HomeScreenActivity.class);
                        startActivity(intent);

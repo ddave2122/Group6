@@ -24,7 +24,7 @@ $sql = "SELECT scheduled_clock_in, scheduled_clock_out
     AND user_id = '$userId';";
 
 $result = $conn->query($sql);
-var_dump($result);
+//var_dump($result);
 $schedule = array();
 
 while($row = $result->fetch_assoc())

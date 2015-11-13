@@ -16,12 +16,15 @@ include_once('../include/transporter.php');
 	$sql = "SELECT * FROM user";
 
 	$result = $conn->query($sql);
-
+	
+	$options = '<select class="form-control" id="userId" name="userId"><option id="userId"></option>';
 	
 	
 	while ($row = $result->fetch_assoc()) {
-       
+        $options = $options.'<option id="userId" name="userId" value="'.$row['id'].'">'.$row['last_name'].', '.$row['first_name'].'</option>';
 	}
+
+	$options = $options.'</select>';
 
 	$conn->close();
     
@@ -30,11 +33,11 @@ include_once('../include/transporter.php');
 
 		<form class="form-horizontal row-border" id="viewForm">
 			<div class="row">
-				<div class="col-md-4" style="">
+				<div class="col-md-4">
 				    <div class="form-group" style="padding-left:15px;padding-right:15px;">
-				      <label class="control-label">ID:</label>
-				        <input class="form-control" type="text" id="userId" value="10" name="userId">
-				     </div>
+				      <label class="control-label" for="employees">Employee</label>
+				        <?php echo $options?>
+				    </div>
 			    </div>
 
 				<div class="col-md-4">

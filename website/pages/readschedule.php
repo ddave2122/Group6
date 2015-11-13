@@ -24,11 +24,11 @@ $sql = "SELECT scheduled_clock_in, scheduled_clock_out
     AND user_id = '$userId';";
 
 $result = $conn->query($sql);
-<<<<<<< HEAD
-//var_dump($result);
-=======
 
->>>>>>> origin/master
+//var_dump($result);
+
+
+
 $schedule = array();
 
 $counter = 0;

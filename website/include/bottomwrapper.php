@@ -35,11 +35,12 @@
           document.getElementById("content").innerHTML = "";
           // get the form data
           var formData = {
-              'userId'              : $('input[name=userId]').val(),
+              'userId'              : $('select[name=userId]').val(),
               'startDate'             : $('input[name=startDate]').val(),
               'endDate'    : $('input[name=endDate]').val()
           };
 
+          
           // process the form
           $.ajax({
               type        : 'GET', // define the type of HTTP verb we want to use (POST for our form)
@@ -60,10 +61,10 @@
                   var y = date.getFullYear();
                   
 
-                  for(var i =0;i < data.length-1;i++)
+                  for(var i =0;i < data.schedule.length-1;i++)
                   {
-                    var item = data[i];
-                    
+                    var item = data.schedule[i];
+                    console.log(item.startTime);
 
                     var start = moment(item.startTime).tz('America/Phoenix').format('YYYY-MM-DD[T]HH:mm:ss');
                     var end = moment(item.endDate).tz('America/Phoenix').format('YYYY-MM-DD[T]HH:mm:ss');

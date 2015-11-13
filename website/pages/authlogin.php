@@ -1,80 +1,47 @@
 <?php
 session_start();
 
-include_once('../include/transporter.php');
+if (!isset($_POST['username']) || !isset($_POST['password']))
+    return;
 
-if (isset($_POST['submit'])) {
-	//Grab login info
-	$user = $_POST['username'];
-    $pass = $_POST['password'];
+//Grab login info
+$user = $_POST['username'];
+$pass = $_POST['password'];
 
-    $transporter = new Transporter();
+//Check the user login
+$postdata = http_build_query(
+    array(
+        'username' => 'admin',
+        'password' => 'admin'
+    )
+);
+$opts = array('http' =>
+    array(
+        'method'  => 'POST',
+        'header'  => 'Content-type: application/x-www-form-urlencoded',
+        'content' => $postdata
+    )
+);
 
-    $conn = $transporter->getConnection();
+$baseUrl  = $_SERVER['SERVER_NAME'];
+//This URL might need to be updated depending on the hostname...
+$loginResults = json_decode(file_get_contents(
+        "http://$baseUrl/Group6/website/include/checkcredentials.php"
+        , false
+        , stream_context_create($opts)
+        )
+    , true);
 
-	// Check connection
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	} 
-//	echo "Connected successfully";
-
-	/*$sql = "SELECT * FROM $dbname.user";*/
-	$sql = "SELECT username, password_hash from $dbname.user WHERE username='$user' ";
-
-	$result = $conn->query($sql);
-
-	//Validate Credentials
-	if ($result->num_rows > 0) {
-		while ($row = $result->fetch_assoc()) {
-			$dbuser = "{$row['username']}";
-	        $dbpass = "{$row['password_hash']}";
-
-	        if ($pass == $dbpass){
-	        	header("Location: index.php");
-		        $val = "true";
-		        $_SESSION['access_granted'] = $val;
-
-		        $sql = "SELECT is_manager from $dbname.user WHERE username='$user' ";
-		        $result = $conn->query($sql);
-		        $row = $result->fetch_assoc();
-		        $manageraccess = "{$row['is_manager']}";
-		        
-		        $sql = "SELECT is_employee from $dbname.user WHERE username='$user' ";
-		        $result = $conn->query($sql);
-		        $row = $result->fetch_assoc();
-		        $empaccess = "{$row['is_employee']}";
-
-		        if ($manageraccess){
-		        	$_SESSION['accessLevel'] = $manageraccess + 1;
-		        } else {
-		        	$_SESSION['accessLevel'] = $empaccess;
-		        }
-
-		        $sql = "SELECT first_name from $dbname.user WHERE username='$user' ";
-		        $result = $conn->query($sql);
-		        $row = $result->fetch_assoc();
-		        $fname = "{$row['first_name']}";
-		        $_SESSION['firstname'] = $fname;
-		        echo $val;
-		        die();
-		    } else {
-		    	$val = "false";
-		    	$_SESSION['access_granted'] = $val;
-		        $errormessage = "Username or Password is incorrect.";
-		        echo $errormessage;
-		    }
-		}
-	   
-	} else {
-	    echo "0 results";
-	}
-
-	$conn->close();
-} else {
-	//Post not set
+if($loginResults['userid'] == null )
+{
     header("Location: login.php");
-    $errormessage = "Post not set. Could not connect: " . mysql_error();
-
+    return;
 }
 
-?>
+$_SESSION['access_granted'] = true;
+$_SESSION['accessLevel'] = $_SESSION['is_manager'] ? 1 : 2;
+$_SESSION['userId'] = $loginResults['userid'];
+$_SESSION['isManager'] = $loginResults['manager'];
+$_SESSION['firstname'] = $loginResults['firstname'];
+
+header("Location: index.php");

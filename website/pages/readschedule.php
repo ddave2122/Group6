@@ -24,18 +24,29 @@ $sql = "SELECT scheduled_clock_in, scheduled_clock_out
     AND user_id = '$userId';";
 
 $result = $conn->query($sql);
+<<<<<<< HEAD
 //var_dump($result);
+=======
+
+>>>>>>> origin/master
 $schedule = array();
+
+$counter = 0;
 
 while($row = $result->fetch_assoc())
 {
+    $counter++;
     $scheduleObject = array();
     $scheduleObject['startTime'] = $row['scheduled_clock_in'];
     $scheduleObject['endTime'] = $row['scheduled_clock_out'];
+
     $schedule[] = $scheduleObject;
 }
+$responseObject = array();
+$responseObject['schedule'] = $schedule;
+$responseObject['numberOfRecords'] = $counter;
 
-$jsonResponse = json_encode($schedule);
+$jsonResponse = json_encode($responseObject);
 
 header('Content-Type: application/json');
 echo($jsonResponse );

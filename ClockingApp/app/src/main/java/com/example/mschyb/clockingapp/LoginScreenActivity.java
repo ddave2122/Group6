@@ -32,7 +32,6 @@ public class LoginScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
 
-
         if(SaveSharedPreference.getUserName(LoginScreenActivity.this).length() == 0)
         {}
         else

@@ -3,8 +3,8 @@ package com.example.mschyb.clockingapp;
 public class Config
 {
     public final static String TAG = "Group6";
-    public final static String ENDPOINT = "http://group6project.com/api/";
-    public final static String CHECK_CREDENTIALS_ENDPOINT = ENDPOINT + "checkcredentials.php";
+    public final static String ENDPOINT = "http://group6project.com/Group6/website/";
+    public final static String CHECK_CREDENTIALS_ENDPOINT = ENDPOINT + "include/checkcredentials.php";
     public final static String GET_SCHEDULE_ENDPOINT = ENDPOINT + "getschedule.php";
     public final static String LOG_TIME_ENDPOINT = ENDPOINT + "logtime.php";
 
@@ -14,7 +14,18 @@ public class Config
     private static double southEndpoint = 0 ;
     private static double northEndpoint = 0;
 
+    private static String userFirstName;
     private static int userId;
+    private static boolean userIsLoggedIn;
+    private static boolean isManager;
+
+    public static boolean isUserIsLoggedIn() {
+        return userIsLoggedIn;
+    }
+
+    public static void setUserIsLoggedIn(boolean userIsLoggedIn) {
+        Config.userIsLoggedIn = userIsLoggedIn;
+    }
 
     /**
      * Sanity check to see if the GPS is still set at default values
@@ -28,6 +39,21 @@ public class Config
                 || northEndpoint == 0);
     }
 
+    public static boolean isManager() {
+        return isManager;
+    }
+
+    public static void setIsManager(boolean isManager) {
+        Config.isManager = isManager;
+    }
+
+    public static String getUserFirstName() {
+        return userFirstName;
+    }
+
+    public static void setUserFirstName(String userFirstName) {
+        Config.userFirstName = userFirstName;
+    }
 
     public static int getUserId() {
         return userId;

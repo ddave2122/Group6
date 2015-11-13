@@ -11,7 +11,7 @@ class Transporter
         if ($connection->connect_error) {
             echo("Connection failed: " . $connection->connect_error);
         }
-
+        
         return $connection;
     }
 }

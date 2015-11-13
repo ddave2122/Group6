@@ -6,13 +6,13 @@
   
 </ul>
 
-<div class="tab-content">
+<div class="tab-content tab-content-pane">
   <div id="view" class="tab-pane fade in active">
-  	<br>
+  	
 
     <h3 class="text-center">View Employees</h3>
 
-    <br><br>
+    
 
     <?php
 	    include_once('../../../db.config');
@@ -68,11 +68,9 @@
 
   </div>
   <div id="add" class="tab-pane fade">
-  	<br>
-
+  	
     <h3 class="text-center">Add New Employees</h3>
-
-    <br><br>
+   
 
     <div class="panel-body">
 	  <form class="form-horizontal row-border" id="addForm">

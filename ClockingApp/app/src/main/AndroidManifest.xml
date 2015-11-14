@@ -30,6 +30,10 @@
             android:label="Home" >
         </activity>
         <activity
+            android:name=".EnterAddressActivity"
+            android:label="Set Address" >
+        </activity>
+        <activity
             android:name=".SetAlarmsActivity"
             android:label="Set Alarms" >
         </activity>

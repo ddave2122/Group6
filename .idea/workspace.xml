@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56bd1e84-0f73-493f-89a7-581458cd6b4c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/ClockInOutActivity.java" afterPath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/ClockInOutActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/GPSTrackingService.java" afterPath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/GPSTrackingService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClockingApp/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/ClockingApp/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/Config.java" afterPath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/Config.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/EnterAddressActivity.java" afterPath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/EnterAddressActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/HomeScreenActivity.java" afterPath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/HomeScreenActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/LoginScreenActivity.java" afterPath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/LoginScreenActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClockingApp/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/ClockingApp/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/Utilities.java" afterPath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/Utilities.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClockingApp/app/src/main/res/layout/activity_enter_address.xml" afterPath="$PROJECT_DIR$/ClockingApp/app/src/main/res/layout/activity_enter_address.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClockingApp/app/src/main/res/layout/activity_home_screen.xml" afterPath="$PROJECT_DIR$/ClockingApp/app/src/main/res/layout/activity_home_screen.xml" />
     </list>
     <ignored path="Group6.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,10 +45,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="readschedule.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="readschedule.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/pages/readschedule.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5846154" vertical-offset="160" max-vertical-offset="1170">
+            <state vertical-scroll-proportion="-14.615385" vertical-offset="160" max-vertical-offset="1170">
               <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding>
                 <marker date="1447527543200" expanded="true" signature="485:648" placeholder="SELECT user_..user_schedule..." />
@@ -78,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="setgpslocation.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="setgpslocation.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/website/include/setgpslocation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.1923075" vertical-offset="0" max-vertical-offset="660">
-              <caret line="9" column="21" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.64615387" vertical-offset="0" max-vertical-offset="660">
+              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -788,14 +789,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/include/setgpslocation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.1923075" vertical-offset="0" max-vertical-offset="660">
-          <caret line="9" column="21" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/include/checkcredentials.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.0384617" vertical-offset="0" max-vertical-offset="540">
@@ -832,13 +825,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/website/pages/readschedule.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5846154" vertical-offset="160" max-vertical-offset="1170">
+        <state vertical-scroll-proportion="-14.615385" vertical-offset="160" max-vertical-offset="1170">
           <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding>
             <marker date="1447527543200" expanded="true" signature="485:648" placeholder="SELECT user_..user_schedule..." />
             <marker date="1447527543200" expanded="true" signature="671:862" placeholder="SELECT user_..user_schedule..." />
             <marker date="1447527543200" expanded="true" signature="1091:1146" placeholder="SELECT first..user..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/include/setgpslocation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.64615387" vertical-offset="0" max-vertical-offset="660">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

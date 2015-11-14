@@ -75,34 +75,42 @@
         android:id="@+id/editTextZipcode"
         android:layout_below="@+id/textView6"
         android:layout_alignParentStart="true"
-        android:text="30303"
-        android:layout_alignEnd="@+id/textViewLo" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Longitude:None"
-        android:id="@+id/textViewLo"
-        android:layout_below="@+id/editTextZipcode"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Latitude:None"
-        android:id="@+id/textViewLa"
-        android:layout_below="@+id/textViewLo"
-        android:layout_alignEnd="@+id/GetAddressCoordinatesButton"
-        android:layout_toEndOf="@+id/editTextStateName" />
+        android:text="30303" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get coordinates"
+        android:text="Save Coordinates"
         android:id="@+id/GetAddressCoordinatesButton"
-        android:layout_below="@+id/textViewLa"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="46dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/addressErrorText"
+        android:password="false"
+        android:layout_below="@+id/distance"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Distance from address (in ft)"
+        android:id="@+id/textView7"
+        android:layout_below="@+id/editTextZipcode"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/distance"
+        android:text="100"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView7"
+        android:layout_alignParentLeft="true"
+        android:phoneNumber="true" />
 </RelativeLayout>

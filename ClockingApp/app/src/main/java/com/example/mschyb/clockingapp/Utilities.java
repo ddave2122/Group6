@@ -40,16 +40,17 @@ public class Utilities
             try
             {
                 Config.setUserId(Integer.parseInt(jsonObject.get("userid").toString().replace("\"", "")));
+                Config.setIsManager(jsonObject.get("manager").toString().replace("\"", "").equals("1"));
+                Config.setUserFirstName(jsonObject.get("firstname").toString().replace("\"", ""));
                 Config.setEastEndpoint(Double.parseDouble(jsonObject.get("east").toString().replace("\"", "")));
                 Config.setNorthEndpoint(Double.parseDouble(jsonObject.get("north").toString().replace("\"", "")));
                 Config.setSouthEndpoint(Double.parseDouble(jsonObject.get("south").toString().replace("\"", "")));
                 Config.setWestEndpoint(Double.parseDouble(jsonObject.get("west").toString().replace("\"", "")));
-                Config.setIsManager(jsonObject.get("manager").toString().replace("\"", "").equals("1"));
-                Config.setUserFirstName(jsonObject.get("firstname").toString().replace("\"", ""));
             }
             catch(Exception e)
             {
                 Log.e(Config.TAG, "Error when trying to get values from JSON object");
+                return false;
             }
             return true;
         }
@@ -121,6 +122,16 @@ public class Utilities
         String params = "userId=" + Config.getUserId() + "&isClockingIn=" + isClockingIn;
         Transporter transporter = new Transporter();
         transporter.execute(Config.LOG_TIME_ENDPOINT, "POST", params);
+    }
+
+
+    public static boolean saveGpsCoordinates(String lat, String lon, String distance)
+    {
+        String params = "userid=" + Config.getUserId() + "&lat=" + lat
+                + "&long=" + lon + "&distance=" + distance;
+        Transporter transporter = new Transporter();
+        transporter.execute(Config.SET_GPS_COORDINATES, "POST", params);
+        return true;
     }
 
 

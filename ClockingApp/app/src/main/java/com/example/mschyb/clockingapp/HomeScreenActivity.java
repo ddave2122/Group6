@@ -21,10 +21,11 @@ public class HomeScreenActivity extends AppCompatActivity {
         {
             startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
 
-        } else
+        }
+        else
         {
-
-            helloText.setText("Hello "+Config.getUserFirstName());
+            String textToDisplay = "Hello " + Config.getUserFirstName();
+            helloText.setText(textToDisplay);
         }
 
 
@@ -68,13 +69,42 @@ public class HomeScreenActivity extends AppCompatActivity {
         logoutButton.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                 Config.setUserId(0);
-                  Config.setUserFirstName("");
+//                 Config.setUserId(0);
+//                  Config.setUserFirstName("");
                   startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
               }
           }
         );//end viewScheduleButton.setOnClickListener
 
+        Button setLocation = (Button) findViewById(R.id.enterAddressButton);
+        setLocation.setOnClickListener(new View.OnClickListener() {
+                                           @Override
+                                           public void onClick(View v) {
+//                                               Config.setUserId(0);
+//                                               Config.setUserFirstName("");
+                                               startActivity(new Intent(getApplicationContext(), EnterAddressActivity.class));
+                                           }
+                                       }
+        );//end viewScheduleButton.setOnClickListener
+        if(Config.isManager())
+            setLocation.setVisibility(0);
+
+        else
+            setLocation.setVisibility(View.INVISIBLE);
+
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        TextView  helloText = (TextView)findViewById(R.id.helloText);
+        if(Config.getUserId() == 0)
+        {
+            startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
+        } else
+        {
+            helloText.setText("Hello " + Config.getUserFirstName());
+        }
     }
 
     @Override

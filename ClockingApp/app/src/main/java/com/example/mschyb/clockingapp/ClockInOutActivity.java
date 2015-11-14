@@ -29,8 +29,7 @@ public class ClockInOutActivity extends AppCompatActivity {
         clockOutButton.setOnClickListener(new View.OnClickListener() {
 
           public void onClick(View v) {
-              Utilities Util = new Utilities();
-              Utilities.clockUser(1);
+              Utilities.clockUser(0);
               showClockOutAlert(null);
 
           }
@@ -39,8 +38,7 @@ public class ClockInOutActivity extends AppCompatActivity {
         clockInButton.setOnClickListener(new View.OnClickListener() {
 
         public void onClick(View v) {
-          Utilities Util = new Utilities();
-          Utilities.clockUser(0);
+          Utilities.clockUser(1);
           showClockInAlert(null);
 
         }

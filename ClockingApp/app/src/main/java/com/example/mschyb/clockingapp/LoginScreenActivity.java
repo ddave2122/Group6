@@ -45,7 +45,7 @@ public class LoginScreenActivity extends AppCompatActivity {
                @Override
                public void onClick(View v) {
                    TextView loginError = (TextView) findViewById(R.id.loginErrorBox);
-                   loginError.setText("Signing in...");
+                   loginError.setText(R.string.signing_into_program);
 
                    EditText loginET = (EditText) findViewById(R.id.editLogin);
                    EditText passwordET = (EditText) findViewById(R.id.editPassword);
@@ -54,9 +54,8 @@ public class LoginScreenActivity extends AppCompatActivity {
                    password = passwordET.getText().toString();
 
                    //new Utilities().checkCredentials(login, password)
-                   if (true)
+                   if (new Utilities().checkCredentials(login, password))
                    {
-
                        Config.setUserId(2);
                        loginError.setText("Success!");
                        Intent intent = new Intent(getApplicationContext(), HomeScreenActivity.class);

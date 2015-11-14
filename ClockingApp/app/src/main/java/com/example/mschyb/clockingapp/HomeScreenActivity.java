@@ -21,10 +21,11 @@ public class HomeScreenActivity extends AppCompatActivity {
         {
             startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
 
-        } else
+        }
+        else
         {
-
-            helloText.setText("Hello "+Config.getUserFirstName());
+            String textToDisplay = "Hello " + Config.getUserFirstName();
+            helloText.setText(textToDisplay);
         }
 
 

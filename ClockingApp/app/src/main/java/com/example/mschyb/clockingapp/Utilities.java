@@ -8,6 +8,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -57,36 +58,35 @@ public class Utilities
         else
             return false;
     }
-    public String[] getSchedule(int userID, String sDate, String eDate) {
+    public HashMap<String, String[]> getSchedule(int userID, String sDate, String eDate) {
         String[] arr = new String[2];
         String params = "userId=" + userID + "&startDate=" + sDate + "&endDate=" + eDate;
         Transporter transporter = new Transporter();
-        transporter.execute(Config.GET_SCHEDULE_ENDPOINT, "GET", params);
+        transporter.execute(Config.GET_SCHEDULE_ENDPOINT, "POST", params);
 
         JsonObject jsonResult = convertStringToJson(readTransporter(transporter));
+        HashMap<String, String[]> resultSet = new HashMap<>();
 
         if(jsonResult == null)
         {
             Log.e(Config.TAG, "Result check is null");
-            arr = null;
-
-        } else {
-
-            //need to check for if there are no query results and return a null array
-            //arr = null;
+            return null;
+        }
+        else
+        {
             JsonArray data = jsonResult.getAsJsonArray("schedule");
             for (JsonElement el:data)
             {
                 JsonObject obj=(JsonObject)el;
-                arr[0]=obj.get("startTime").toString();
-                arr[1]=obj.get("endTime").toString();
+                String key = obj.get("startTime").toString().split(" ")[0].replace("\"", "");
+                String[] clockTimes = {
+                        obj.get("startTime").toString().replace("\"", "")
+                        , obj.get("endTime").toString().replace("\"", "") };
+
+                resultSet.put(key, clockTimes);
             }
-
         }
-       // arr[0] = "2015-06-12 08:00:00";
-        //arr[1] = "2015-06-12 08:00:00";
-        return arr;
-
+        return resultSet;
     }
     public List<String[]>  getHoursWorked(int userID, String sDate, String eDate) {
         List<String[]> stuff= new ArrayList<String[]>();

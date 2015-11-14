@@ -65,7 +65,7 @@ public class ScheduleDateActivity extends AppCompatActivity {
            //hard coding id until login set id is finished
            // Config.setUserId(2);
 
-            times =new  Utilities().getSchedule(Config.getUserId(),sDate,eDate);//SaveSharedPreference.getUserID(getApplicationContext()), sDate,eDate);
+//            times = new  Utilities().getSchedule(Config.getUserId(),sDate,eDate);//SaveSharedPreference.getUserID(getApplicationContext()), sDate,eDate);
 
             if(times!=null) {
 

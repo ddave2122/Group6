@@ -3,7 +3,7 @@
 include_once('transporter.php');
 
 if (!isset($_POST['username']) || !isset($_POST['password']))
-   var_dump($_REQUEST); 
+   return;
 
 $user = $_POST['username'];
 $pass = $_POST['password'];

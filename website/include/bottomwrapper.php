@@ -26,12 +26,16 @@
   $('.btnPrevious').click(function(){
     $('.nav-tabs > .active').prev('li').find('a').trigger('click');
   });
+  /* End Schedule Tabs */
 
+
+  /* View Schedule Handler*/
   $(document).ready(function() {
 
 
       // process the form
       $('#viewForm').submit(function(event) {
+          $("#content").hide();
           document.getElementById("content").innerHTML = "";
           // get the form data
           var formData = {
@@ -66,6 +70,7 @@
                     var item = data.schedule[i];
                     console.log(item.startTime);
 
+
                     var start = moment(item.startTime).tz('America/Phoenix').format('YYYY-MM-DD[T]HH:mm:ss');
                     var end = moment(item.endDate).tz('America/Phoenix').format('YYYY-MM-DD[T]HH:mm:ss');
                     //var date2 = new Date(test).toISOString().substring(0,23);
@@ -78,32 +83,39 @@
                     //alert(insval);
 
                     document.getElementById("content").innerHTML += 
-                      '<div class="col-md-2" style="visibility: hidden;">' +
+                      '' +
+                      '<div class="col-md-3" style="">' +
                         '<div class="form-group" style="padding-left:15px;padding-right:15px;">' +
-                        '<h1>Space</h1></div>' +
+                        '<p style="font-size:18px;padding-top:31px;text-align:center;">'+item.empName+'</p></div>' +
                       '</div>';
 
-                    document.getElementById("content").innerHTML += '<div class="col-md-4">' +
+                    document.getElementById("content").innerHTML += 
+                    '<div class="col-md-4">' +
                       '<div class="form-group" style="padding-left:15px;padding-right:15px;">' +
-                        '<label class="control-label"></label>' +
+                        '<label class="control-label">Start Date & Time</label>' +
                           '<input class="form-control" type="datetime-local" value="'+startvalue+'" id="startDate'+i+'" name="startDate" disabled>' +
                        '</div>' +
                     '</div>';
 
-                    document.getElementById("content").innerHTML += '<div class="col-md-4">' +
+                    document.getElementById("content").innerHTML += 
+                    '<div class="col-md-4">' +
                       '<div class="form-group" style="padding-left:15px;padding-right:15px;">' +
-                        '<label class="control-label"></label>' +
+                        '<label class="control-label">End Date & Time</label>' +
                           '<input class="form-control" type="datetime-local" value="'+endvalue+'" id="endDate'+i+'" name="endDate" disabled>' +
                        '</div>' +
+                    '</div>' +
                     '</div>';
 
-                    document.getElementById("content").innerHTML += 
+                    /*document.getElementById("content").innerHTML += 
                       '<div class="col-md-2" style="visibility: hidden;">' +
                         '<div class="form-group" style="padding-left:15px;padding-right:15px;">' +
-                        '<h1>Space</h1></div>' +
-                      '</div>';
+                          '<h1>Space</h1>'+
+                        '</div>' +
+                      '</div>' +
+                      '</div>';*/
                     
                     console.log(item.startTime + " " + item.endTime);
+                    $("#content").show();
                   }
                   console.log(data); 
 
@@ -152,7 +164,7 @@
       });
 
   });
-
+  /* End View Schedule Handler*/
 
 
 
@@ -175,6 +187,7 @@
       });
 
     });
+    /* End User Management Form Handler */
 
     /* Create Schedule Handler*/
 
@@ -445,7 +458,7 @@
       });
 
     });
-
+    /* End Create Schedule Handler*/
        
 });
   

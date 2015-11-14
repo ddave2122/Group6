@@ -1,9 +1,9 @@
 <?php
 
-include_once('../include/transporter.php');
+include_once('transporter.php');
 
 if (!isset($_POST['username']) || !isset($_POST['password']))
-    echo("test");
+   return;
 
 $user = $_POST['username'];
 $pass = $_POST['password'];

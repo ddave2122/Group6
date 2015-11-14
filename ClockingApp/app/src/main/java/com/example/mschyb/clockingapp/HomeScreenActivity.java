@@ -76,6 +76,19 @@ public class HomeScreenActivity extends AppCompatActivity {
         );//end viewScheduleButton.setOnClickListener
 
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        TextView  helloText = (TextView)findViewById(R.id.helloText);
+        if(Config.getUserId() == 0)
+        {
+            startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
+        } else
+        {
+            helloText.setText("Hello " + Config.getUserFirstName());
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

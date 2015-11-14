@@ -45,13 +45,13 @@
             android:name=".ClockInOutActivity"
             android:label="Clock In/Out" >
         </activity>
-<!--
+
         <service
             android:name=".GPSTrackingService"
             android:enabled="true"
             android:exported="true" >
         </service>
-        -->
+
 
         <activity
             android:name=".ScheduleDateActivity"

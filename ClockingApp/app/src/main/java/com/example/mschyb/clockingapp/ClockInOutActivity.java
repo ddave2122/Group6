@@ -7,6 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+
 
 public class ClockInOutActivity extends AppCompatActivity {
 
@@ -21,6 +24,28 @@ public class ClockInOutActivity extends AppCompatActivity {
         }
         else
         {}
+
+        Button clockOutButton = (Button) findViewById(R.id.clockoutButton);
+        clockOutButton.setOnClickListener(new View.OnClickListener() {
+
+          public void onClick(View v) {
+              Utilities Util = new Utilities();
+              Utilities.clockUser(1);
+              showClockOutAlert(null);
+
+          }
+        });
+        Button clockInButton = (Button) findViewById(R.id.clockinButton);
+        clockInButton.setOnClickListener(new View.OnClickListener() {
+
+        public void onClick(View v) {
+          Utilities Util = new Utilities();
+          Utilities.clockUser(0);
+          showClockInAlert(null);
+
+        }
+      });
+
 
         Button backButton = (Button) findViewById(R.id.backButton);
         //set the onClick listener for the button
@@ -54,4 +79,34 @@ public class ClockInOutActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    public void showClockOutAlert(View view){
+        AlertDialog.Builder myAlert = new AlertDialog.Builder(this);
+        myAlert.setMessage("You have successfully clocked out for lunch!")
+                .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+        myAlert.show();
+
+
+    }
+    public void showClockInAlert(View view){
+        AlertDialog.Builder myAlert = new AlertDialog.Builder(this);
+        myAlert.setMessage("You have successfully clocked in from lunch!")
+                .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+        myAlert.show();
+
+
+    }
+
+
 }

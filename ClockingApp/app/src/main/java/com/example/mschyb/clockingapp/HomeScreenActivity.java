@@ -24,7 +24,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         } else
         {
 
-            helloText.setText("Hello "+Config.getFullName());
+            helloText.setText("Hello "+Config.getUserFirstName());
         }
 
 
@@ -68,8 +68,8 @@ public class HomeScreenActivity extends AppCompatActivity {
         logoutButton.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  SaveSharedPreference.removeUserName(getApplicationContext());
-                  SaveSharedPreference.removeUserID(getApplicationContext());
+                 Config.setUserId(0);
+                  Config.setUserFirstName("");
                   startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
               }
           }

@@ -50,7 +50,5 @@
             android:name=".ScheduleDateActivity"
             android:label="ScheduleDateActivity">
         </activity>
-
     </application>
-
 </manifest>

@@ -70,7 +70,7 @@ public class ScheduleDateActivity extends AppCompatActivity {
             if(times!=null) {
 
                 try {
-                    SimpleDateFormat parseFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                    SimpleDateFormat parseFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     SimpleDateFormat printFormat = new SimpleDateFormat("h:mm a");
 
                     startDateTime = parseFormat.parse(times[0]);

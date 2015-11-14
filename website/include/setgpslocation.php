@@ -32,7 +32,7 @@ $conn = $transporter->getConnection();
 
 // execute the stored procedure
 $sql = "CALL set_gps('$userId', '$north', '$east', '$south', '$west');";
-echo($sql);
+
 $stmt = $conn->query($sql);
 echo($stmt);
 return;

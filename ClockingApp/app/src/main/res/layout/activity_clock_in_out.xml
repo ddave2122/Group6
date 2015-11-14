@@ -19,4 +19,27 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
 
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clock Out For Lunch"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/clockoutButton"
+        android:onClick="showAlert"
+        android:layout_below="@+id/backButton"
+        android:layout_marginTop="75dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clock In For Lunch"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/clockinButton"
+        android:onClick="showAlert"
+        android:layout_below="@+id/clockoutButton"
+        android:layout_marginTop="25dp"/>
+
+
+
 </RelativeLayout>

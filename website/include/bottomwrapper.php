@@ -28,6 +28,23 @@
   });
   /* End Schedule Tabs */
 
+ /*$(document).ready(function(){
+        $('#tabs a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+        //$(this).tab('load');
+        console.log("clicked");
+    });
+});*/
+  
+  $(document).ready(function(){
+    $('#button').click(function (e) {
+    e.preventDefault();
+      var currentDate = moment().format("12-1-2012");
+    alert(currentDate);
+    console.log("click");
+    });
+  });
 
   /* View Schedule Handler*/
   $(document).ready(function() {
@@ -43,7 +60,7 @@
               'startDate'             : $('input[name=startDate]').val(),
               'endDate'    : $('input[name=endDate]').val()
           };
-
+          //alert($('input[name=startDate]').val());
           
           // process the form
           $.ajax({
@@ -63,16 +80,18 @@
                   var day = days[date.getDay()];
                   var d = date.getDay()+1;
                   var y = date.getFullYear();
+                  var currentDate = moment().format();
                   
-
-                  for(var i =0;i < data.schedule.length-1;i++)
+                  counter = 0;
+                  
+                  for(var i =0;i < data.schedule.length;i++)
                   {
                     var item = data.schedule[i];
                     console.log(item.startTime);
-
+                    console.log(item.endTime);
 
                     var start = moment(item.startTime).tz('America/Phoenix').format('YYYY-MM-DD[T]HH:mm:ss');
-                    var end = moment(item.endDate).tz('America/Phoenix').format('YYYY-MM-DD[T]HH:mm:ss');
+                    var end = moment(item.endTime).tz('America/Phoenix').format('YYYY-MM-DD[T]HH:mm:ss');
                     //var date2 = new Date(test).toISOString().substring(0,23);
                    
                     
@@ -115,8 +134,9 @@
                       '</div>';*/
                     
                     console.log(item.startTime + " " + item.endTime);
-                    $("#content").show();
+                   
                   }
+                  $("#content").show(); 
                   console.log(data); 
 
                   // here we will handle errors and validation messages
@@ -125,7 +145,7 @@
                 if ( ! data.success) {
                     
                     // handle errors for name ---------------
-                    if (data.errors.userId) {
+                    if (data.errors.schedule.userId) {
                         alert(data.errors.userId);// add the actual error message under our input
                     }
 
@@ -174,7 +194,7 @@
 
     $('#addForm').on('submit', function (e) {
 
-      e.preventDefault();
+      //e.preventDefault();
       
       $.ajax({
         type: 'post',
@@ -473,6 +493,7 @@
 <!-- Morris Charts JavaScript -->
 <script src="../bower_components/raphael/raphael-min.js"></script>
 <script src="../bower_components/morrisjs/morris.min.js"></script>
+
 <script src="../js/morris-data.js"></script>
 <script src="../js/moment.js"></script>
 <script src="../js/moment-timezone.js"></script>

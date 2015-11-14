@@ -1,4 +1,5 @@
 <?php
+include_once("../include/header.php");
 include_once('../include/transporter.php');
 ?>
 
@@ -12,7 +13,7 @@ function rangeWeek($datestr) {
     return $res;
     }
 
-print_r(rangeWeek(date("F jS, Y", strtotime("now")), "\n\n"));
+//print_r(rangeWeek(date("F jS, Y", strtotime("now")), "\n\n"));
 
 $daterange = rangeWeek(date("F jS, Y", strtotime("now")), "\n\n");
 
@@ -22,13 +23,17 @@ $endkey = "end";
 $start = $daterange[$startkey];
 $end = $daterange[$endkey];
 
-echo "\n\nStart of Week: " . $start . " End of Week: " . $end;
+$d1 = strtotime($start);
+$dstart = date("F jS, Y", $d1);
 
-$userId = "1";
+$d2 = strtotime($end);
+$dend = date("F jS, Y", $d2);
+echo '<div id="currentSchedule">';
+echo '<h3 style="text-align:center;padding-bottom:60px;">Week<br><br>' . $dstart . ' -  <i class="fa fa-calendar" id="cal"></i>  - ' . $dend .'</h3>';
+
+$userId = "11";
 $startDate = $start;
 $endDate = $end;
-
-echo "<br><br><br>";
 
 $transporter = new Transporter();
 $conn = $transporter->getConnection();
@@ -40,21 +45,14 @@ $conn = $transporter->getConnection();
     AND scheduled_clock_out < '$endDate'
     AND user_id = '$userId'";
 
-
-
-
-
 $result = $conn->query($sql);
 
-
 //var_dump($result);
-
-
 
 $schedule = array();
 
 $counter = 0;
-
+echo '<div class="row">';
 while($row = $result->fetch_assoc())
 {
     $counter++;
@@ -64,24 +62,51 @@ while($row = $result->fetch_assoc())
     $sql2 = "SELECT first_name, last_name FROM user WHERE id = '$id'";
     $result2 = $conn->query($sql2);
 
+    $startdate = str_replace(' ', 'T', $row['scheduled_clock_in']);
+    $enddate = str_replace(' ', 'T', $row['scheduled_clock_out']);
+
     while($row2 = $result2->fetch_assoc()) {
         $name = $row2['last_name'] . ", ". $row2['first_name'];
     }
 
-    echo $scheduleObject['empName'] = $name;
-    echo $scheduleObject['startTime'] = $row['scheduled_clock_in'];
-    echo $scheduleObject['endTime'] = $row['scheduled_clock_out'];
+    echo '<div class="col-md-3" style="">
+             <div class="form-group" style="padding-left:15px;padding-right:15px;">
+             	<p style="font-size:18px;padding-top:31px;text-align:center;">'.$name.'</p>
+             </div>
+          </div>';
 
-    $schedule[] = $scheduleObject;
+    echo '<div class="col-md-4">
+	        <div class="form-group" style="padding-left:15px;padding-right:15px;">
+	            <label class="control-label">Start Date & Time</label>
+	            <input class="form-control" type="datetime-local" value="'.$startdate.'" id="startDate" name="startDate" disabled>
+	        </div>
+	      </div>';
+
+	echo '<div class="col-md-4">
+          	<div class="form-group" style="padding-left:15px;padding-right:15px;">
+            	<label class="control-label">End Date & Time</label>
+              	<input class="form-control" type="datetime-local" value="'.$enddate.'" id="endDate" name="endDate" disabled>
+           </div>
+           
+           </div>';
+
+    /*$scheduleObject['empName'] = $name;
+    $scheduleObject['startTime'] = $row['scheduled_clock_in'];
+    $scheduleObject['endTime'] = $row['scheduled_clock_out'];
+
+    $schedule[] = $scheduleObject;*/
 }
-$responseObject = array();
+
+echo '</div></div>';
+
+/*$responseObject = array();
 $responseObject['schedule'] = $schedule;
 $responseObject['numberOfRecords'] = $counter;
 
 $jsonResponse = json_encode($responseObject);
 
 //header('Content-Type: application/json');
-echo($jsonResponse );
+echo($jsonResponse );*/
 
 /*
 echo date("F jS, Y", strtotime("now")), "\n";
@@ -97,3 +122,8 @@ echo strtotime("last Monday"), "\n";*/
 
 ?>
 
+
+
+		
+
+<?php include_once("../include/bottomwrapper.php") ?>

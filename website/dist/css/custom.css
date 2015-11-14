@@ -82,3 +82,11 @@ box-shadow: 0 1px 5px #888;
 #content {
 	display:none;padding-top:60px;padding-bottom:60px;box-shadow: 0 1px 5px #888;
 }
+
+#currentSchedule {
+	padding-top:30px;padding-bottom:60px;box-shadow: 0 1px 5px #888;
+}
+
+#cal {
+	color:#337AB7;
+}

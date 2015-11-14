@@ -78,7 +78,6 @@ public class GPSTrackingService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId)
     {
-
         turnGPSOn();
         super.onStartCommand(intent, flags, startId);
         try {

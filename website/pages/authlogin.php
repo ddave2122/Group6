@@ -11,8 +11,8 @@ $pass = $_POST['password'];
 //Check the user login
 $postdata = http_build_query(
     array(
-        'username' => 'admin',
-        'password' => 'admin'
+        'username' => $user,
+        'password' => $pass
     )
 );
 $opts = array('http' =>

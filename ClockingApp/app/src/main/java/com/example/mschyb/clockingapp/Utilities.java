@@ -39,14 +39,13 @@ public class Utilities
         {
             try
             {
-
-                Config.setUserId(Integer.getInteger(jsonObject.get("userId").toString()));
-                Config.setEastEndpoint(Double.parseDouble(jsonObject.get("east").toString()));
-                Config.setNorthEndpoint(Double.parseDouble(jsonObject.get("north").toString()));
-                Config.setSouthEndpoint(Double.parseDouble(jsonObject.get("south").toString()));
-                Config.setWestEndpoint(Double.parseDouble(jsonObject.get("west").toString()));
-                Config.setIsManager(jsonObject.get("manager").toString().equals("1"));
-                Config.setUserFirstName(jsonObject.get("firstname").toString());
+                Config.setUserId(Integer.parseInt(jsonObject.get("userid").toString().replace("\"", "")));
+                Config.setEastEndpoint(Double.parseDouble(jsonObject.get("east").toString().replace("\"", "")));
+                Config.setNorthEndpoint(Double.parseDouble(jsonObject.get("north").toString().replace("\"", "")));
+                Config.setSouthEndpoint(Double.parseDouble(jsonObject.get("south").toString().replace("\"", "")));
+                Config.setWestEndpoint(Double.parseDouble(jsonObject.get("west").toString().replace("\"", "")));
+                Config.setIsManager(jsonObject.get("manager").toString().replace("\"", "").equals("1"));
+                Config.setUserFirstName(jsonObject.get("firstname").toString().replace("\"", ""));
             }
             catch(Exception e)
             {

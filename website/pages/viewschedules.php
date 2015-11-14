@@ -17,7 +17,7 @@ include_once('../include/transporter.php');
 
 	$result = $conn->query($sql);
 	
-	$options = '<select class="form-control" id="userId" name="userId"><option id="userId"></option>';
+	$options = '<select class="form-control viewBox" id="userId" name="userId"><option  value="all" id="userId">ALL</option>';
 	
 	
 	while ($row = $result->fetch_assoc()) {
@@ -42,15 +42,15 @@ include_once('../include/transporter.php');
 
 				<div class="col-md-4">
 				    <div class="form-group" style="padding-left:15px;padding-right:15px;">
-				      <label class="control-label">Start Date:</label>
-				        <input class="form-control" type="datetime-local" id="startDate" name="startDate" >
+				      <label class="control-label">Start Date & Time:</label>
+				        <input class="form-control viewBox" type="datetime-local" id="startDate" name="startDate" >
 				     </div>
 			    </div>
 
 			    <div class="col-md-4">
 				    <div class="form-group" style="padding-left:15px;padding-right:15px;">
-				      <label class="control-label">End Date:</label>
-				        <input class="form-control" type="datetime-local" id="endDate" name="endDate" placeholder="" >
+				      <label class="control-label">End Date & Time:</label>
+				        <input class="form-control viewBox" type="datetime-local" id="endDate" name="endDate" placeholder="" >
 				     </div>
 			    </div>
 
@@ -69,7 +69,7 @@ include_once('../include/transporter.php');
 	</div>
 
 
-	<div class="row" id="content" style="padding-bottom:60px;">
+	<div class="row" id="content">
 
 			
 	</div>

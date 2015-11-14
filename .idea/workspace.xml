@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56bd1e84-0f73-493f-89a7-581458cd6b4c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/include/setgpslocation.php" afterPath="$PROJECT_DIR$/website/include/setgpslocation.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/pages/authlogin.php" afterPath="$PROJECT_DIR$/website/pages/authlogin.php" />
     </list>
     <ignored path="Group6.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,20 +37,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="authlogin.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="authlogin.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/website/pages/authlogin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.961538" vertical-offset="0" max-vertical-offset="795">
-              <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.20648968" vertical-offset="0" max-vertical-offset="1017">
+              <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="setgpslocation.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="setgpslocation.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/include/setgpslocation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.13274336" vertical-offset="0" max-vertical-offset="1017">
+            <state vertical-scroll-proportion="-5.1923075" vertical-offset="0" max-vertical-offset="660">
               <caret line="9" column="21" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="21" />
               <folding />
             </state>
@@ -110,8 +110,8 @@
       <file leaf-file-name="checkcredentials.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/include/checkcredentials.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.307692" vertical-offset="0" max-vertical-offset="540">
-              <caret line="30" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state vertical-scroll-proportion="-4.0384617" vertical-offset="0" max-vertical-offset="540">
+              <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -148,10 +148,10 @@
         <option value="$PROJECT_DIR$/website/include/header.php" />
         <option value="$PROJECT_DIR$/website/include/leftmenulinks.json" />
         <option value="$PROJECT_DIR$/website/include/utilities.php" />
-        <option value="$PROJECT_DIR$/website/pages/authlogin.php" />
         <option value="$PROJECT_DIR$/website/include/checkcredentials.php" />
         <option value="$PROJECT_DIR$/website/include/geolocation.php" />
         <option value="$PROJECT_DIR$/website/include/setgpslocation.php" />
+        <option value="$PROJECT_DIR$/website/pages/authlogin.php" />
       </list>
     </option>
   </component>
@@ -769,22 +769,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/pages/authlogin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.961538" vertical-offset="0" max-vertical-offset="795">
-          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/include/checkcredentials.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.307692" vertical-offset="0" max-vertical-offset="540">
-          <caret line="30" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/include/geolocation.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-81.61539" vertical-offset="128" max-vertical-offset="3195">
@@ -803,8 +787,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/website/include/setgpslocation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13274336" vertical-offset="0" max-vertical-offset="1017">
+        <state vertical-scroll-proportion="-5.1923075" vertical-offset="0" max-vertical-offset="660">
           <caret line="9" column="21" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/include/checkcredentials.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.0384617" vertical-offset="0" max-vertical-offset="540">
+          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/pages/authlogin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20648968" vertical-offset="0" max-vertical-offset="1017">
+          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
           <folding />
         </state>
       </provider>

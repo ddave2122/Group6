@@ -20,10 +20,16 @@ import java.util.Calendar;
 public class SetAlarmsActivity extends AppCompatActivity {
 
     AlarmManager alarmManager;
-    private PendingIntent pendingIntent;
+    private PendingIntent pendingIntentAL,pendingIntentDB;
     private TimePicker alarmTimePicker;
     private static SetAlarmsActivity inst;
     private TextView alarmTextView;
+    private ToggleButton alarmToggle;
+    public static boolean alarmOn;
+    public static int shiftStartTimeHour=19, shiftStartTimeMinute=0, setNumPick1=-1,setNumPick2=-1,alarmHours,alarmMins;
+    private NumberPicker minsNumberPicker ;
+    private NumberPicker hoursNumberPicker;
+
 
     public static SetAlarmsActivity instance() {
         return inst;
@@ -33,6 +39,17 @@ public class SetAlarmsActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         inst = this;
+        hoursNumberPicker.setValue(setNumPick1);
+        minsNumberPicker.setValue(setNumPick2);
+        alarmToggle.setChecked(alarmOn);
+    }
+    @Override
+    public void onStop(){
+        super.onStop();
+
+        setNumPick1=hoursNumberPicker.getValue();
+        setNumPick2=minsNumberPicker.getValue();
+        alarmOn=alarmToggle.isChecked();
     }
 
     @Override
@@ -47,9 +64,9 @@ public class SetAlarmsActivity extends AppCompatActivity {
         else
         {}
 
-        Button cancelButton = (Button) findViewById(R.id.cancelButton);
+        Button backButton = (Button) findViewById(R.id.backButton);
         //set the onClick listener for the button
-        cancelButton.setOnClickListener(new View.OnClickListener() {
+        backButton.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
                   startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
@@ -58,43 +75,104 @@ public class SetAlarmsActivity extends AppCompatActivity {
         );
 
 
-        alarmTimePicker = (TimePicker) findViewById(R.id.alarmTimePicker);
+        alarmToggle = (ToggleButton) findViewById(R.id.alarmToggle);
+        minsNumberPicker = (NumberPicker) findViewById(R.id.minsNumberPicker);
+        hoursNumberPicker = (NumberPicker) findViewById(R.id.hoursNumberPicker);
+
+        hoursNumberPicker.setMaxValue(6);
+        hoursNumberPicker.setMinValue(0);
+        hoursNumberPicker.setWrapSelectorWheel(true);
+        hoursNumberPicker.setOnValueChangedListener(new NumberPicker.
+                OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int
+                    oldVal, int newVal) {
+                setNumPick1 = newVal;
+                alarmHours = newVal;
+            }
+        });
+
+        minsNumberPicker.setMaxValue(59);
+        minsNumberPicker.setMinValue(0);
+        minsNumberPicker.setWrapSelectorWheel(true);
+        minsNumberPicker.setOnValueChangedListener(new NumberPicker.
+                OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int
+                    oldVal, int newVal) {
+                alarmMins=newVal;
+                setNumPick2= newVal;
+            }
+        });
+        //alarmTimePicker = (TimePicker) findViewById(R.id.alarmTimePicker);
         alarmTextView = (TextView) findViewById(R.id.alarmText);
-        ToggleButton alarmToggle = (ToggleButton) findViewById(R.id.alarmToggle);
+
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
+        //Sets Alarm for pulling info from DB
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        Intent dbIntent = new Intent(SetAlarmsActivity.this, DBAlarmReceiver.class);
+        pendingIntentDB = PendingIntent.getBroadcast(SetAlarmsActivity.this, 0, dbIntent, 0);
+        /* Repeating on every day at 12am  */
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntentDB);
 
 
+        //Code to set alarm for shift start time
+        if(alarmOn)
+        {
+            int startHours=shiftStartTimeHour-alarmHours ;
+            int startMins=shiftStartTimeMinute-alarmMins;
 
-        Button backButton = (Button) findViewById(R.id.backButton);
+            if(startHours<0)
+                startHours+=24;
+            if(startMins<0)
+                startMins+=60;
+
+            Log.d("SetAlarmActivity", "Alarm On");
+            Calendar calendar2 = Calendar.getInstance();
+            calendar2.set(Calendar.HOUR_OF_DAY,startHours);
+            calendar2.set(Calendar.MINUTE, startMins);
+            Intent myIntent = new Intent(SetAlarmsActivity.this, AlarmReceiver.class);
+            pendingIntentAL = PendingIntent.getBroadcast(SetAlarmsActivity.this, 0, myIntent, 0);
+            alarmManager.setInexactRepeating(AlarmManager.RTC, calendar2.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntentAL);
+        }
+        else
+        {
+            alarmManager.cancel(pendingIntentAL);
+            setAlarmText("");
+            Log.d("SetAlarmsActivity", "Alarm Off");
+        }
+
+
+/*
+        Button cancelButton = (Button) findViewById(R.id.btnSetAlarms);
         //set the onClick listener for the button
         backButton.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                  Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
-                  PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 1253, intent, 0);
-                  AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                  alarmManager.cancel(pendingIntent);
+                                          @Override
+                                          public void onClick(View v) {
+                                              Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
+                                              PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 1253, intent, 0);
+                                              AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                                              alarmManager.cancel(pendingIntent);
 
-              }
-          }
+                                          }
+                                      }
         );//end backButton.setOnClickListener
+    */
     }
+
 
 
     public void onToggleClicked(View view) {
         if (((ToggleButton) view).isChecked()) {
-            Log.d("MyActivity", "Alarm On");
-            Calendar calendar = Calendar.getInstance();
-            calendar.set(Calendar.HOUR_OF_DAY, alarmTimePicker.getCurrentHour());
-            calendar.set(Calendar.MINUTE, alarmTimePicker.getCurrentMinute());
-            Intent myIntent = new Intent(SetAlarmsActivity.this, AlarmReceiver.class);
-            pendingIntent = PendingIntent.getBroadcast(SetAlarmsActivity.this, 0, myIntent, 0);
-            alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
+
+            alarmOn=true;
+
         } else {
-            alarmManager.cancel(pendingIntent);
-            setAlarmText("");
-            Log.d("MyActivity", "Alarm Off");
+            alarmOn=false;
+
         }
     }
 

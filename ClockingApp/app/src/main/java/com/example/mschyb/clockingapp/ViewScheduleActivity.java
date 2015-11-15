@@ -46,20 +46,27 @@ public class ViewScheduleActivity extends AppCompatActivity {
             {
                 TextView startTime = (TextView) findViewById(R.id.textView8);
                 TextView endTime = (TextView) findViewById(R.id.textView9);
+                String monthString = "", dayString = "";
+                if(++month < 10)
+                    monthString = "0" + month;
+                else
+                    monthString = String.valueOf(month);
+                if(day < 10)
+                    dayString = "0" + day;
+                else
+                    dayString = String.valueOf(day);
 
-                String key = year + "-" + month + "-" + day;
+                String key = year + "-" + monthString + "-" + dayString;
                 if(schedule.containsKey(key))
                 {
                     String[] startAndStopTimes = schedule.get(key);
-                    startTime.setText("Shift Start Time: foo");
-                    endTime.setText("Shift End Time: 8:00PM");
-
+                    startTime.setText("Shift Start Time: " + startAndStopTimes[0].split(" ")[1]);
+                    endTime.setText("Shift End Time: " + startAndStopTimes[1].split(" ")[1]);
                 }
                 else
                 {
-                    startTime.setText("Shift Start Time: foo");
-                    endTime.setText("Shift End Time: 8:00PM");
-
+                    startTime.setText("Nothing Scheduled!");
+                    endTime.setText("");
                 }
 
 

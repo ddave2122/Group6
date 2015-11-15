@@ -63,15 +63,15 @@ public class ViewScheduleActivity extends AppCompatActivity {
 
                 String key = year + "-" + monthString + "-" + dayString;
                 Intent intent= new Intent(getApplicationContext(), ScheduleDateActivity.class);
-
+                intent.putExtra("scheduledYear", year);
+                intent.putExtra("scheduledMonth", month);
+                intent.putExtra("scheduledDay", day);
                 if(schedule.containsKey(key))
                 {
                     String[] startAndStopTimes = schedule.get(key);
                     intent.putExtra("startTime", startAndStopTimes[0].split(" ")[1]);
                     intent.putExtra("endTime", startAndStopTimes[1].split(" ")[1]);
-                    intent.putExtra("scheduledYear", year);
-                    intent.putExtra("scheduledMonth", month);
-                    intent.putExtra("scheduledDay", day);
+
                 }
 
                 startActivity(intent);

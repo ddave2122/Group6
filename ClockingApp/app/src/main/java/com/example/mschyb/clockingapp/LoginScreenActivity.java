@@ -26,8 +26,8 @@ public class LoginScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         //Start the GPS Service
-        Intent intent = new Intent(getApplicationContext(), GPSTrackingService.class);
-        startService(intent);
+        //Intent intent = new Intent(getApplicationContext(), GPSTrackingService.class);
+        //startService(intent);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);

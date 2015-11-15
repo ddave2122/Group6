@@ -75,6 +75,9 @@ public class Transporter extends AsyncTask<String, String, String>{
 
     @Override
     protected void onPostExecute(String result) {
+        //Sanity Check
+        if(result == null)
+            return;
         super.onPostExecute(result);
         Log.i(Config.TAG, result);
     }

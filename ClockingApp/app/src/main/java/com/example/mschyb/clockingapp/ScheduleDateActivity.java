@@ -47,7 +47,9 @@ public class ScheduleDateActivity extends AppCompatActivity {
 
 
         Bundle extras = getIntent().getExtras();
-        if(extras!=null)
+        dateText.setText(getMonthForInt(extras.getInt("scheduledMonth")-1) + " " + extras.getInt("scheduledDay") + ", " + extras.getInt("scheduledYear"));
+        dateText.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        if(extras!=null && extras.containsKey("startTime"))
         {
             String month="";
             String sDate="", eDate="";
@@ -55,12 +57,8 @@ public class ScheduleDateActivity extends AppCompatActivity {
             Date startDateTime=new Date();
             Date endDateTime=new Date();
 
-            month = getMonthForInt(extras.getInt("schedulemonth"));
-            dateText.setText(month + " " + extras.getInt("scheduleday") + ", " + extras.getInt("scheduleyear"));
-            dateText.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
-
-            sDate=extras.getInt("scheduleyear")+"-"+extras.getInt("schedulemonth")+"-"+extras.getInt("scheduleday") +" 00:00:00";
-            eDate=extras.getInt("scheduleyear")+"-"+extras.getInt("schedulemonth")+"-"+(extras.getInt("scheduleday")+1) +" 00:00:00";
+            times[0] = sDate=extras.getString("startTime");
+            times[1] = eDate=extras.getString("endTime");
 
            //hard coding id until login set id is finished
            // Config.setUserId(2);
@@ -70,14 +68,12 @@ public class ScheduleDateActivity extends AppCompatActivity {
             if(times!=null) {
 
                 try {
-                    SimpleDateFormat parseFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    SimpleDateFormat parseFormat = new SimpleDateFormat("hh:mm a");
                     SimpleDateFormat printFormat = new SimpleDateFormat("h:mm a");
+//                    new SimpleDateFormat("hh:mm a").format(new Date("1/12/2011 16:00:00"))
 
-                    startDateTime = parseFormat.parse(times[0]);
-                    endDateTime = parseFormat.parse(times[1]);
-
-                    startTimeText.setText("Shift Start Time: " + printFormat.format(startDateTime));
-                    endTimeText.setText("Shift End Time: " + printFormat.format(endDateTime));
+                    startTimeText.setText("Shift Start Time: " + parseFormat.format(new Date("1/12/2011 " + times[0])));
+                    endTimeText.setText("Shift End Time: " + parseFormat.format(new Date("1/12/2011 " + times[1])));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -90,8 +86,9 @@ public class ScheduleDateActivity extends AppCompatActivity {
         }
         else
         {
-            dateText.setText("No date chosen, please go back and choose date");
-            startTimeText.setText("");
+            startTimeText.setText("Not Scheduled Today");
+//            dateText.setText("No date chosen, please go back and choose date");
+//            startTimeText.setText("");
             endTimeText.setText("");
         }
 

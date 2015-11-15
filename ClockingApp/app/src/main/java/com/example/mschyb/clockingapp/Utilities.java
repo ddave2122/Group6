@@ -9,7 +9,10 @@ import com.google.gson.JsonParser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
 public class Utilities
@@ -90,9 +93,9 @@ public class Utilities
     }
     public List<String[]>  getHoursWorked(int userID, String sDate, String eDate) {
         List<String[]> stuff= new ArrayList<String[]>();
-        String params = "userId=" + userID + "&startDate=" + sDate + "&endDate=" + eDate;
+        String params = "userid=" + userID + "&startdate=" + sDate + "&enddate=" + eDate;
         Transporter transporter = new Transporter();
-        transporter.execute(Config.GET_HOURS_ENDPOINT, "GET", params);
+        transporter.execute(Config.GET_HOURS_ENDPOINT, "POST", params);
 
         JsonObject jsonResult = convertStringToJson(readTransporter(transporter));
 
@@ -105,12 +108,18 @@ public class Utilities
             //need to check for if there are no query results and return a null array
             //stuff = null;
 
-            JsonArray data = jsonResult.getAsJsonArray("schedule");
-            for (JsonElement el:data)
-            {
-                JsonObject obj=(JsonObject)el;
-                stuff.add(new String[]{obj.get("date").toString(), obj.get("hours").toString() });
+            Set<Map.Entry<String,JsonElement>> entrySet=jsonResult.entrySet();
+            for(Map.Entry<String,JsonElement> entry : entrySet){
+                stuff.add(new String[]{entry.getKey(), entry.getValue().toString()});
             }
+
+//
+//            JsonArray data = jsonResult.getAsJsonArray();
+//            for (JsonElement el:data)
+//            {
+//                JsonObject obj=(JsonObject)el;
+//                stuff.add(new String[]{obj.get("date").toString(), obj.get("hours").toString() });
+//            }
 
         }
         return stuff;

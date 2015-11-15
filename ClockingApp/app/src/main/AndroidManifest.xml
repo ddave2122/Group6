@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="com.example.dshah8.myfirstmap.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -49,12 +50,13 @@
             android:name=".ClockInOutActivity"
             android:label="Clock In/Out" >
         </activity>
-
+<!--
         <service
             android:name=".GPSTrackingService"
             android:enabled="true"
             android:exported="true" >
         </service>
+        -->
 
         <activity
             android:name=".ScheduleDateActivity"
@@ -62,6 +64,13 @@
         </activity>
         <activity android:name=".Calendar" >
         </activity>
+
+
+
+        <service
+            android:name=".AlarmService"
+            android:enabled="true" />
+        <receiver android:name=".AlarmReceiver" />
     </application>
 
 </manifest>

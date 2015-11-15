@@ -42,7 +42,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="30dp"
                     android:layout_below="@+id/dateText"
-                    android:layout_gravity="center_horizontal|bottom" />
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:visibility="invisible" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -54,7 +55,8 @@
                     android:layout_marginTop="15dp"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal|bottom"
-                    android:layout_column="17" />
+                    android:layout_column="17"
+                    android:visibility="invisible" />
 
                 <TextView
                     android:text="(Click on a date to view schedule for that day)"

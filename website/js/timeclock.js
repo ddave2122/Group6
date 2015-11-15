@@ -31,7 +31,7 @@ function updateClock ( )
   document.getElementById("clock").firstChild.nodeValue = currentTimeString;
 
 
-  document.getElementById("currentSchedule") = currentTimeString;
+  //document.getElementById("currentSchedule") = currentTimeString;
 
 }
 
@@ -50,25 +50,6 @@ function updateAlert (x) {
   console.log("Moment: " + mydate);
 
   var currentTime = new Date ( );
- 
-  
-
-  $.ajax({
-    type: 'post',
-    url: 'updatetime.php',
-    data: {'time' : mydate,
-            'status' : logstatus},
-    
-    success: function (data) {
-      console.log(data);
-    }
-  });
-
-
-
-
-
-
 
   var currentHours = currentTime.getHours ( );
   var currentMinutes = currentTime.getMinutes ( );
@@ -93,6 +74,19 @@ function updateAlert (x) {
   document.getElementById("alertBox").firstChild.nodeValue = "You Clocked " + status + " At ";
   document.getElementById("time").firstChild.nodeValue = currentTimeString;
   document.getElementById("alertBox").style.display = "inline-block";
+
+    $.ajax({
+    type: 'post',
+    url: 'updatetime.php',
+    data: {'time' : mydate,
+            'status' : logstatus},
+    
+    success: function (data) {
+      console.log(data);
+    }
+  });
+
+
 }
 
 // -->

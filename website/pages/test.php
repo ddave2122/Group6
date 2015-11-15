@@ -1,38 +1,53 @@
 <?php
 include_once('../include/transporter.php');
-?>
 
-<?php
+if(!isset($_GET["userId"]) || $_GET["userId"] == '') {
+    $msg = "Didn't get it";
+    echo json_encode($msg);
+    return;
+}else {
 
-function rangeWeek($datestr) {
-    date_default_timezone_set(date_default_timezone_get());
-    $dt = strtotime($datestr);
-    $res['start'] = date('N', $dt)==1 ? date('Y-m-d', $dt) : date('Y-m-d', strtotime('last monday', $dt));
-    $res['end'] = date('N', $dt)==7 ? date('Y-m-d', $dt) : date('Y-m-d', strtotime('next sunday', $dt));
-    return $res;
+    $userId = $_GET["userId"];
+    // Create connection
+
+    $transporter = new Transporter();
+    $conn = $transporter->getConnection();
+
+    // Check connection
+    if ($conn->connect_error) {
+        echo "Failed";
+        die("Connection failed: " . $conn->connect_error);
     }
 
-print_r(rangeWeek(date("F jS, Y", strtotime("now")), "\n\n"));
+    $sql = "SELECT * FROM user WHERE id = $userId";
+    
+    $result = $conn->query($sql);
+    //var_dump($result);
+    
 
-$daterange = rangeWeek(date("F jS, Y", strtotime("now")), "\n\n");
+    while ($row = $result->fetch_assoc()) {
+        $empObject = array();
 
-$startkey = "start";
-$endkey = "end";
+        $empObject['id'] = $row['id'];
+        $empObject['fname'] = $row['first_name'];
+        $empObject['lname'] = $row['last_name'];
+        $empObject['username'] = $row['username'];
+        $empObject['password'] = $row['password_hash'];
+        $empObject['statusId'] = $row['is_manager'];
 
-$start = $daterange[$startkey];
-$end = $daterange[$endkey];
+        $employee[] = $empObject;
+    }
+   
+    $responseObject = array();
+    $responseObject['employee'] = $employee;
 
-echo "\n\nStart of Week: " . $start . " End of Week: " . $end;
 
+    $jsonResponse = json_encode($responseObject);
+    //header('Content-Type: application/json');
+    echo $jsonResponse;
+}
+/*
 $userId = "1";
-$startDate = $start;
-$endDate = $end;
-
-echo "<br><br><br>";
-
-$transporter = new Transporter();
-$conn = $transporter->getConnection();
-
 
     $sql = "SELECT user_id, scheduled_clock_in, scheduled_clock_out
     FROM user_schedule
@@ -41,20 +56,15 @@ $conn = $transporter->getConnection();
     AND user_id = '$userId'";
 
 
-
-
-
 $result = $conn->query($sql);
 
 
 //var_dump($result);
 
-
-
 $schedule = array();
 
-$counter = 0;
-
+$counter = 0;*/
+/*
 while($row = $result->fetch_assoc())
 {
     $counter++;
@@ -81,7 +91,7 @@ $responseObject['numberOfRecords'] = $counter;
 $jsonResponse = json_encode($responseObject);
 
 //header('Content-Type: application/json');
-echo($jsonResponse );
+echo($jsonResponse ); */
 
 /*
 echo date("F jS, Y", strtotime("now")), "\n";

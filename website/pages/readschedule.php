@@ -8,9 +8,7 @@ include_once("../include/transporter.php");
 
 
 if(!isset($_REQUEST["userId"]) || !isset($_REQUEST["startDate"]) || !isset($_REQUEST["endDate"]))
-    return;
-echo("Missing Params");
-} 
+    echo("Missing Params");
 
 $userId = $_REQUEST["userId"];
 $startDate = $_REQUEST['startDate'];

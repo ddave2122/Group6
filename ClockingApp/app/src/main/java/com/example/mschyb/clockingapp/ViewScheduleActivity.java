@@ -8,6 +8,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.TextView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ViewScheduleActivity extends AppCompatActivity {
 
@@ -20,8 +24,6 @@ public class ViewScheduleActivity extends AppCompatActivity {
         {
             startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
         }
-        else
-        {}
 
         Button backButton = (Button) findViewById(R.id.backButton);
         //set the onClick listener for the button
@@ -33,15 +35,44 @@ public class ViewScheduleActivity extends AppCompatActivity {
           }
         );//end backButton.setOnClickListener
 
+        //Get schedule
+        Utilities utilities = new Utilities();
+        final HashMap<String, String[]> schedule = utilities.getSchedule(Config.getUserId(), "2010-01-01", "2020-01-01");
+
         CalendarView calendar = (CalendarView) findViewById(R.id.calendarView);
+
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            public void onSelectedDayChange(CalendarView view, int year, int month, int day) {
-            Intent intent= new Intent(getApplicationContext(), ScheduleDateActivity.class);
-            //month++;
-            intent.putExtra("scheduleday",day );
-            intent.putExtra("schedulemonth", month);
-            intent.putExtra("scheduleyear",year);
-            startActivity(intent);
+            public void onSelectedDayChange(CalendarView view, int year, int month, int day)
+            {
+                TextView startTime = (TextView) findViewById(R.id.textView8);
+                TextView endTime = (TextView) findViewById(R.id.textView9);
+                String monthString = "", dayString = "";
+                if(++month < 10)
+                    monthString = "0" + month;
+                else
+                    monthString = String.valueOf(month);
+                if(day < 10)
+                    dayString = "0" + day;
+                else
+                    dayString = String.valueOf(day);
+
+                String key = year + "-" + monthString + "-" + dayString;
+                if(schedule.containsKey(key))
+                {
+                    String[] startAndStopTimes = schedule.get(key);
+                    startTime.setText("Shift Start Time: " + startAndStopTimes[0].split(" ")[1]);
+                    endTime.setText("Shift End Time: " + startAndStopTimes[1].split(" ")[1]);
+                }
+                else
+                {
+                    startTime.setText("Nothing Scheduled!");
+                    endTime.setText("");
+                }
+
+
+
+
+
 
             }
         });

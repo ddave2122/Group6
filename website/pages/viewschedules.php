@@ -27,6 +27,10 @@ include_once('../include/transporter.php');
 	$options = $options.'</select>';
 
 	$conn->close();
+	date_default_timezone_set('America/New_York');
+	$date = date('Y-m-d\TH:i:s');
+
+	
     
 ?>
 	<div class="row">
@@ -43,14 +47,15 @@ include_once('../include/transporter.php');
 				<div class="col-md-4">
 				    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 				      <label class="control-label">Start Date & Time:</label>
-				        <input class="form-control viewBox" type="datetime-local" id="startDate" name="startDate" >
+				        <?php echo '<input class="form-control viewBox" type="datetime-local" id="startDate" name="startDate" value="'.$date.'">';?>
 				     </div>
 			    </div>
 
 			    <div class="col-md-4">
 				    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 				      <label class="control-label">End Date & Time:</label>
-				        <input class="form-control viewBox" type="datetime-local" id="endDate" name="endDate" placeholder="" >
+				        <?php echo '<input class="form-control viewBox" type="datetime-local" id="endDate" name="endDate" value="'.$date.'">';?>
+				        
 				     </div>
 			    </div>
 

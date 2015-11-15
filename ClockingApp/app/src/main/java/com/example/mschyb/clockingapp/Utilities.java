@@ -8,6 +8,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -40,52 +41,52 @@ public class Utilities
             try
             {
                 Config.setUserId(Integer.parseInt(jsonObject.get("userid").toString().replace("\"", "")));
+                Config.setIsManager(jsonObject.get("manager").toString().replace("\"", "").equals("1"));
+                Config.setUserFirstName(jsonObject.get("firstname").toString().replace("\"", ""));
                 Config.setEastEndpoint(Double.parseDouble(jsonObject.get("east").toString().replace("\"", "")));
                 Config.setNorthEndpoint(Double.parseDouble(jsonObject.get("north").toString().replace("\"", "")));
                 Config.setSouthEndpoint(Double.parseDouble(jsonObject.get("south").toString().replace("\"", "")));
                 Config.setWestEndpoint(Double.parseDouble(jsonObject.get("west").toString().replace("\"", "")));
-                Config.setIsManager(jsonObject.get("manager").toString().replace("\"", "").equals("1"));
-                Config.setUserFirstName(jsonObject.get("firstname").toString().replace("\"", ""));
             }
             catch(Exception e)
             {
                 Log.e(Config.TAG, "Error when trying to get values from JSON object");
+                return false;
             }
             return true;
         }
         else
             return false;
     }
-    public String[] getSchedule(int userID, String sDate, String eDate) {
+    public HashMap<String, String[]> getSchedule(int userID, String sDate, String eDate) {
         String[] arr = new String[2];
         String params = "userId=" + userID + "&startDate=" + sDate + "&endDate=" + eDate;
         Transporter transporter = new Transporter();
-        transporter.execute(Config.GET_SCHEDULE_ENDPOINT, "GET", params);
+        transporter.execute(Config.GET_SCHEDULE_ENDPOINT, "POST", params);
 
         JsonObject jsonResult = convertStringToJson(readTransporter(transporter));
+        HashMap<String, String[]> resultSet = new HashMap<>();
 
         if(jsonResult == null)
         {
             Log.e(Config.TAG, "Result check is null");
-            arr = null;
-
-        } else {
-
-            //need to check for if there are no query results and return a null array
-            //arr = null;
+            return null;
+        }
+        else
+        {
             JsonArray data = jsonResult.getAsJsonArray("schedule");
             for (JsonElement el:data)
             {
                 JsonObject obj=(JsonObject)el;
-                arr[0]=obj.get("startTime").toString();
-                arr[1]=obj.get("endTime").toString();
+                String key = obj.get("startTime").toString().split(" ")[0].replace("\"", "");
+                String[] clockTimes = {
+                        obj.get("startTime").toString().replace("\"", "")
+                        , obj.get("endTime").toString().replace("\"", "") };
+
+                resultSet.put(key, clockTimes);
             }
-
         }
-       // arr[0] = "2015-06-12 08:00:00";
-        //arr[1] = "2015-06-12 08:00:00";
-        return arr;
-
+        return resultSet;
     }
     public List<String[]>  getHoursWorked(int userID, String sDate, String eDate) {
         List<String[]> stuff= new ArrayList<String[]>();
@@ -121,6 +122,16 @@ public class Utilities
         String params = "userId=" + Config.getUserId() + "&isClockingIn=" + isClockingIn;
         Transporter transporter = new Transporter();
         transporter.execute(Config.LOG_TIME_ENDPOINT, "POST", params);
+    }
+
+
+    public static boolean saveGpsCoordinates(String lat, String lon, String distance)
+    {
+        String params = "userid=" + Config.getUserId() + "&lat=" + lat
+                + "&long=" + lon + "&distance=" + distance;
+        Transporter transporter = new Transporter();
+        transporter.execute(Config.SET_GPS_COORDINATES, "POST", params);
+        return true;
     }
 
 

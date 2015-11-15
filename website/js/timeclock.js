@@ -29,12 +29,46 @@ function updateClock ( )
 
   // Update the time display
   document.getElementById("clock").firstChild.nodeValue = currentTimeString;
+
+
+  document.getElementById("currentSchedule") = currentTimeString;
+
 }
 
 function updateAlert (x) {
   var status = x;
+  
+  if (x == "In"){
+    var logstatus = 1;
+  } else{
+    var logstatus = 0;
+  }
+
+  console.log(logstatus);
+
+  var mydate = moment().format('YYYY-MM-DD HH:mm:ss');
+  console.log("Moment: " + mydate);
 
   var currentTime = new Date ( );
+ 
+  
+
+  $.ajax({
+    type: 'post',
+    url: 'updatetime.php',
+    data: {'time' : mydate,
+            'status' : logstatus},
+    
+    success: function (data) {
+      console.log(data);
+    }
+  });
+
+
+
+
+
+
 
   var currentHours = currentTime.getHours ( );
   var currentMinutes = currentTime.getMinutes ( );

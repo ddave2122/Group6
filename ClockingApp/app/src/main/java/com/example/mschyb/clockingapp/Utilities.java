@@ -90,9 +90,9 @@ public class Utilities
     }
     public List<String[]>  getHoursWorked(int userID, String sDate, String eDate) {
         List<String[]> stuff= new ArrayList<String[]>();
-        String params = "userId=" + userID + "&startDate=" + sDate + "&endDate=" + eDate;
+        String params = "userid=" + userID + "&startdate=" + sDate + "&enddate=" + eDate;
         Transporter transporter = new Transporter();
-        transporter.execute(Config.GET_HOURS_ENDPOINT, "GET", params);
+        transporter.execute(Config.GET_HOURS_ENDPOINT, "POST", params);
 
         JsonObject jsonResult = convertStringToJson(readTransporter(transporter));
 

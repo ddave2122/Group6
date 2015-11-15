@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56bd1e84-0f73-493f-89a7-581458cd6b4c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/website/include/gethoursworked.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/Config.java" afterPath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/Config.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/ViewScheduleActivity.java" afterPath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/ViewScheduleActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/pages/readschedule.php" afterPath="$PROJECT_DIR$/website/pages/readschedule.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/HoursWorkedActivity.java" afterPath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/HoursWorkedActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/Utilities.java" afterPath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/Utilities.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/include/gethoursworked.php" afterPath="$PROJECT_DIR$/website/include/gethoursworked.php" />
     </list>
     <ignored path="Group6.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -162,12 +161,12 @@
       <file leaf-file-name="gethoursworked.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/website/include/gethoursworked.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.31396785" vertical-offset="496" max-vertical-offset="1305">
+            <state vertical-scroll-proportion="0.33250928" vertical-offset="481" max-vertical-offset="1290">
               <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding>
-                <marker date="1447553847071" expanded="true" signature="416:484" placeholder="SELECT sched..user_schedule..." />
-                <marker date="1447553847071" expanded="true" signature="416:485" placeholder="SELECT sched..user_schedule..." />
-                <marker date="1447553847071" expanded="true" signature="416:511" placeholder="SELECT clock..time_logging..." />
+                <marker date="1447561761481" expanded="true" signature="416:484" placeholder="SELECT sched..user_schedule..." />
+                <marker date="1447561761481" expanded="true" signature="416:485" placeholder="SELECT sched..user_schedule..." />
+                <marker date="1447561761481" expanded="true" signature="416:511" placeholder="SELECT clock..time_logging..." />
               </folding>
             </state>
           </provider>
@@ -872,18 +871,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/pages/readschedule.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="1170">
-          <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
-          <folding>
-            <marker date="1447548969665" expanded="true" signature="521:684" placeholder="SELECT user_..user_schedule..." />
-            <marker date="1447548969665" expanded="true" signature="707:898" placeholder="SELECT user_..user_schedule..." />
-            <marker date="1447548969665" expanded="true" signature="1127:1182" placeholder="SELECT first..user..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/pages/flot.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.442211" vertical-offset="6720" max-vertical-offset="7755">
@@ -900,14 +887,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/website/pages/readschedule.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="1170">
+          <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+          <folding>
+            <marker date="1447548969665" expanded="true" signature="521:684" placeholder="SELECT user_..user_schedule..." />
+            <marker date="1447548969665" expanded="true" signature="707:898" placeholder="SELECT user_..user_schedule..." />
+            <marker date="1447548969665" expanded="true" signature="1127:1182" placeholder="SELECT first..user..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/website/include/gethoursworked.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31396785" vertical-offset="496" max-vertical-offset="1305">
+        <state vertical-scroll-proportion="0.33250928" vertical-offset="481" max-vertical-offset="1290">
           <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding>
-            <marker date="1447553847071" expanded="true" signature="416:484" placeholder="SELECT sched..user_schedule..." />
-            <marker date="1447553847071" expanded="true" signature="416:485" placeholder="SELECT sched..user_schedule..." />
-            <marker date="1447553847071" expanded="true" signature="416:511" placeholder="SELECT clock..time_logging..." />
+            <marker date="1447561761481" expanded="true" signature="416:484" placeholder="SELECT sched..user_schedule..." />
+            <marker date="1447561761481" expanded="true" signature="416:485" placeholder="SELECT sched..user_schedule..." />
+            <marker date="1447561761481" expanded="true" signature="416:511" placeholder="SELECT clock..time_logging..." />
           </folding>
         </state>
       </provider>

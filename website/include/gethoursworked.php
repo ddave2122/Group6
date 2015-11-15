@@ -48,7 +48,6 @@ while($row = $result->fetch_assoc())
 {
     if($currentDay != explode(" ", $row['clock_time'])[0])
     {
-        echo("Key: " . $key . "<br>");
         $currentDay = explode(" ", $row['clock_time'])[0];
         $userIsClockedIn = false;
         $resultSet[$previousDay] = round($resultSet[$previousDay] / $conversionRation, 2);

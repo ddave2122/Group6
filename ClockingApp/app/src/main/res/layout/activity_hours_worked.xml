@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Go Back"
-        android:id="@+id/backButton"
+        android:id="@+id/btnBackHrsWrkd"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
     <ScrollView

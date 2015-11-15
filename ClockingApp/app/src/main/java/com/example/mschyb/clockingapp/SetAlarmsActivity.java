@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.ToggleButton;
@@ -66,7 +65,7 @@ public class SetAlarmsActivity extends AppCompatActivity {
 
 
 
-        Button backButton = (Button) findViewById(R.id.backButton);
+        Button backButton = (Button) findViewById(R.id.btnSetAlarms);
         //set the onClick listener for the button
         backButton.setOnClickListener(new View.OnClickListener() {
               @Override

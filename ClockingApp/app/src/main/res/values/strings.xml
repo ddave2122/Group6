@@ -10,4 +10,5 @@
     <string name="title_activity_clock_in_out">ClockInOutActivity</string>
     <string name="title_activity_schedule_date">ScheduleDate</string>
     <string name="signing_into_program">Signing in #8230</string>
+    <string name="title_activity_logout">LogoutActivity</string>
 </resources>

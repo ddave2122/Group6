@@ -1,5 +1,6 @@
 package com.example.mschyb.clockingapp;
 
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -22,6 +23,13 @@ public class EnterAddressActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_address);
         Button gc = (Button) findViewById(R.id.GetAddressCoordinatesButton);
+        Button bk = (Button) findViewById(R.id.btnBkAddress);
+        bk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
+            }
+        });
         gc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,4 +76,5 @@ public class EnterAddressActivity extends AppCompatActivity {
             }
         });
     }
+
 }

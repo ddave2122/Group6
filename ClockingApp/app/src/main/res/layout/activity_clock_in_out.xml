@@ -6,15 +6,6 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.mschyb.clockingapp.ClockInOutActivity">
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Go Back"
-        android:id="@+id/backButton"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
-
 
     <Button
         android:layout_width="wrap_content"
@@ -23,7 +14,6 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/clockoutButton"
         android:onClick="showAlert"
-        android:layout_below="@+id/backButton"
         android:layout_marginTop="75dp" />
 
     <Button
@@ -36,6 +26,13 @@
         android:layout_below="@+id/clockoutButton"
         android:layout_marginTop="25dp"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go Back"
+        android:id="@+id/btnClockInOut"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
 
 </RelativeLayout>

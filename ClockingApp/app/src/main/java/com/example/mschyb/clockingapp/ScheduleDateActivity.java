@@ -10,10 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.text.DateFormat;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class ScheduleDateActivity extends AppCompatActivity {
@@ -34,7 +32,7 @@ public class ScheduleDateActivity extends AppCompatActivity {
         TextView startTimeText = (TextView) findViewById(R.id.startTimeText);
         TextView endTimeText = (TextView) findViewById(R.id.endTimeText);
 
-        Button backButton = (Button) findViewById(R.id.backButton);
+        Button backButton = (Button) findViewById(R.id.btnScDate);
         //set the onClick listener for the button
         backButton.setOnClickListener(new View.OnClickListener() {
               @Override

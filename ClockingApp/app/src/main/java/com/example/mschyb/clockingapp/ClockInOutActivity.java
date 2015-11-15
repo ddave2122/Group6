@@ -80,7 +80,7 @@ public class ClockInOutActivity extends AppCompatActivity {
       });
 
 
-        Button backButton = (Button) findViewById(R.id.backButton);
+        Button backButton = (Button) findViewById(R.id.btnClockInOut);
         //set the onClick listener for the button
         backButton.setOnClickListener(new View.OnClickListener() {
               @Override

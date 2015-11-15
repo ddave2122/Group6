@@ -2,7 +2,6 @@ package com.example.mschyb.clockingapp;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.provider.CalendarContract;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,11 +16,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.mysql.jdbc.Util;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -87,7 +83,7 @@ public class HoursWorkedActivity extends AppCompatActivity {
           }
         );//end submitButton.setOnClickListener
 
-        Button backButton = (Button) findViewById(R.id.backButton);
+        Button backButton = (Button) findViewById(R.id.btnBackHrsWrkd);
         //set the onClick listener for the button
         backButton.setOnClickListener(new View.OnClickListener() {
               @Override

@@ -83,7 +83,7 @@
         android:text="Save Coordinates"
         android:id="@+id/GetAddressCoordinatesButton"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -113,4 +113,12 @@
         android:layout_below="@+id/textView7"
         android:layout_alignParentLeft="true"
         android:phoneNumber="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="go back"
+        android:id="@+id/btnBkAddress"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

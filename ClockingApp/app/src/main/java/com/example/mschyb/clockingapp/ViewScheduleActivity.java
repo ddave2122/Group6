@@ -10,9 +10,7 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.TextView;
 
-import java.text.DateFormatSymbols;
 import java.util.HashMap;
-import java.util.Map;
 
 public class ViewScheduleActivity extends AppCompatActivity {
 
@@ -26,7 +24,7 @@ public class ViewScheduleActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
         }
 
-        Button backButton = (Button) findViewById(R.id.backButton);
+        Button backButton = (Button) findViewById(R.id.btnViewSchedule);
         //set the onClick listener for the button
         backButton.setOnClickListener(new View.OnClickListener() {
               @Override

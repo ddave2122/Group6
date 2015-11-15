@@ -2,9 +2,9 @@
 include_once('transporter.php');
 
 
-$_POST['userid'] = '7';
-$_POST['startdate'] = '2010-01-01';
-$_POST['enddate'] = '2020-01-01';
+//$_POST['userid'] = '7';
+//$_POST['startdate'] = '2010-01-01';
+//$_POST['enddate'] = '2020-01-01';
 
 if(!isset($_POST["userid"]) || !isset($_POST["startdate"]) || !isset($_POST["enddate"]))
     return;

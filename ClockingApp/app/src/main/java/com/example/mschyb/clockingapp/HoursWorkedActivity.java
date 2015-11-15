@@ -41,92 +41,47 @@ public class HoursWorkedActivity extends AppCompatActivity {
 
         Button submitButton = (Button) findViewById(R.id.submitButton);
         submitButton.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                EditText startDateBox = (EditText) findViewById(R.id.startDate);
-                                                String startDate = convertToMysqlDate(startDateBox.getText().toString());
+            @Override
+            public void onClick(View v) {
+                EditText startDateBox = (EditText) findViewById(R.id.startDate);
+                String startDate = convertToMysqlDate(startDateBox.getText().toString());
 
-                                                EditText endDateBox = (EditText) findViewById(R.id.endDate);
-                                                String endDate = convertToMysqlDate(endDateBox.getText().toString());
+                EditText endDateBox = (EditText) findViewById(R.id.endDate);
+                String endDate = convertToMysqlDate(endDateBox.getText().toString());
 
-                                                List<String[]> stuff = new Utilities().getHoursWorked(Config.getUserId(), startDate, endDate);
+                List<String[]> stuff = new Utilities().getHoursWorked(Config.getUserId(), startDate, endDate);
 
-//                  //test data
-//                  List<String[]>  stuff =new ArrayList<>();
-//                  stuff.add(new String[]{"2015-10-11 00:00:00", "8"});
-//                  stuff.add(new String[]{"2015-10-12 00:00:00", "7"});
-//                  stuff.add(new String[]{"2015-10-13 00:00:00", "8"});
-//                  stuff.add(new String[]{"2015-10-14 00:00:00", "7"});
-//                  stuff.add(new String[]{"2015-10-15 00:00:00", "7"});
-//                  stuff.add(new String[]{"2015-10-16 00:00:00", "8"});
-//                  stuff.add(new String[]{"2015-10-17 00:00:00", "7"});
-//                  stuff.add(new String[]{"2015-10-18 00:00:00", "8"});
-//                  stuff.add(new String[]{"2015-10-19 00:00:00", "7"});
-//                  stuff.add(new String[]{"2015-10-20 00:00:00", "7"});
-//                  stuff.add(new String[]{"2015-10-21 00:00:00", "8"});
-//                  stuff.add(new String[]{"2015-10-22 00:00:00", "7"});
-//                  stuff.add(new String[]{"2015-10-23 00:00:00", "8"});
-//                  stuff.add(new String[]{"2015-10-24 00:00:00", "7"});
-//                  stuff.add(new String[]{"2015-10-25 00:00:00", "7"});
-//
-//                  Utilities utilities = new Utilities();
-//                  stuff = utilities.getHoursWorked(Config.getUserId(), startDate, endDate);
+                // reference the table layout
+                TableLayout tbl = (TableLayout) findViewById(R.id.hoursTable);
 
-                                                // reference the table layout
-                                                TableLayout tbl = (TableLayout) findViewById(R.id.hoursTable);
+                for (int i = 0; i < stuff.size(); i++) {
+                    //create new row for table
+                    TableRow newRow = new TableRow(getApplicationContext());
+                    newRow.setLayoutParams(new TableRow.LayoutParams(
+                            TableRow.LayoutParams.MATCH_PARENT,
+                            TableRow.LayoutParams.MATCH_PARENT));
+                    newRow.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.border));
 
-                                                for (int i = 0; i < stuff.size(); i++) {
-                                                    //create new row for table
-                                                    TableRow newRow = new TableRow(getApplicationContext());
-                                                    newRow.setLayoutParams(new TableRow.LayoutParams(
-                                                            TableRow.LayoutParams.MATCH_PARENT,
-                                                            TableRow.LayoutParams.MATCH_PARENT));
-                                                    newRow.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.border));
+                    //If the result is empty
+                    if(stuff.get(i)[0].equals(""))
+                        continue;
 
-                                                    for (int j = 0; j < 2; j++) {
+                    for (int j = 0; j < 2; j++) {
 
-                                                        //Create date textview and add to row
-                                                        TextView tv = new TextView(getApplicationContext());
-                                                        tv.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.border));
+                        //Create date textview and add to row
+                        TextView tv = new TextView(getApplicationContext());
+                        tv.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.border));
 
-                                                        //The API returns the date pre-formatted
-                                                        tv.setText(stuff.get(i)[j]);
-                                                        tv.setTextColor(Color.BLACK);
-                                                        tv.setGravity(Gravity.CENTER);
-                                                        newRow.addView(tv);
-                                                    }
-
-                            //The API returns the date pre-formatted
-//                          //If text is date format date and get rid of time, else just add to row
-//                          if(j==0)
-//                          {
-//
-//                              try {
-//                                  SimpleDateFormat parseFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//                                  SimpleDateFormat printFormat = new SimpleDateFormat("MM-dd-yyyy");
-//
-//                                  Date startDateTime = parseFormat.parse((stuff.get(i))[j]);
-//                                  tv.setText(printFormat.format(startDateTime));
-//                              }catch(ParseException e)
-//                              {
-//                                  e.printStackTrace();
-//                              }
-//                              tv.setText(stuff.get(i)[j]);
-//                          }
-//                          else
-//                          {
-//                              tv.setText((stuff.get(i))[j]);
-//                          }
-//
-//                          tv.setTextColor(Color.BLACK);
-//                          tv.setGravity(Gravity.CENTER);
-//                          newRow.addView(tv);
-//
-//                      }
-                                                    // add row to table
-                                                    tbl.addView(newRow);
-                                                }
-                                                tbl.setVisibility(View.VISIBLE);
+                        //The API returns the date pre-formatted
+                        tv.setText(stuff.get(i)[j]);
+                        tv.setTextColor(Color.BLACK);
+                        tv.setGravity(Gravity.CENTER);
+                        newRow.addView(tv);
+                    }
+                    // add row to table
+                    tbl.addView(newRow);
+                }
+                tbl.setVisibility(View.VISIBLE);
 
               }
           }

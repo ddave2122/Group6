@@ -9,7 +9,10 @@ import com.google.gson.JsonParser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
 public class Utilities
@@ -105,12 +108,18 @@ public class Utilities
             //need to check for if there are no query results and return a null array
             //stuff = null;
 
-            JsonArray data = jsonResult.getAsJsonArray("schedule");
-            for (JsonElement el:data)
-            {
-                JsonObject obj=(JsonObject)el;
-                stuff.add(new String[]{obj.get("date").toString(), obj.get("hours").toString() });
+            Set<Map.Entry<String,JsonElement>> entrySet=jsonResult.entrySet();
+            for(Map.Entry<String,JsonElement> entry : entrySet){
+                stuff.add(new String[]{entry.getKey(), entry.getValue().toString()});
             }
+
+//
+//            JsonArray data = jsonResult.getAsJsonArray();
+//            for (JsonElement el:data)
+//            {
+//                JsonObject obj=(JsonObject)el;
+//                stuff.add(new String[]{obj.get("date").toString(), obj.get("hours").toString() });
+//            }
 
         }
         return stuff;

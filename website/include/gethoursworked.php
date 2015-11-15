@@ -17,7 +17,12 @@ $endDate = $_POST['enddate'];
 $transporter = new Transporter();
 $conn = $transporter->getConnection();
 
-$query = "SELECT clock_time, is_clocking_in FROM time_logging WHERE user_id = $userId ORDER BY clock_time;";
+$query = "SELECT clock_time, is_clocking_in
+            FROM time_logging
+            WHERE user_id = $userId
+            AND clock_time > '$startDate'
+            AND clock_time < '$endDate'
+            ORDER BY clock_time;";
 
 $result = $conn->query($query);
 

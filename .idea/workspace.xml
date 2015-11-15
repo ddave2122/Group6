@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56bd1e84-0f73-493f-89a7-581458cd6b4c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/Config.java" afterPath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/Config.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/HoursWorkedActivity.java" afterPath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/HoursWorkedActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/Utilities.java" afterPath="$PROJECT_DIR$/ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/Utilities.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/include/gethoursworked.php" afterPath="$PROJECT_DIR$/website/include/gethoursworked.php" />
@@ -137,13 +136,9 @@
       <file leaf-file-name="readschedule.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/pages/readschedule.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="1170">
-              <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
-              <folding>
-                <marker date="1447548969665" expanded="true" signature="521:684" placeholder="SELECT user_..user_schedule..." />
-                <marker date="1447548969665" expanded="true" signature="707:898" placeholder="SELECT user_..user_schedule..." />
-                <marker date="1447548969665" expanded="true" signature="1127:1182" placeholder="SELECT first..user..." />
-              </folding>
+            <state vertical-scroll-proportion="-9.807693" vertical-offset="30" max-vertical-offset="1215">
+              <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -161,12 +156,12 @@
       <file leaf-file-name="gethoursworked.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/website/include/gethoursworked.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33250928" vertical-offset="481" max-vertical-offset="1290">
-              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.40667492" vertical-offset="31" max-vertical-offset="1365">
+              <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
               <folding>
-                <marker date="1447561761481" expanded="true" signature="416:484" placeholder="SELECT sched..user_schedule..." />
-                <marker date="1447561761481" expanded="true" signature="416:485" placeholder="SELECT sched..user_schedule..." />
-                <marker date="1447561761481" expanded="true" signature="416:511" placeholder="SELECT clock..time_logging..." />
+                <marker date="1447563448476" expanded="true" signature="416:508" placeholder="SELECT sched..user_schedule..." />
+                <marker date="1447563448476" expanded="true" signature="416:509" placeholder="SELECT sched..user_schedule..." />
+                <marker date="1447563448476" expanded="true" signature="416:629" placeholder="SELECT clock..time_logging..." />
               </folding>
             </state>
           </provider>
@@ -495,11 +490,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="147" max-vertical-offset="705">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <marker date="1447548969665" expanded="true" signature="521:684" placeholder="SELECT user_..user_schedule..." />
-            <marker date="1447548969665" expanded="true" signature="707:898" placeholder="SELECT user_..user_schedule..." />
-            <marker date="1447548969665" expanded="true" signature="1127:1182" placeholder="SELECT first..user..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -889,24 +880,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/website/pages/readschedule.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="1170">
-          <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
-          <folding>
-            <marker date="1447548969665" expanded="true" signature="521:684" placeholder="SELECT user_..user_schedule..." />
-            <marker date="1447548969665" expanded="true" signature="707:898" placeholder="SELECT user_..user_schedule..." />
-            <marker date="1447548969665" expanded="true" signature="1127:1182" placeholder="SELECT first..user..." />
-          </folding>
+        <state vertical-scroll-proportion="-9.807693" vertical-offset="30" max-vertical-offset="1215">
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/include/gethoursworked.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33250928" vertical-offset="481" max-vertical-offset="1290">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.40667492" vertical-offset="31" max-vertical-offset="1365">
+          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
           <folding>
-            <marker date="1447561761481" expanded="true" signature="416:484" placeholder="SELECT sched..user_schedule..." />
-            <marker date="1447561761481" expanded="true" signature="416:485" placeholder="SELECT sched..user_schedule..." />
-            <marker date="1447561761481" expanded="true" signature="416:511" placeholder="SELECT clock..time_logging..." />
+            <marker date="1447563448476" expanded="true" signature="416:508" placeholder="SELECT sched..user_schedule..." />
+            <marker date="1447563448476" expanded="true" signature="416:509" placeholder="SELECT sched..user_schedule..." />
+            <marker date="1447563448476" expanded="true" signature="416:629" placeholder="SELECT clock..time_logging..." />
           </folding>
         </state>
       </provider>

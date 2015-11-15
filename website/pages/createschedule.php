@@ -23,6 +23,9 @@ include_once('../include/transporter.php');
         $options = $options.'<option id="empId" value="'.$row['id'].'">'.$row['last_name'].', '.$row['first_name'].'</option>';
 	}
 
+    date_default_timezone_set('America/New_York');
+    $date = date('Y-m-d\TH:i:s');
+
 	$conn->close();
     
 ?>
@@ -47,25 +50,25 @@ include_once('../include/transporter.php');
         	for($i = 0; $i < 7; $i++){
         		switch ($i){
         			case "0":
-        				$day = "Sunday";
-        				break;
-        			case "1":
         				$day = "Monday";
         				break;
-        			case "2":
+        			case "1":
         				$day = "Tuesday";
         				break;
-        			case "3":
+        			case "2":
         				$day = "Wednesday";
         				break;
-        			case "4":
+        			case "3":
         				$day = "Thursday";
         				break;
-        			case "5":
+        			case "4":
         				$day = "Friday";
         				break;
-        			case "6":
+        			case "5":
         				$day = "Saturday";
+        				break;
+        			case "6":
+        				$day = "Sunday";
         				break;					
         			default:
         				$day = "";
@@ -89,14 +92,14 @@ include_once('../include/transporter.php');
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label">Start Date:</label>
-							        <input class="form-control" type="datetime-local" id="startdate'.$i.'" name="startdate" required="true">
+							        <input class="form-control" type="datetime-local" id="startdate'.$i.'" name="startdate" value="'.$date.'" required="true">
 							     </div>
 						    </div>
 
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label">End Date:</label>
-							        <input class="form-control" type="datetime-local" id="enddate'.$i.'" name="enddate" placeholder="" required="true">
+							        <input class="form-control" type="datetime-local" id="enddate'.$i.'" name="enddate" value="'.$date.'" required="true">
 							     </div>
 						    </div>
 
@@ -107,6 +110,9 @@ include_once('../include/transporter.php');
         	}
         	
         ?>
+        </div>
+        <div id="submitScheduleMsg" class="text-center" style="margin-bottom:10px;display:none;">
+            <h3>Schedule updated successfully.</h3>
         </div>
        <div class="row">
        		<div class="col-md-4">
@@ -134,28 +140,28 @@ include_once('../include/transporter.php');
         	for($i = 0; $i < 7; $i++){
         		switch ($i){
         			case "0":
-        				$day = "Sunday";
-        				break;
-        			case "1":
-        				$day = "Monday";
-        				break;
-        			case "2":
-        				$day = "Tuesday";
-        				break;
-        			case "3":
-        				$day = "Wednesday";
-        				break;
-        			case "4":
-        				$day = "Thursday";
-        				break;
-        			case "5":
-        				$day = "Friday";
-        				break;
-        			case "6":
-        				$day = "Saturday";
-        				break;					
-        			default:
-        				$day = "";
+                        $day = "Monday";
+                        break;
+                    case "1":
+                        $day = "Tuesday";
+                        break;
+                    case "2":
+                        $day = "Wednesday";
+                        break;
+                    case "3":
+                        $day = "Thursday";
+                        break;
+                    case "4":
+                        $day = "Friday";
+                        break;
+                    case "5":
+                        $day = "Saturday";
+                        break;
+                    case "6":
+                        $day = "Sunday";
+                        break;                  
+                    default:
+                        $day = "";
         		}
 
         		echo '
@@ -176,14 +182,14 @@ include_once('../include/transporter.php');
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label">Start Date:</label>
-							        <input class="form-control" type="datetime-local" id="startdate'.$i.'" name="startdate" placeholder="" required="true">
+							        <input class="form-control" type="datetime-local" id="startdate'.$i.'" name="startdate" value="'.$date.'" required="true">
 							     </div>
 						    </div>
 
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label">End Date:</label>
-							        <input class="form-control" type="datetime-local" id="enddate'.$i.'" name="enddate" placeholder="" required="true">
+							        <input class="form-control" type="datetime-local" id="enddate'.$i.'" name="enddate"  value="'.$date.'" required="true">
 							     </div>
 						    </div>
 
@@ -194,6 +200,9 @@ include_once('../include/transporter.php');
         	}
         	
         ?>
+        </div>
+        <div id="submitScheduleMsg" class="text-center" style="margin-bottom:10px;display:none;">
+            <h3>Schedule updated successfully.</h3>
         </div>
        <div class="row">
        		<div class="col-md-4">
@@ -221,28 +230,28 @@ include_once('../include/transporter.php');
         	for($i = 0; $i < 7; $i++){
         		switch ($i){
         			case "0":
-        				$day = "Sunday";
-        				break;
-        			case "1":
-        				$day = "Monday";
-        				break;
-        			case "2":
-        				$day = "Tuesday";
-        				break;
-        			case "3":
-        				$day = "Wednesday";
-        				break;
-        			case "4":
-        				$day = "Thursday";
-        				break;
-        			case "5":
-        				$day = "Friday";
-        				break;
-        			case "6":
-        				$day = "Saturday";
-        				break;					
-        			default:
-        				$day = "";
+                        $day = "Monday";
+                        break;
+                    case "1":
+                        $day = "Tuesday";
+                        break;
+                    case "2":
+                        $day = "Wednesday";
+                        break;
+                    case "3":
+                        $day = "Thursday";
+                        break;
+                    case "4":
+                        $day = "Friday";
+                        break;
+                    case "5":
+                        $day = "Saturday";
+                        break;
+                    case "6":
+                        $day = "Sunday";
+                        break;                  
+                    default:
+                        $day = "";
         		}
 
         		echo '
@@ -263,14 +272,14 @@ include_once('../include/transporter.php');
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label">Start Date:</label>
-							        <input class="form-control" type="datetime-local" id="startdate'.$i.'" name="startdate" placeholder="" required="true">
+							        <input class="form-control" type="datetime-local" id="startdate'.$i.'" name="startdate" value="'.$date.'" required="true">
 							     </div>
 						    </div>
 
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label">End Date:</label>
-							        <input class="form-control" type="datetime-local" id="enddate'.$i.'" name="enddate" placeholder="" required="true">
+							        <input class="form-control" type="datetime-local" id="enddate'.$i.'" name="enddate" value="'.$date.'" required="true">
 							     </div>
 						    </div>
 
@@ -281,6 +290,9 @@ include_once('../include/transporter.php');
         	}
         	
         ?>
+        </div>
+        <div id="submitScheduleMsg" class="text-center" style="margin-bottom:10px;display:none;">
+            <h3>Schedule updated successfully.</h3>
         </div>
        <div class="row">
        		<div class="col-md-4">
@@ -308,28 +320,28 @@ include_once('../include/transporter.php');
         	for($i = 0; $i < 7; $i++){
         		switch ($i){
         			case "0":
-        				$day = "Sunday";
-        				break;
-        			case "1":
-        				$day = "Monday";
-        				break;
-        			case "2":
-        				$day = "Tuesday";
-        				break;
-        			case "3":
-        				$day = "Wednesday";
-        				break;
-        			case "4":
-        				$day = "Thursday";
-        				break;
-        			case "5":
-        				$day = "Friday";
-        				break;
-        			case "6":
-        				$day = "Saturday";
-        				break;					
-        			default:
-        				$day = "";
+                        $day = "Monday";
+                        break;
+                    case "1":
+                        $day = "Tuesday";
+                        break;
+                    case "2":
+                        $day = "Wednesday";
+                        break;
+                    case "3":
+                        $day = "Thursday";
+                        break;
+                    case "4":
+                        $day = "Friday";
+                        break;
+                    case "5":
+                        $day = "Saturday";
+                        break;
+                    case "6":
+                        $day = "Sunday";
+                        break;                  
+                    default:
+                        $day = "";
         		}
 
         		echo '
@@ -350,14 +362,14 @@ include_once('../include/transporter.php');
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label">Start Date:</label>
-							        <input class="form-control" type="datetime-local" id="startdate'.$i.'" name="startdate" placeholder="" required="true">
+							        <input class="form-control" type="datetime-local" id="startdate'.$i.'" name="startdate" value="'.$date.'" required="true">
 							     </div>
 						    </div>
 
 						    <div class="col-md-4">
 							    <div class="form-group" style="padding-left:15px;padding-right:15px;">
 							      <label class="control-label">End Date:</label>
-							        <input class="form-control" type="datetime-local" id="enddate'.$i.'" name="enddate" placeholder="" required="true">
+							        <input class="form-control" type="datetime-local" id="enddate'.$i.'" name="enddate" value="'.$date.'" required="true">
 							     </div>
 						    </div>
 
@@ -368,6 +380,9 @@ include_once('../include/transporter.php');
         	}
         	
         ?>
+        </div>
+        <div id="submitScheduleMsg" class="text-center" style="margin-bottom:10px;display:none;">
+            <h3>Schedule updated successfully.</h3>
         </div> 
        <div class="row">
        		<div class="col-md-4">
@@ -383,9 +398,7 @@ include_once('../include/transporter.php');
 
     </div>
 
-    <div id="submitScheduleMsg" class="text-center" style="margin-bottom:100px;display:none;">
-        <h3>Schedule updated successfully.</h3>
-    </div>
+    
 
 </div>
 

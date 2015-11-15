@@ -60,4 +60,13 @@
         android:layout_below="@+id/clockButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="enter Address"
+        android:id="@+id/enterAddressButton"
+        android:layout_below="@+id/helloText"
+        android:layout_alignStart="@+id/viewScheduleButton"
+        android:visibility="invisible" />
 </RelativeLayout>

@@ -24,6 +24,7 @@ public class ClockInOutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
 
+        Config.setUserIsLoggedIn(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clock_in_out);
 
@@ -38,24 +39,23 @@ public class ClockInOutActivity extends AppCompatActivity {
         clockOutButton.setOnClickListener(new View.OnClickListener() {
 
 
-          public void onClick(View v) {
+            public void onClick(View v) {
 
-              //For testing purposes comment bottom if statement block out and uncomment these two lines
-              //Utilities.clockUser(0);
-              //showClockOutAlert(null);
+                //For testing purposes comment bottom if statement block out and uncomment these two lines
+                //Utilities.clockUser(0);
+                //showClockOutAlert(null);
 
-              if (Config.isUserIsLoggedIn()) {
-                  Utilities Util = new Utilities();
-                  Util.clockUser(0);
-                  showClockOutAlert(null);
-                  clockOutCheck = true;
-                  Config.setUserIsLoggedIn(false);
+                if (Config.isUserIsLoggedIn()) {
+                    Utilities Util = new Utilities();
+                    Util.clockUser(0);
+                    showClockOutAlert(null);
+                    clockOutCheck = true;
+                    Config.setUserIsLoggedIn(false);
 
-              }
-              else
-                  clockOutCheckAlert(null);
+                } else
+                    clockOutCheckAlert(null);
 
-          }
+            }
         });
         Button clockInButton = (Button) findViewById(R.id.clockinButton);
         clockInButton.setOnClickListener(new View.OnClickListener() {

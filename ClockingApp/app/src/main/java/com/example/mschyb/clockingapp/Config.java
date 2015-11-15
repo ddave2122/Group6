@@ -8,6 +8,7 @@ public class Config
     public final static String LOG_TIME_ENDPOINT = ENDPOINT + "pages/logtime.php";
     public final static String GET_SCHEDULE_ENDPOINT = ENDPOINT + "pages/readschedule.php";
     public final static String GET_HOURS_ENDPOINT = ENDPOINT + "";
+    public final static String SET_GPS_COORDINATES = ENDPOINT + "include/setgpslocation.php";
 
     //GPS bounding box
     private static double eastEndpoint = 0;

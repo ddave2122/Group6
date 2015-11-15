@@ -47,6 +47,7 @@ if(empty($_SESSION['access_granted']) || (!empty($_SESSION['access_granted']) &&
 <div id="wrapper">
 
     <?php include_once("../include/topnavbar.php"); ?>
+    
 
     <div id="page-wrapper">
         <div class="row">

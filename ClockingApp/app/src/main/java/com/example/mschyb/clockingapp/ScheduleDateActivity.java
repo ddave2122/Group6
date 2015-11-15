@@ -15,6 +15,7 @@ import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 public class ScheduleDateActivity extends AppCompatActivity {
 
@@ -51,7 +52,7 @@ public class ScheduleDateActivity extends AppCompatActivity {
         {
             String month="";
             String sDate="", eDate="";
-            String[] times= new String[2];
+            HashMap<String, String[]> times= new HashMap<String, String[]>();
             Date startDateTime=new Date();
             Date endDateTime=new Date();
 
@@ -59,22 +60,20 @@ public class ScheduleDateActivity extends AppCompatActivity {
             dateText.setText(month + " " + extras.getInt("scheduleday") + ", " + extras.getInt("scheduleyear"));
             dateText.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 
-            sDate=extras.getInt("scheduleyear")+"-"+extras.getInt("schedulemonth")+"-"+extras.getInt("scheduleday") +" 00:00:00";
-            eDate=extras.getInt("scheduleyear")+"-"+extras.getInt("schedulemonth")+"-"+(extras.getInt("scheduleday")+1) +" 00:00:00";
+            sDate=extras.getInt("scheduleyear")+"-"+extras.getInt("schedulemonth")+"-"+extras.getInt("scheduleday");
+            eDate=extras.getInt("scheduleyear")+"-"+extras.getInt("schedulemonth")+"-"+(extras.getInt("scheduleday")+1);
 
-           //hard coding id until login set id is finished
-           // Config.setUserId(2);
 
-            times =new  Utilities().getSchedule(Config.getUserId(),sDate,eDate);//SaveSharedPreference.getUserID(getApplicationContext()), sDate,eDate);
+            times = new Utilities().getSchedule(Config.getUserId(),sDate,eDate);
 
-            if(times!=null) {
-
+            if(times.containsKey(sDate))
+            {
                 try {
-                    SimpleDateFormat parseFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    SimpleDateFormat parseFormat = new SimpleDateFormat("HH:mm:ss");//"yyyy-MM-dd HH:mm:ss");
                     SimpleDateFormat printFormat = new SimpleDateFormat("h:mm a");
-
-                    startDateTime = parseFormat.parse(times[0]);
-                    endDateTime = parseFormat.parse(times[1]);
+                    String times2[]=times.get(sDate);
+                    startDateTime = parseFormat.parse(times2[0]);
+                    endDateTime = parseFormat.parse(times2[1]);
 
                     startTimeText.setText("Shift Start Time: " + printFormat.format(startDateTime));
                     endTimeText.setText("Shift End Time: " + printFormat.format(endDateTime));
@@ -84,6 +83,7 @@ public class ScheduleDateActivity extends AppCompatActivity {
             }
             else
             {
+
                 startTimeText.setText("Not Scheduled Today");
                 endTimeText.setText("");
             }

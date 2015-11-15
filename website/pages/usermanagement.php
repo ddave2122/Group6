@@ -1,10 +1,16 @@
 <?php include_once("../include/header.php"); ?>
 
-<ul class="nav nav-pills nav-justified">
-  <li class="active"><a data-toggle="pill" href="#view">View Employees</a></li>
-  <li><a data-toggle="pill" href="#add">Add Employees</a></li>
-  
-</ul>
+<script type="text/javascript"> 
+
+</script>
+
+<div>
+	<ul class="nav nav-pills nav-justified"  id="tabs">
+	  <li class="active"><a data-toggle="pill" href="#view">View Employees</a></li>
+	  <li><a data-toggle="pill" href="#add">Add Employees</a></li>
+	  
+	</ul>
+</div>
 
 <div class="tab-content tab-content-pane">
   <div id="view" class="tab-pane fade in active">
@@ -135,7 +141,7 @@
 	  </form>
   	</div>
 
-  	<div id="submitMsg" class="text-center" style="display:none;">
+  	<div id="submitMsg" class="text-center" style="display:none;padding-bottom:50px;">
   		<h3>New employee created successfully.</h3>
   	</div>
 

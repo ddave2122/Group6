@@ -24,10 +24,17 @@ public class Transporter extends AsyncTask<String, String, String>{
         {
             URL url = new URL(uri[0]);
             Map<String,Object> params = new LinkedHashMap<>();
+
             for(String item : uri[2].split("&"))
             {
                 params.put(item.split("=")[0], item.split("=")[1]);
             }
+
+            if(uri[1].equals("GET"))
+            {
+                //TODO
+            }
+
 
             StringBuilder postData = new StringBuilder();
             for (Map.Entry<String,Object> param : params.entrySet()) {

@@ -76,6 +76,22 @@ public class HomeScreenActivity extends AppCompatActivity {
           }
         );//end viewScheduleButton.setOnClickListener
 
+        Button setLocation = (Button) findViewById(R.id.enterAddressButton);
+        setLocation.setOnClickListener(new View.OnClickListener() {
+                                           @Override
+                                           public void onClick(View v) {
+//                                               Config.setUserId(0);
+//                                               Config.setUserFirstName("");
+                                               startActivity(new Intent(getApplicationContext(), EnterAddressActivity.class));
+                                           }
+                                       }
+        );//end viewScheduleButton.setOnClickListener
+        if(Config.isManager())
+            setLocation.setVisibility(0);
+
+        else
+            setLocation.setVisibility(View.INVISIBLE);
+
     }
     @Override
     public void onResume() {

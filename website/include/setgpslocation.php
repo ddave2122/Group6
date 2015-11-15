@@ -1,10 +1,9 @@
 <?php
-
 include_once('transporter.php');
 include_once('geolocation.php');
 
 if (!isset($_POST['userid']) || !isset($_POST['lat']) || !isset($_POST['long']) || !isset($_POST['distance']))
-    return;
+    echo "Missing Params";
 
 //$_POST['userid'] = '1';
 //$_POST['lat'] = '40.5187154';
@@ -22,10 +21,10 @@ $edison = GeoLocation::fromDegrees($gpslat, $gpslong);
 $coordinates = $edison->boundingCoordinates($distance,  6371.01);
 
 //	print_r($coordinates);
-$south = $coordinates[0]->degLat . " \n";        //South
-$west = $coordinates[0]->degLon . " \n";       //West
-$north = $coordinates[1]->degLat . " \n";        //North
-$east = $coordinates[1]->degLon . " \n";       //East
+$south = $coordinates[0]->degLat;        //South
+$west = $coordinates[0]->degLon;       //West
+$north = $coordinates[1]->degLat;        //North
+$east = $coordinates[1]->degLon;       //East
 
 $transporter = new Transporter();
 $conn = $transporter->getConnection();
@@ -34,5 +33,5 @@ $conn = $transporter->getConnection();
 $sql = "CALL set_gps('$userId', '$north', '$east', '$south', '$west');";
 
 $stmt = $conn->query($sql);
-echo($stmt);
-return;
+echo($sql);
+echo 1;

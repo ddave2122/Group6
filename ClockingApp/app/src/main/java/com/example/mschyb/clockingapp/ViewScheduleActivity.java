@@ -8,6 +8,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.TextView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ViewScheduleActivity extends AppCompatActivity {
 
@@ -20,8 +24,6 @@ public class ViewScheduleActivity extends AppCompatActivity {
         {
             startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
         }
-        else
-        {}
 
         Button backButton = (Button) findViewById(R.id.backButton);
         //set the onClick listener for the button
@@ -33,16 +35,20 @@ public class ViewScheduleActivity extends AppCompatActivity {
           }
         );//end backButton.setOnClickListener
 
-        CalendarView calendar = (CalendarView) findViewById(R.id.calendarView);
-        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            public void onSelectedDayChange(CalendarView view, int year, int month, int day) {
-            Intent intent= new Intent(getApplicationContext(), ScheduleDateActivity.class);
-            //month++;
-            intent.putExtra("scheduleday",day );
-            intent.putExtra("schedulemonth", month);
-            intent.putExtra("scheduleyear",year);
-            startActivity(intent);
+        //Get schedule
+       // Utilities utilities = new Utilities();
+        //final HashMap<String, String[]> schedule = utilities.getSchedule(Config.getUserId(), "2010-01-01", "2020-01-01");
 
+        CalendarView calendar = (CalendarView) findViewById(R.id.calendarView);
+
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            public void onSelectedDayChange(CalendarView view, int year, int month, int day)
+            {
+               Intent intent = new Intent(getApplicationContext(), ScheduleDateActivity.class);
+                intent.putExtra("scheduleyear", year);
+                intent.putExtra("scheduleday",day);
+                intent.putExtra("schedulemonth",month);
+                startActivity(intent);
             }
         });
 

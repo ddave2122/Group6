@@ -38,7 +38,6 @@
         android:text="Cancel Alarm"
         android:layout_centerHorizontal="true"
         android:id="@+id/cancelButton"
-        android:onClick="cancelAlarm"
         android:layout_toRightOf="@+id/alarmToggle"
         android:layout_below="@+id/alarmTimePicker" />
 

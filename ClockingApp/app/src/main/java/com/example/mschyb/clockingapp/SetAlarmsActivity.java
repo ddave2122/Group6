@@ -47,6 +47,16 @@ public class SetAlarmsActivity extends AppCompatActivity {
         else
         {}
 
+        Button cancelButton = (Button) findViewById(R.id.cancelButton);
+        //set the onClick listener for the button
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
+              }
+          }
+        );
+
 
         alarmTimePicker = (TimePicker) findViewById(R.id.alarmTimePicker);
         alarmTextView = (TextView) findViewById(R.id.alarmText);
@@ -61,7 +71,11 @@ public class SetAlarmsActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
+                  Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
+                  PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 1253, intent, 0);
+                  AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                  alarmManager.cancel(pendingIntent);
+
               }
           }
         );//end backButton.setOnClickListener

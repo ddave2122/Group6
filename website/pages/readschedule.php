@@ -2,17 +2,17 @@
 include_once("../include/transporter.php");
 
 //only for testing
-//$_GET['userId'] = "2";
-//$_GET['startDate'] = "2010-01-01 00:00:00";
-//$_GET['endDate'] = "2020-01-01 00:00:00";
+//$_REQUEST['userId'] = "2";
+//$_REQUEST['startDate'] = "2010-01-01 00:00:00";
+//$_REQUEST['endDate'] = "2020-01-01 00:00:00";
 
 
-if(!isset($_GET["userId"]) || !isset($_GET["startDate"]) || !isset($_GET["endDate"]))
-    return;
+if(!isset($_REQUEST["userId"]) || !isset($_REQUEST["startDate"]) || !isset($_REQUEST["endDate"]))
+    echo("Missing Params");
 
-$userId = $_GET["userId"];
-$startDate = $_GET['startDate'];
-$endDate = $_GET['endDate'];
+$userId = $_REQUEST["userId"];
+$startDate = $_REQUEST['startDate'];
+$endDate = $_REQUEST['endDate'];
 
 $transporter = new Transporter();
 $conn = $transporter->getConnection();

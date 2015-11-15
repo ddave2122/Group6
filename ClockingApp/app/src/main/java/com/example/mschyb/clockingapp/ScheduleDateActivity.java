@@ -38,18 +38,22 @@ public class ScheduleDateActivity extends AppCompatActivity {
         Button backButton = (Button) findViewById(R.id.backButton);
         //set the onClick listener for the button
         backButton.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                  startActivity(new Intent(getApplicationContext(), ViewScheduleActivity.class));
-              }
-          }
+                                          @Override
+                                          public void onClick(View v) {
+                                              startActivity(new Intent(getApplicationContext(), ViewScheduleActivity.class));
+                                          }
+                                      }
         );//end backButton.setOnClickListener
 
 
 
         Bundle extras = getIntent().getExtras();
+
         if(extras!=null)
         {
+            //dateText.setText(getMonthForInt(extras.getInt("scheduledMonth")-1) + " " + extras.getInt("scheduledDay") + ", " + extras.getInt("scheduledYear"));
+            //dateText.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+
             String month="";
             String sDate="", eDate="";
             HashMap<String, String[]> times= new HashMap<String, String[]>();
@@ -63,13 +67,12 @@ public class ScheduleDateActivity extends AppCompatActivity {
             sDate=extras.getInt("scheduleyear")+"-"+extras.getInt("schedulemonth")+"-"+extras.getInt("scheduleday");
             eDate=extras.getInt("scheduleyear")+"-"+extras.getInt("schedulemonth")+"-"+(extras.getInt("scheduleday")+1);
 
-
             times = new Utilities().getSchedule(Config.getUserId(),sDate,eDate);
 
             if(times.containsKey(sDate))
             {
                 try {
-                    SimpleDateFormat parseFormat = new SimpleDateFormat("HH:mm:ss");//"yyyy-MM-dd HH:mm:ss");
+                    SimpleDateFormat parseFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//"yyyy-MM-dd HH:mm:ss");
                     SimpleDateFormat printFormat = new SimpleDateFormat("h:mm a");
                     String times2[]=times.get(sDate);
                     startDateTime = parseFormat.parse(times2[0]);
@@ -77,6 +80,12 @@ public class ScheduleDateActivity extends AppCompatActivity {
 
                     startTimeText.setText("Shift Start Time: " + printFormat.format(startDateTime));
                     endTimeText.setText("Shift End Time: " + printFormat.format(endDateTime));
+
+//                    new SimpleDateFormat("hh:mm a").format(new Date("1/12/2011 16:00:00"))
+
+//                    startTimeText.setText("Shift Start Time: " + parseFormat.format(new Date("1/12/2011 " + times[0])));
+  //                  endTimeText.setText("Shift End Time: " + parseFormat.format(new Date("1/12/2011 " + times[1])));
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -90,7 +99,7 @@ public class ScheduleDateActivity extends AppCompatActivity {
         }
         else
         {
-            dateText.setText("No date chosen, please go back and choose date");
+           dateText.setText("No date chosen, please go back and choose date");
             startTimeText.setText("");
             endTimeText.setText("");
         }

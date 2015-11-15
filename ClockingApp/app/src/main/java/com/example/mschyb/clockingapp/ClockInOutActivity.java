@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
-import java.text.DateFormat;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -66,6 +66,7 @@ public class ClockInOutActivity extends AppCompatActivity {
            // Utilities.clockUser(1);
             //showClockInAlert(null);
 
+
             if(clockOutCheck) {
                 Utilities Util = new Utilities();
                 Util.clockUser(1);
@@ -76,7 +77,6 @@ public class ClockInOutActivity extends AppCompatActivity {
 
             else
                 clockInCheckAlert(null);
-
 
         }
       });

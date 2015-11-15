@@ -55,12 +55,12 @@ public class ScheduleDateActivity extends AppCompatActivity {
             Date startDateTime=new Date();
             Date endDateTime=new Date();
 
-            month = getMonthForInt(extras.getInt("schedulemonth"));
-            dateText.setText(month + " " + extras.getInt("scheduleday") + ", " + extras.getInt("scheduleyear"));
+            month = getMonthForInt(extras.getInt("scheduledMonth")-1);
+            dateText.setText(month + " " + extras.getInt("scheduledDay") + ", " + extras.getInt("scheduledYear"));
             dateText.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 
-            sDate=extras.getInt("scheduleyear")+"-"+extras.getInt("schedulemonth")+"-"+extras.getInt("scheduleday") +" 00:00:00";
-            eDate=extras.getInt("scheduleyear")+"-"+extras.getInt("schedulemonth")+"-"+(extras.getInt("scheduleday")+1) +" 00:00:00";
+            sDate=String.valueOf(extras.getInt("startTime"));
+            eDate=String.valueOf(extras.getInt("endTime"));
 
            //hard coding id until login set id is finished
            // Config.setUserId(2);
@@ -76,8 +76,8 @@ public class ScheduleDateActivity extends AppCompatActivity {
                     startDateTime = parseFormat.parse(times[0]);
                     endDateTime = parseFormat.parse(times[1]);
 
-                    startTimeText.setText("Shift Start Time: " + printFormat.format(startDateTime));
-                    endTimeText.setText("Shift End Time: " + printFormat.format(endDateTime));
+                    startTimeText.setText("Shift Start Time: " + sDate);
+                    endTimeText.setText("Shift End Time: " + eDate);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.TextView;
 
+import java.text.DateFormatSymbols;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,9 +45,13 @@ public class ViewScheduleActivity extends AppCompatActivity {
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int day)
             {
+                //Only used for testing
                 TextView startTime = (TextView) findViewById(R.id.textView8);
+                startTime.setVisibility(View.INVISIBLE);
                 TextView endTime = (TextView) findViewById(R.id.textView9);
-                String monthString = "", dayString = "";
+                endTime.setVisibility(View.INVISIBLE);
+
+                String monthString, dayString;
                 if(++month < 10)
                     monthString = "0" + month;
                 else
@@ -57,17 +62,19 @@ public class ViewScheduleActivity extends AppCompatActivity {
                     dayString = String.valueOf(day);
 
                 String key = year + "-" + monthString + "-" + dayString;
+                Intent intent= new Intent(getApplicationContext(), ScheduleDateActivity.class);
+
                 if(schedule.containsKey(key))
                 {
                     String[] startAndStopTimes = schedule.get(key);
-                    startTime.setText("Shift Start Time: " + startAndStopTimes[0].split(" ")[1]);
-                    endTime.setText("Shift End Time: " + startAndStopTimes[1].split(" ")[1]);
+                    intent.putExtra("startTime", startAndStopTimes[0].split(" ")[1]);
+                    intent.putExtra("endTime", startAndStopTimes[1].split(" ")[1]);
+                    intent.putExtra("scheduledYear", year);
+                    intent.putExtra("scheduledMonth", month);
+                    intent.putExtra("scheduledDay", day);
                 }
-                else
-                {
-                    startTime.setText("Nothing Scheduled!");
-                    endTime.setText("");
-                }
+
+                startActivity(intent);
 
 
 

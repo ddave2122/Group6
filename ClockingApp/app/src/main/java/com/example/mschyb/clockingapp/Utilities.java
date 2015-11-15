@@ -41,11 +41,16 @@ public class Utilities
         }
         if(userId != null)
         {
-            try
-            {
+            try {
                 Config.setUserId(Integer.parseInt(jsonObject.get("userid").toString().replace("\"", "")));
                 Config.setIsManager(jsonObject.get("manager").toString().replace("\"", "").equals("1"));
                 Config.setUserFirstName(jsonObject.get("firstname").toString().replace("\"", ""));
+            }
+            catch(Exception e) {
+                return false;
+            }
+            try
+            {
                 Config.setEastEndpoint(Double.parseDouble(jsonObject.get("east").toString().replace("\"", "")));
                 Config.setNorthEndpoint(Double.parseDouble(jsonObject.get("north").toString().replace("\"", "")));
                 Config.setSouthEndpoint(Double.parseDouble(jsonObject.get("south").toString().replace("\"", "")));
@@ -54,7 +59,6 @@ public class Utilities
             catch(Exception e)
             {
                 Log.e(Config.TAG, "Error when trying to get values from JSON object");
-                return false;
             }
             return true;
         }
@@ -177,6 +181,40 @@ public class Utilities
             return null;
         }
         return  jsonResult;
+    }
+
+    public HashMap<String, String> getUsers()
+    {
+
+//        String[] arr = new String[2];
+//        String params = "userId=" + userID + "&startDate=" + sDate + "&endDate=" + eDate;
+//        Transporter transporter = new Transporter();
+//        transporter.execute(Config.GET_SCHEDULE_ENDPOINT, "POST", params);
+//
+//        JsonObject jsonResult = convertStringToJson(readTransporter(transporter));
+//        HashMap<String, String[]> resultSet = new HashMap<>();
+//
+//        if(jsonResult == null)
+//        {
+//            Log.e(Config.TAG, "Result check is null");
+//            return null;
+//        }
+//        else
+//        {
+//            JsonArray data = jsonResult.getAsJsonArray("schedule");
+//            for (JsonElement el:data)
+//            {
+//                JsonObject obj=(JsonObject)el;
+//                String key = obj.get("startTime").toString().split(" ")[0].replace("\"", "");
+//                String[] clockTimes = {
+//                        obj.get("startTime").toString().replace("\"", "")
+//                        , obj.get("endTime").toString().replace("\"", "") };
+//
+//                resultSet.put(key, clockTimes);
+//            }
+//        }
+//        return resultSet;
+        return null;
     }
 
 }

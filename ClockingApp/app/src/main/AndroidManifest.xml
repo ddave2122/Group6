@@ -71,6 +71,8 @@
 
         <receiver android:name=".AlarmReceiver" />
 
+        <activity android:name=".CreateSchedule" >
+        </activity>
     </application>
 
 </manifest>

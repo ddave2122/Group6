@@ -21,7 +21,7 @@ public class Config
     private static String userFirstName;
     private static int userId;
 
-    private static boolean userIsLoggedIn;
+    private static boolean userIsLoggedIn = false;
     private static boolean isManager;
 
     public static boolean isUserIsLoggedIn() {

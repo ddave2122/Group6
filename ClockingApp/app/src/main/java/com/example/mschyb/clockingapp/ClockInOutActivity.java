@@ -17,14 +17,10 @@ import java.util.Calendar;
 
 public class ClockInOutActivity extends AppCompatActivity {
 
-    public static boolean clockOutCheck = false;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
 
-        Config.setUserIsLoggedIn(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clock_in_out);
 
@@ -49,7 +45,6 @@ public class ClockInOutActivity extends AppCompatActivity {
                     Utilities Util = new Utilities();
                     Util.clockUser(0);
                     showClockOutAlert(null);
-                    clockOutCheck = true;
                     Config.setUserIsLoggedIn(false);
 
                 } else
@@ -67,14 +62,12 @@ public class ClockInOutActivity extends AppCompatActivity {
             //showClockInAlert(null);
 
 
-            if(clockOutCheck) {
+            if(!Config.isUserIsLoggedIn()) {
                 Utilities Util = new Utilities();
                 Util.clockUser(1);
                 showClockInAlert(null);
-                clockOutCheck = false;
                 Config.setUserIsLoggedIn(true);
             }
-
             else
                 clockInCheckAlert(null);
 
@@ -82,7 +75,7 @@ public class ClockInOutActivity extends AppCompatActivity {
       });
 
 
-        Button backButton = (Button) findViewById(R.id.backButton);
+        Button backButton = (Button) findViewById(R.id.btnClockInOut);
         //set the onClick listener for the button
         backButton.setOnClickListener(new View.OnClickListener() {
               @Override

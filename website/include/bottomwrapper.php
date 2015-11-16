@@ -248,15 +248,34 @@
         url: 'edituser.php',
         data: $('#editForm').serialize(),
         success: function (data) {
-          console.log(data);
           $("#editForm")[0].reset();
-          $("#submitMsg").show();
+
+          if(data == "UPDATED"){
+            alert("WORKED");
+            $("#submitMsg").show();
+          } else if (data == "DELETED"){
+            $("#deleteMsg").show();
+          }
+
+          console.log(data);
+          
+          
         }
       });
 
     });
 
-    
+    $("#removeuser").change(function() {
+        if(this.checked) {
+          document.getElementById("editUser").className = "btn btn-lg btn-danger";
+          document.getElementById("editUser").innerHTML = "Remove";
+        }
+
+        if(!this.checked){
+          document.getElementById("editUser").className = "btn btn-lg btn-primary";
+          document.getElementById("editUser").innerHTML = "Update";
+        }
+    });
     
 
     /* End User Management Form Handler */

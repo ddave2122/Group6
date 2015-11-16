@@ -173,16 +173,30 @@ include_once('../include/transporter.php');
 			</select>
 	      </div>
 	      <div class="col-md-4"></div>
-	    </div> 
+	    </div>
+	    
+	    <div class="form-group">
+	    	<div class="col-md-2"></div> 
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-3 checkbox">
+                <label id="removeBox" style="font-size:20px;">
+                    <input id="removeuser" name="removeuser" type="checkbox"style="margin-top:8px;" value="">Remove Employee
+                </label>
+            </div>
+            <div class="col-md-4"></div>
+        </div> 
 
 	    <div id="submitMsg" class="text-center" style="display:none;padding-bottom:50px;">
 	  		<h3>Employee Record Updated Successfully.</h3>
+	  	</div>
+	  	<div id="deleteMsg" class="text-center" style="display:none;padding-bottom:50px;">
+	  		<h3>Employee Record Deleted Successfully.</h3>
 	  	</div>
 
 	    <div class="form-group">
 	      <div class="col-md-5"></div>
 	      <div class="col-md-3">
-	        <button type="submit" name="editUser" class="btn btn-lg btn-primary" style="width:100%;">Submit</button>
+	        <button type="submit" name="editUser" id="editUser" class="btn btn-lg btn-primary" style="width:100%;">Update</button>
 	      </div>
 	      <div class="col-md-4"></div>
 	    </div>

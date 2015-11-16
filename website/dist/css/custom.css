@@ -145,3 +145,9 @@ box-shadow: 0 1px 5px #888;
 .page-header, .navbar-brand, #side-menu, #welcome, #tag {
 	font-family: 'Righteous', cursive;
 }
+
+@media screen and (max-width: 768px) {
+    .navbar-top-links .dropdown-user {
+		right: auto !important;
+	}
+}

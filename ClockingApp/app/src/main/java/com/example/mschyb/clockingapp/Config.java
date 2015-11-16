@@ -9,6 +9,7 @@ public class Config
     public final static String GET_SCHEDULE_ENDPOINT = ENDPOINT + "pages/readschedule.php";
     public final static String GET_HOURS_ENDPOINT = ENDPOINT + "include/gethoursworked.php";
     public final static String SET_GPS_COORDINATES = ENDPOINT + "include/setgpslocation.php";
+    public final static String GET_USERS_ENDPOINT = ENDPOINT + "include/getusers.php";
 
     //GPS bounding box
     private static double eastEndpoint = 0;

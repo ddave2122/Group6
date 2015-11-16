@@ -26,12 +26,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="checkcredentials.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="checkcredentials.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/include/checkcredentials.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3633218" vertical-offset="0" max-vertical-offset="578">
-              <caret line="14" column="108" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="108" />
+            <state vertical-scroll-proportion="-0.5769231" vertical-offset="0" max-vertical-offset="540">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getusers.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/website/include/getusers.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4822335" vertical-offset="0" max-vertical-offset="591">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding>
+                <marker date="1447632246229" expanded="true" signature="154:237" placeholder="SELECT first..user..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -52,6 +64,7 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/website/include/checkcredentials.php" />
+        <option value="$PROJECT_DIR$/website/include/getusers.php" />
       </list>
     </option>
   </component>
@@ -175,6 +188,26 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
     <list size="0" />
     <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
       <option name="MAIN_CLASS_NAME" />
@@ -255,9 +288,19 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/website/include/checkcredentials.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3633218" vertical-offset="0" max-vertical-offset="578">
-          <caret line="14" column="108" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="108" />
+        <state vertical-scroll-proportion="-0.5769231" vertical-offset="0" max-vertical-offset="540">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/include/getusers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4822335" vertical-offset="0" max-vertical-offset="591">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <marker date="1447632246229" expanded="true" signature="154:237" placeholder="SELECT first..user..." />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -31,7 +31,7 @@ $dend = date("F jS, Y", $d2);
 echo '<div id="currentSchedule">';
 echo '<h3 style="text-align:center;padding-bottom:60px;">Week<br><br>' . $dstart . ' -  <i class="fa fa-calendar" id="cal"></i>  - ' . $dend .'</h3>';
 
-$userId = "11";
+$userId = $_SESSION['id'];
 $startDate = $start;
 $endDate = $end;
 

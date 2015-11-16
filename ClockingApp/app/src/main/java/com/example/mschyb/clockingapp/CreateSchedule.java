@@ -9,6 +9,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class CreateSchedule extends AppCompatActivity {
 
@@ -18,10 +19,23 @@ public class CreateSchedule extends AppCompatActivity {
         setContentView(R.layout.activity_create_schedule);
 
         final Spinner dropdown = (Spinner)findViewById(R.id.spinner1);
-//        HashMap<String, String> items = new Utilities.getUsers();
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-//                this, android.R.layout.simple_spinner_dropdown_item, items);
-//        dropdown.setAdapter(adapter);
+        HashMap<String, String> items = new Utilities().getUsers();
+
+        if(items != null)
+        {
+            String[] userNames = new String[items.size()];
+            int counter = 0;
+            for(Map.Entry<String, String> entry : items.entrySet())
+            {
+                userNames[counter++] = entry.getKey();
+            }
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                    this, android.R.layout.simple_spinner_dropdown_item, userNames);
+            dropdown.setAdapter(adapter);
+        }
+
+
 
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

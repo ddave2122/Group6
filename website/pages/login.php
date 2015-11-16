@@ -83,7 +83,7 @@
             </div>
            
             <div class="col-md-4">
-                <img id="tagimg" src="../img/androidrun2.png" class="img-responsive">
+                <img id="tagimg" src="../img/androidrun2white.png" class="img-responsive">
             </div>
         </div>
         
@@ -109,7 +109,7 @@
                     var msg = document.getElementById("homeTagline").innerHTML;
                     if (msg == "Developed By: Group 6<br> Chyeeka, David, Dhara, Jimmy, Sheldon"){
                         var text = "Forgot To Set Your Alarm For Work? Get Clocking App Now!";
-                        var pic = "../img/androidrun2.png";
+                        var pic = "../img/androidrun2white.png";
                     } else {
                         var text = "Developed By: Group 6<br> Chyeeka, David, Dhara, Jimmy, Sheldon";
                         var pic = "../img/phone.png";

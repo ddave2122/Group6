@@ -15,7 +15,7 @@ include_once('../include/transporter.php');
 <div>
 	<ul class="nav nav-pills nav-justified"  id="tabs">
 	  <li class="active"><a data-toggle="pill" href="#view">View Employees</a></li>
-	  <li><a data-toggle="pill" href="#edit">Edit Employees</a></li>
+	  <li><a data-toggle="pill" href="#edit">Edit Employee Profile</a></li>
 	  <li><a data-toggle="pill" href="#add">Add Employees</a></li>
 	  
 	</ul>
@@ -83,7 +83,7 @@ include_once('../include/transporter.php');
 
   <div id="edit" class="tab-pane fade">
   	
-    <h3 class="text-center">Edit Employees</h3>
+    <h3 class="text-center">Edit Employee Profile</h3>
    
 
     <div class="panel-body">

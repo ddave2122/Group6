@@ -242,7 +242,7 @@
     $('#editForm').on('submit', function (e) {
 
       e.preventDefault();
-      
+    
       $.ajax({
         type: 'post',
         url: 'edituser.php',
@@ -255,6 +255,9 @@
       });
 
     });
+
+    
+    
 
     /* End User Management Form Handler */
 

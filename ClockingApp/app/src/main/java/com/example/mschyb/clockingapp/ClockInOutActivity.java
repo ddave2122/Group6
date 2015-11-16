@@ -24,6 +24,7 @@ public class ClockInOutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
 
+        Config.setUserIsLoggedIn(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clock_in_out);
 
@@ -38,49 +39,50 @@ public class ClockInOutActivity extends AppCompatActivity {
         clockOutButton.setOnClickListener(new View.OnClickListener() {
 
 
-          public void onClick(View v) {
+            public void onClick(View v) {
 
-             // Utilities.clockUser(0);
-             // showClockOutAlert(null);
+                //For testing purposes comment bottom if statement block out and uncomment these two lines
+                //Utilities.clockUser(0);
+                //showClockOutAlert(null);
 
-              if (!clockOutCheck) {
-                  Utilities Util = new Utilities();
-                  Utilities.clockUser(1);
-                  showClockOutAlert(null);
-                  clockOutCheck = true;
+                if (Config.isUserIsLoggedIn()) {
+                    Utilities Util = new Utilities();
+                    Util.clockUser(0);
+                    showClockOutAlert(null);
+                    clockOutCheck = true;
+                    Config.setUserIsLoggedIn(false);
 
-              }
-              else
-                  clockOutCheckAlert(null);
+                } else
+                    clockOutCheckAlert(null);
 
-
-          }
+            }
         });
         Button clockInButton = (Button) findViewById(R.id.clockinButton);
         clockInButton.setOnClickListener(new View.OnClickListener() {
 
         public void onClick(View v) {
 
-          //Utilities.clockUser(1);
-          //showClockInAlert(null);
+            //For testing purposes comment bottom if statement block out and uncomment these two lines
+           // Utilities.clockUser(1);
+            //showClockInAlert(null);
+
 
             if(clockOutCheck) {
                 Utilities Util = new Utilities();
-                Utilities.clockUser(0);
+                Util.clockUser(1);
                 showClockInAlert(null);
                 clockOutCheck = false;
+                Config.setUserIsLoggedIn(true);
             }
 
             else
                 clockInCheckAlert(null);
 
-
-
         }
       });
 
 
-        Button backButton = (Button) findViewById(R.id.btnClockInOut);
+        Button backButton = (Button) findViewById(R.id.backButton);
         //set the onClick listener for the button
         backButton.setOnClickListener(new View.OnClickListener() {
               @Override
@@ -119,7 +121,7 @@ public class ClockInOutActivity extends AppCompatActivity {
         Calendar c = Calendar.getInstance();
         System.out.println("Current time =&gt; "+c.getTime());
 
-        SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat df = new SimpleDateFormat("h:mm:ss a");
         String formattedDate = df.format(c.getTime());
         myAlert.setMessage("You have successfully clocked out for lunch at " + formattedDate)
                 .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
@@ -139,7 +141,7 @@ public class ClockInOutActivity extends AppCompatActivity {
         Calendar c = Calendar.getInstance();
         System.out.println("Current time =&gt; "+c.getTime());
 
-        SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat df = new SimpleDateFormat("h:mm:ss a");
         String formattedDate = df.format(c.getTime());
         myAlert.setMessage("You have successfully clocked in from lunch at " + formattedDate)
                 .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
@@ -155,7 +157,7 @@ public class ClockInOutActivity extends AppCompatActivity {
     }
     public void clockInCheckAlert(View view){
         AlertDialog.Builder myAlert = new AlertDialog.Builder(this);
-        myAlert.setMessage("You need to be clocked out first!")
+        myAlert.setMessage("You have not clocked out for lunch yet, you must clock out for lunch first")
                 .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -168,7 +170,7 @@ public class ClockInOutActivity extends AppCompatActivity {
     }
     public void clockOutCheckAlert(View view){
         AlertDialog.Builder myAlert = new AlertDialog.Builder(this);
-        myAlert.setMessage("You are already clocked out!")
+        myAlert.setMessage("You have not clocked in for your shift yet so you can not clock out for lunch")
                 .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

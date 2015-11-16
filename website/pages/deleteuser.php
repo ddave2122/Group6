@@ -27,21 +27,12 @@ if (isset($_POST['empid']) && isset($_POST['firstname']) && isset($_POST['lastna
 	} 
 	echo "Connected successfully";
 
-	if ($status == "Manager"){
-		$Mstatus = 1;
-		$Estatus = 0;
-	}else {
-		$Mstatus = 0;
-		$Estatus = 1;
-	}
 	
-	$sql = "UPDATE $dbname.user SET first_name='$fname', 
-	last_name='$lname', username='$user', password_hash='$pass', 
-	is_manager='$Mstatus', is_employee='$Estatus' 
-	WHERE id='$id'";
+	
+	$sql = "DELETE FROM user WHERE id='$id'";
 
 	if ($conn->query($sql) === TRUE) {
-	    echo "New Record Created Successfully";
+	    echo "Employee Record Deleted Successfully";
 	} else {
 	    echo "Error: " . $sql . "<br>" . $conn->error;
 	}

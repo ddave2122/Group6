@@ -185,36 +185,28 @@ public class Utilities
 
     public HashMap<String, String> getUsers()
     {
+        String params = "";
+        Transporter transporter = new Transporter();
+        transporter.execute(Config.GET_USERS_ENDPOINT, "GET", params);
 
-//        String[] arr = new String[2];
-//        String params = "userId=" + userID + "&startDate=" + sDate + "&endDate=" + eDate;
-//        Transporter transporter = new Transporter();
-//        transporter.execute(Config.GET_SCHEDULE_ENDPOINT, "POST", params);
-//
-//        JsonObject jsonResult = convertStringToJson(readTransporter(transporter));
-//        HashMap<String, String[]> resultSet = new HashMap<>();
-//
-//        if(jsonResult == null)
-//        {
-//            Log.e(Config.TAG, "Result check is null");
-//            return null;
-//        }
-//        else
-//        {
-//            JsonArray data = jsonResult.getAsJsonArray("schedule");
-//            for (JsonElement el:data)
-//            {
-//                JsonObject obj=(JsonObject)el;
-//                String key = obj.get("startTime").toString().split(" ")[0].replace("\"", "");
-//                String[] clockTimes = {
-//                        obj.get("startTime").toString().replace("\"", "")
-//                        , obj.get("endTime").toString().replace("\"", "") };
-//
-//                resultSet.put(key, clockTimes);
-//            }
-//        }
-//        return resultSet;
-        return null;
+        JsonObject jsonResult = convertStringToJson(readTransporter(transporter));
+        HashMap<String, String> resultSet = new HashMap<>();
+
+        if(jsonResult == null)
+        {
+            Log.e(Config.TAG, "Result check is null");
+            return null;
+        }
+        else
+        {
+
+            Set<Map.Entry<String,JsonElement>> entrySet=jsonResult.entrySet();
+            for(Map.Entry<String,JsonElement> entry:entrySet){
+                resultSet.put(entry.getKey(), entry.getValue().toString());
+
+            }
+        }
+        return resultSet;
     }
 
 }

@@ -146,8 +146,12 @@ public class SetAlarmsActivity extends AppCompatActivity {
         }
 
 
+
 /*
         Button cancelButton = (Button) findViewById(R.id.btnSetAlarms);
+=======
+        Button backButton = (Button) findViewById(R.id.btnSetAlarms);
+>>>>>>> refs/remotes/origin/master
         //set the onClick listener for the button
         backButton.setOnClickListener(new View.OnClickListener() {
                                           @Override

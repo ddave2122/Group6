@@ -10,9 +10,7 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.TextView;
 
-import java.text.DateFormatSymbols;
 import java.util.HashMap;
-import java.util.Map;
 
 public class ViewScheduleActivity extends AppCompatActivity {
 

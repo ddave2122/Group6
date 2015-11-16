@@ -27,24 +27,55 @@
     $('.nav-tabs > .active').prev('li').find('a').trigger('click');
   });
   /* End Schedule Tabs */
-
- /*$(document).ready(function(){
-        $('#tabs a').click(function (e) {
-        e.preventDefault();
-        $(this).tab('show');
-        //$(this).tab('load');
-        console.log("clicked");
-    });
-});*/
   
-  $(document).ready(function(){
-    $('#button').click(function (e) {
-    e.preventDefault();
-      var currentDate = moment().format("12-1-2012");
-    alert(currentDate);
-    console.log("click");
+  /* Edit Employee Handler*/
+
+  function myFunction(val) {
+
+    var formData = {
+        'userId' : val
+    };
+
+    $.ajax({
+        type        : 'GET', // define the type of HTTP verb we want to use (POST for our form)
+        url         : 'edituserlistener.php', // the url where we want to POST
+        data        : formData, // our data object
+        dataType    : 'json', // what type of data do we expect back from the server
+        encode      : true
+    })
+
+    .done(function(data) {
+      console.log(data); 
+      
+      for(var i =0;i < data.employee.length;i++) {
+        var item = data.employee[i];
+
+        if (item.statusId == 1){
+          var status = "Manager";
+        } else{
+          var status = "Employee";
+        }
+
+        document.getElementById("firstname").value = item.fname;
+        document.getElementById("lastname").value = item.lname;
+        document.getElementById("username").value = item.username;
+        document.getElementById("password").value = item.password;
+        document.getElementById("status").value = status;
+
+      }
+                  
+    })
+
+    // using the fail promise callback
+    .fail(function(data) {
+
+        // show any errors
+        // best to remove for production
+        console.log("FAILURE" + data);
     });
-  });
+
+  }
+ 
 
   /* View Schedule Handler*/
   $(document).ready(function() {
@@ -68,7 +99,7 @@
               url         : 'readschedule.php', // the url where we want to POST
               data        : formData, // our data object
               dataType    : 'json', // what type of data do we expect back from the server
-                          encode          : true
+              encode      : true
           })
               // using the done promise callback
               .done(function(data) {
@@ -198,7 +229,7 @@
       
       $.ajax({
         type: 'post',
-        url: 'manageuser.php',
+        url: 'adduser.php',
         data: $('#addForm').serialize(),
         success: function () {
           $("#addForm")[0].reset();
@@ -207,6 +238,24 @@
       });
 
     });
+
+    $('#editForm').on('submit', function (e) {
+
+      e.preventDefault();
+      
+      $.ajax({
+        type: 'post',
+        url: 'edituser.php',
+        data: $('#editForm').serialize(),
+        success: function (data) {
+          console.log(data);
+          $("#editForm")[0].reset();
+          $("#submitMsg").show();
+        }
+      });
+
+    });
+
     /* End User Management Form Handler */
 
     /* Create Schedule Handler*/

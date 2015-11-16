@@ -7,6 +7,7 @@
     tools:context="com.example.mschyb.clockingapp.SetAlarmsActivity"
     android:id="@+id/alarmsPage">
 
+
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
@@ -22,12 +23,11 @@
         android:layout_height="wrap_content"
         android:text="Alarm On/Off"
         android:id="@+id/alarmToggle"
-
+        android:onClick="onToggleClicked"
         android:checked="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
-    <!--   android:onClick="onToggleClicked"-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,6 +38,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/alarmToggle" />
+
 
     <NumberPicker
         android:layout_width="wrap_content"
@@ -82,6 +83,5 @@
         android:layout_below="@+id/backButton"
         android:layout_alignParentStart="true"
         android:layout_marginTop="57dp" />
-
 
 </RelativeLayout>

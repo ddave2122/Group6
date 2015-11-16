@@ -86,11 +86,29 @@ public class HomeScreenActivity extends AppCompatActivity {
                                            }
                                        }
         );//end viewScheduleButton.setOnClickListener
+
+
+        Button createScheduleButton = (Button) findViewById(R.id.createSchedule);
+        createScheduleButton.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                startActivity(new Intent(getApplicationContext(), CreateSchedule.class));
+                                            }
+                                        }
+        );//end viewScheduleButton.setOnClickListener
+
+
         if(Config.isManager())
+        {
             setLocation.setVisibility(0);
+            createScheduleButton.setVisibility(0);
+        }
 
         else
+        {
             setLocation.setVisibility(View.INVISIBLE);
+            createScheduleButton.setVisibility(View.INVISIBLE);
+        }
 
     }
     @Override

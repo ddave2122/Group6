@@ -141,7 +141,7 @@ public class GPSTrackingService extends Service {
 
                 if(location.getLatitude() > Config.getWestEndpoint()
                         && location.getLatitude() < Config.getEastEndpoint()
-                        && location.getLongitude() > Config.getSouthEndpoint()
+//                        && location.getLongitude() > Config.getSouthEndpoint()
                         && location.getLongitude() < Config.getNorthEndpoint()
                         )
                 {

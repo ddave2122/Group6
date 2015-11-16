@@ -36,13 +36,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getusers.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="getusers.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/include/getusers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4822335" vertical-offset="0" max-vertical-offset="591">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state vertical-scroll-proportion="-5.769231" vertical-offset="0" max-vertical-offset="405">
+              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
               <folding>
-                <marker date="1447632246229" expanded="true" signature="154:237" placeholder="SELECT first..user..." />
+                <marker date="1447632873309" expanded="true" signature="154:237" placeholder="SELECT first..user..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gethoursworked.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/website/include/gethoursworked.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.92385787" vertical-offset="729" max-vertical-offset="1365">
+              <caret line="85" column="23" selection-start-line="85" selection-start-column="23" selection-end-line="85" selection-end-column="23" />
+              <folding>
+                <marker date="1447563719577" expanded="true" signature="422:635" placeholder="SELECT clock..time_logging..." />
               </folding>
             </state>
           </provider>
@@ -296,10 +308,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/website/include/getusers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4822335" vertical-offset="0" max-vertical-offset="591">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state vertical-scroll-proportion="-5.769231" vertical-offset="0" max-vertical-offset="405">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
           <folding>
-            <marker date="1447632246229" expanded="true" signature="154:237" placeholder="SELECT first..user..." />
+            <marker date="1447632873309" expanded="true" signature="154:237" placeholder="SELECT first..user..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/include/gethoursworked.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.92385787" vertical-offset="729" max-vertical-offset="1365">
+          <caret line="85" column="23" selection-start-line="85" selection-start-column="23" selection-end-line="85" selection-end-column="23" />
+          <folding>
+            <marker date="1447563719577" expanded="true" signature="422:635" placeholder="SELECT clock..time_logging..." />
           </folding>
         </state>
       </provider>

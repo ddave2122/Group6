@@ -7,6 +7,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -183,13 +185,34 @@ public class Utilities
         return  jsonResult;
     }
 
+    private JsonArray convertStringToJsonArray(String stringToConvert)
+    {
+        JsonArray jsonResult = null;
+        JsonParser jsonParser = new JsonParser();
+        try
+        {
+            jsonResult = (JsonArray)jsonParser.parse(stringToConvert);
+        }
+        catch (Exception e)
+        {
+            Log.e(Config.TAG, " JSON response cann't be read.." + stringToConvert);
+        }
+
+        if(jsonResult == null)
+        {
+            Log.e(Config.TAG, "Unable to convert string to JsonObject");
+            return null;
+        }
+        return  jsonResult;
+    }
+
     public HashMap<String, String> getUsers()
     {
         String params = "";
         Transporter transporter = new Transporter();
         transporter.execute(Config.GET_USERS_ENDPOINT, "GET", params);
 
-        JsonObject jsonResult = convertStringToJson(readTransporter(transporter));
+        JsonArray jsonResult = convertStringToJsonArray(readTransporter(transporter));
         HashMap<String, String> resultSet = new HashMap<>();
 
         if(jsonResult == null)
@@ -199,12 +222,15 @@ public class Utilities
         }
         else
         {
+            for(int i = 0; i < jsonResult.size(); i++)
+            {
+                Set<Map.Entry<String,JsonElement>> entrySet = jsonResult.get(i).getAsJsonObject().entrySet();
+                for(Map.Entry<String,JsonElement> entry:entrySet){
+                    resultSet.put(entry.getValue().toString(), entry.getKey());
 
-            Set<Map.Entry<String,JsonElement>> entrySet=jsonResult.entrySet();
-            for(Map.Entry<String,JsonElement> entry:entrySet){
-                resultSet.put(entry.getKey(), entry.getValue().toString());
-
+                }
             }
+
         }
         return resultSet;
     }

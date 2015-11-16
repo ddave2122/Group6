@@ -17,5 +17,5 @@ while($row = $result->fetch_assoc())
     $resultSet[] = $item;
 }
 
-
-echo json_encode($resultSet);
+//$highLevelArray = array($resul);
+echo "{" . json_encode($resultSet) . "}";

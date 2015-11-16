@@ -11,107 +11,32 @@
     android:layout_height="match_parent"
     android:gravity="center">
 
-
-    <GridLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="bottom"
-        android:rowCount="15"
-        android:columnCount="1">
-
         <Button
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Go Back"
-            android:id="@+id/btnViewSchedule"
-            android:layout_row="13"
-            android:layout_column="0" />
+            android:id="@+id/backButton"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="right" />
 
-        <FrameLayout
+        <CalendarView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/calendarView"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="right|center_vertical" />
 
-            android:id="@+id/frameLayout"
-            android:layout_alignEnd="@+id/btnBackHrsWrkd"
-            android:layout_below="@+id/btnBackHrsWrkd"
-            android:layout_row="14"
-            android:layout_column="0">
 
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="98dp"
-                android:layout_gravity="bottom|center_horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Shift Start Time: 8:00 am"
-                    android:id="@+id/textView8"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="30dp"
-                    android:layout_below="@+id/dateText"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:visibility="invisible" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Shift End Time: 5:00 pm"
-                    android:id="@+id/textView9"
-                    android:layout_below="@+id/startTimeText"
-                    android:layout_marginTop="15dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:layout_column="17"
-                    android:visibility="invisible" />
-
-                <TextView
-                    android:text="(Click on a date to view schedule for that day)"
-                    android:layout_width="343dp"
-                    android:gravity="center"
-                    android:layout_height="60dp"
-                    android:id="@+id/directions"
-
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="35dp"
-                    android:layout_gravity="top|center"
-                    android:layout_marginBottom="100dp"
-                    android:layout_column="10" />
-
-            </TableLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_gravity="right|top"
-                android:id="@+id/bottomFrameLayout">
-
-            </FrameLayout>
-
-            <CalendarView
-                android:layout_width="match_parent"
-                android:layout_height="305dp"
-                android:id="@+id/calendarView"
-                android:layout_alignParentTop="true"
-                android:layout_alignStart="@+id/frameLayout"
-                android:layout_gravity="left|bottom" />
-
-        </FrameLayout>
-
-    </GridLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="October 25, 2015"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="125dp"
-        android:textSize="32dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="(Click a date to view your schedule)"
+            android:id="@+id/textView"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/calendarView"
+            android:textSize="18dp" />
 
 </LinearLayout>

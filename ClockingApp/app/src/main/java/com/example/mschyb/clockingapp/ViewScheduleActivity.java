@@ -24,7 +24,7 @@ public class ViewScheduleActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), LoginScreenActivity.class));
         }
 
-        Button backButton = (Button) findViewById(R.id.btnViewSchedule);
+        Button backButton = (Button) findViewById(R.id.backButton);
         //set the onClick listener for the button
         backButton.setOnClickListener(new View.OnClickListener() {
               @Override
@@ -35,15 +35,22 @@ public class ViewScheduleActivity extends AppCompatActivity {
         );//end backButton.setOnClickListener
 
         //Get schedule
-        Utilities utilities = new Utilities();
-        final HashMap<String, String[]> schedule = utilities.getSchedule(Config.getUserId(), "2010-01-01", "2020-01-01");
+       // Utilities utilities = new Utilities();
+        //final HashMap<String, String[]> schedule = utilities.getSchedule(Config.getUserId(), "2010-01-01", "2020-01-01");
 
         CalendarView calendar = (CalendarView) findViewById(R.id.calendarView);
 
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int day)
             {
-                //Only used for testing
+
+               Intent intent = new Intent(getApplicationContext(), ScheduleDateActivity.class);
+                intent.putExtra("scheduleyear", year);
+                intent.putExtra("scheduleday",day);
+                intent.putExtra("schedulemonth",month);
+                startActivity(intent);
+
+/*                //Only used for testing
                 TextView startTime = (TextView) findViewById(R.id.textView8);
                 startTime.setVisibility(View.INVISIBLE);
                 TextView endTime = (TextView) findViewById(R.id.textView9);
@@ -73,12 +80,7 @@ public class ViewScheduleActivity extends AppCompatActivity {
                 }
 
                 startActivity(intent);
-
-
-
-
-
-
+*/
             }
         });
 

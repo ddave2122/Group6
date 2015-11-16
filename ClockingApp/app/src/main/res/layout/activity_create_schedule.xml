@@ -28,7 +28,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/linearLayout1"
         android:layout_width="fill_parent"
-        android:layout_height="400dp"
+        android:layout_height="600dp"
         android:orientation="vertical"
         android:gravity="center"
         android:layout_below="@+id/spinner1"
@@ -46,15 +46,49 @@
         <DatePicker
             android:id="@+id/datePicker1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="169dp"
             android:calendarViewShown="false">
         </DatePicker>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Time"
+            android:id="@+id/clockInTimeLabel"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
         <TimePicker
             android:id="@+id/timePicker1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:scaleY="0.85"
+            android:scaleX="0.85"
+            >
         </TimePicker>
+
+        <TimePicker
+            android:id="@+id/timePicker2"
+            android:layout_width="wrap_content"
+            android:layout_height="119dp">
+        </TimePicker>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clock Out Time"
+            android:id="@+id/clockOutTimeLabel"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set Schedule"
+
+            android:id="@+id/setSchedule"
+
+            />
 
     </LinearLayout>
 </RelativeLayout>

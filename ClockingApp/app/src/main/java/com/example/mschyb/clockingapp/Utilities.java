@@ -226,13 +226,24 @@ public class Utilities
             {
                 Set<Map.Entry<String,JsonElement>> entrySet = jsonResult.get(i).getAsJsonObject().entrySet();
                 for(Map.Entry<String,JsonElement> entry:entrySet){
-                    resultSet.put(entry.getValue().toString(), entry.getKey());
+                    resultSet.put(entry.getValue().toString().replace("\"", ""), entry.getKey().replace("\"", ""));
 
                 }
             }
 
         }
         return resultSet;
+    }
+
+    public boolean saveSchedule(String startShift, String endShift, String userId)
+    {
+        String objectToSend = "{\"schedule\":[{\"clockIn\":\""+ startShift + "\"," +
+                "\"clockOut\":\"" + endShift + "\", \"id\":\"" + userId + "\"}]}";
+
+        String params = "id=" + userId + "&schedule=" + objectToSend;
+        Transporter transporter = new Transporter();
+        transporter.execute(Config.SAVE_SCHEDULE_ENDPOINT, "POST", params);
+        return true;
     }
 
 }

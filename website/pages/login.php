@@ -55,7 +55,7 @@
                         <h3 class="panel-title">Sign In</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" action="authlogin.php" method="Post">
+                        <form role="form" action="webauthlogin.php" method="Post">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Username" name="username" type="text" autofocus>

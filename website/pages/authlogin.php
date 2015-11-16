@@ -26,7 +26,7 @@ $opts = array('http' =>
 $baseUrl  = $_SERVER['SERVER_NAME'];
 //This URL might need to be updated depending on the hostname...
 $loginResults = json_decode(file_get_contents(
-        "http://$baseUrl/Group6/website/include/checkcredentials.php"
+        "http://$baseUrl/csc4998/Group6/website/include/checkcredentials.php"
         , false
         , stream_context_create($opts)
         )

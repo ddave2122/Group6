@@ -1,18 +1,31 @@
-<?php include_once("../include/header.php"); ?>
+<?php
+include_once("../include/header.php"); 
+include_once('../include/transporter.php');
 
-<ul class="nav nav-pills nav-justified">
-  <li class="active"><a data-toggle="pill" href="#view">View Employees</a></li>
-  <li><a data-toggle="pill" href="#add">Add Employees</a></li>
-  
-</ul>
+	
+	
+
+    
+	
+
+?>
+
+
+
+<div>
+	<ul class="nav nav-pills nav-justified"  id="tabs">
+	  <li class="active"><a data-toggle="pill" href="#view">View Employees</a></li>
+	  <li><a data-toggle="pill" href="#edit">Edit Employee Profile</a></li>
+	  <li><a data-toggle="pill" href="#add">Add Employees</a></li>
+	  
+	</ul>
+</div>
 
 <div class="tab-content tab-content-pane">
   <div id="view" class="tab-pane fade in active">
   	
 
     <h3 class="text-center">View Employees</h3>
-
-    
 
     <?php
 	    include_once('../../../db.config');
@@ -67,6 +80,136 @@
 	?>
 
   </div>
+
+  <div id="edit" class="tab-pane fade">
+  	
+    <h3 class="text-center">Edit Employee Profile</h3>
+   
+
+    <div class="panel-body">
+	  <form class="form-horizontal row-border" id="editForm">
+	    
+	  	<div class="form-group">
+	      <div class="col-md-2"></div>	
+	      <label class="col-md-3 control-label">Select Employee</label>
+	      <div class="col-md-3">
+	      	<select class="form-control" id="empid" name="empid" onchange="myFunction(this.value)">
+	      	<?php
+
+	      		// Create connection
+			    $transporter = new Transporter();
+			    $conn = $transporter->getConnection();
+
+
+				// Check connection
+				if ($conn->connect_error) {
+				    die("Connection failed: " . $conn->connect_error);
+				}
+
+				$sql = "SELECT * FROM user";
+
+				$result = $conn->query($sql);
+
+				echo '<option id="empId"></option>';
+	
+	      		while ($row = $result->fetch_assoc()) {
+
+	      			echo "hi";
+			        echo '<option id="empId" value="'.$row['id'].'">'.$row['last_name'].', '.$row['first_name'].'</option>';
+				}
+
+				$conn->close();
+	      	?>
+
+	        </select>
+	      
+	      </div>
+	      <div class="col-md-4"></div>
+	    </div>
+
+	    <div class="form-group">
+	      <div class="col-md-2"></div>	
+	      <label class="col-md-3 control-label">First Name</label>
+	      <div class="col-md-3">
+	        <input class="form-control" type="text" name="firstname" id="firstname" placeholder="" required="true">
+	      </div>
+	      <div class="col-md-4"></div>
+	    </div>
+
+	    <div class="form-group">
+	      <div class="col-md-2"></div>	
+	      <label class="col-md-3 control-label">Last Name</label>
+	      <div class="col-md-3">
+	        <input class="form-control" type="text" name="lastname" id="lastname" placeholder="" required="true">
+	      </div>
+	      <div class="col-md-4"></div>
+	    </div>
+
+	    <div class="form-group">
+	      <div class="col-md-2"></div> 	
+	      <label class="col-md-3 control-label">Username</label>
+	      <div class="col-md-3">
+	        <input class="form-control" type="text" name="username" id="username" placeholder="" required="true">
+	      </div>
+	      <div class="col-md-4"></div>
+	    </div>
+
+	    <div class="form-group">
+	      <div class="col-md-2"></div> 
+	      <label class="col-md-3 control-label">Password</label>
+	      <div class="col-md-3">
+	        <input class="form-control" type="password" name="password" id="password" placeholder="" required="true">
+	      </div>
+	      <div class="col-md-4"></div>
+	    </div>
+
+	    <div class="form-group">
+	    	<div class="col-md-2"></div> 
+	      <label class="col-md-3 control-label">Status</label>
+	      <div class="col-md-3">
+	        <select class="form-control" name="status" id="status">
+	          <option>Employee</option>	
+			  <option>Manager</option>
+			</select>
+	      </div>
+	      <div class="col-md-4"></div>
+	    </div>
+	    
+	    <div class="form-group">
+	    	<div class="col-md-2"></div> 
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-3 checkbox">
+                <label id="removeBox" style="font-size:20px;">
+                    <input id="removeuser" name="removeuser" type="checkbox"style="margin-top:8px;" value="">Remove Employee
+                </label>
+            </div>
+            <div class="col-md-4"></div>
+        </div> 
+
+	    <div id="submitMsg" class="text-center" style="display:none;padding-bottom:50px;">
+	  		<h3>Employee Record Updated Successfully.</h3>
+	  	</div>
+	  	<div id="deleteMsg" class="text-center" style="display:none;padding-bottom:50px;">
+	  		<h3>Employee Record Deleted Successfully.</h3>
+	  	</div>
+
+	    <div class="form-group">
+	      <div class="col-md-5"></div>
+	      <div class="col-md-3">
+	        <button type="submit" name="editUser" id="editUser" class="btn btn-lg btn-primary" style="width:100%;">Update</button>
+	      </div>
+	      <div class="col-md-4"></div>
+	    </div>
+	    
+
+	  </form>
+  	</div>
+
+  	
+
+  </div>
+
+
   <div id="add" class="tab-pane fade">
   	
     <h3 class="text-center">Add New Employees</h3>
@@ -135,7 +278,7 @@
 	  </form>
   	</div>
 
-  	<div id="submitMsg" class="text-center" style="display:none;">
+  	<div id="submitMsg" class="text-center" style="display:none;padding-bottom:50px;">
   		<h3>New employee created successfully.</h3>
   	</div>
 

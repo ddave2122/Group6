@@ -29,10 +29,25 @@ function updateClock ( )
 
   // Update the time display
   document.getElementById("clock").firstChild.nodeValue = currentTimeString;
+
+
+  //document.getElementById("currentSchedule") = currentTimeString;
+
 }
 
 function updateAlert (x) {
   var status = x;
+  
+  if (x == "In"){
+    var logstatus = 1;
+  } else{
+    var logstatus = 0;
+  }
+
+  console.log(logstatus);
+
+  var mydate = moment().format('YYYY-MM-DD HH:mm:ss');
+  console.log("Moment: " + mydate);
 
   var currentTime = new Date ( );
 
@@ -59,6 +74,19 @@ function updateAlert (x) {
   document.getElementById("alertBox").firstChild.nodeValue = "You Clocked " + status + " At ";
   document.getElementById("time").firstChild.nodeValue = currentTimeString;
   document.getElementById("alertBox").style.display = "inline-block";
+
+    $.ajax({
+    type: 'post',
+    url: 'updatetime.php',
+    data: {'time' : mydate,
+            'status' : logstatus},
+    
+    success: function (data) {
+      console.log(data);
+    }
+  });
+
+
 }
 
 // -->

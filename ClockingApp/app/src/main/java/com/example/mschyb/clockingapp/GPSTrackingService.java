@@ -146,10 +146,12 @@ public class GPSTrackingService extends Service {
                         )
                 {
                     Utilities.clockUser(1);     //Clock in the user
+                    Config.setUserIsLoggedIn(true);
                 }
                 else
                 {
                     Utilities.clockUser(0);     //Clock out the user
+                    Config.setUserIsLoggedIn(false);
                 }
             }
         }

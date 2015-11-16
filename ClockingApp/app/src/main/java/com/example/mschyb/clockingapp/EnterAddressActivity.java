@@ -1,5 +1,6 @@
 package com.example.mschyb.clockingapp;
 
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -22,6 +23,13 @@ public class EnterAddressActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_address);
         Button gc = (Button) findViewById(R.id.GetAddressCoordinatesButton);
+        Button bk = (Button) findViewById(R.id.btnBkAddress);
+        bk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), HomeScreenActivity.class));
+            }
+        });
         gc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,7 +42,17 @@ public class EnterAddressActivity extends AppCompatActivity {
                 EditText zip = (EditText) findViewById(R.id.editTextZipcode);
                 String address = street.getText().toString() + ", "+city.getText().toString()+", "+state.getText().toString()+" "+zip.getText().toString();
                 List<Address> addresses = null;
+                try
+                {
+                    Thread.sleep(100);
+                }
+                catch(InterruptedException e) {Log.e(Config.TAG, "Error when tryign to sleep");}
                 Geocoder geo = new Geocoder(EnterAddressActivity.this);
+                try
+                {
+                    Thread.sleep(100);
+                }
+                catch(InterruptedException e) {Log.e(Config.TAG, "Error when tryign to sleep");}
                 try {
                     int counter = 0;
                     while(counter < 8)  //Try to get the address several times
@@ -68,4 +86,5 @@ public class EnterAddressActivity extends AppCompatActivity {
             }
         });
     }
+
 }

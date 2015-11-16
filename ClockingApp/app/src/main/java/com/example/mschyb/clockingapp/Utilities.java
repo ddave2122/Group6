@@ -7,9 +7,14 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
 public class Utilities
@@ -38,11 +43,16 @@ public class Utilities
         }
         if(userId != null)
         {
-            try
-            {
+            try {
                 Config.setUserId(Integer.parseInt(jsonObject.get("userid").toString().replace("\"", "")));
                 Config.setIsManager(jsonObject.get("manager").toString().replace("\"", "").equals("1"));
                 Config.setUserFirstName(jsonObject.get("firstname").toString().replace("\"", ""));
+            }
+            catch(Exception e) {
+                return false;
+            }
+            try
+            {
                 Config.setEastEndpoint(Double.parseDouble(jsonObject.get("east").toString().replace("\"", "")));
                 Config.setNorthEndpoint(Double.parseDouble(jsonObject.get("north").toString().replace("\"", "")));
                 Config.setSouthEndpoint(Double.parseDouble(jsonObject.get("south").toString().replace("\"", "")));
@@ -51,7 +61,6 @@ public class Utilities
             catch(Exception e)
             {
                 Log.e(Config.TAG, "Error when trying to get values from JSON object");
-                return false;
             }
             return true;
         }
@@ -90,9 +99,9 @@ public class Utilities
     }
     public List<String[]>  getHoursWorked(int userID, String sDate, String eDate) {
         List<String[]> stuff= new ArrayList<String[]>();
-        String params = "userId=" + userID + "&startDate=" + sDate + "&endDate=" + eDate;
+        String params = "userid=" + userID + "&startdate=" + sDate + "&enddate=" + eDate;
         Transporter transporter = new Transporter();
-        transporter.execute(Config.GET_HOURS_ENDPOINT, "GET", params);
+        transporter.execute(Config.GET_HOURS_ENDPOINT, "POST", params);
 
         JsonObject jsonResult = convertStringToJson(readTransporter(transporter));
 
@@ -105,12 +114,18 @@ public class Utilities
             //need to check for if there are no query results and return a null array
             //stuff = null;
 
-            JsonArray data = jsonResult.getAsJsonArray("schedule");
-            for (JsonElement el:data)
-            {
-                JsonObject obj=(JsonObject)el;
-                stuff.add(new String[]{obj.get("date").toString(), obj.get("hours").toString() });
+            Set<Map.Entry<String,JsonElement>> entrySet=jsonResult.entrySet();
+            for(Map.Entry<String,JsonElement> entry : entrySet){
+                stuff.add(new String[]{entry.getKey(), entry.getValue().toString()});
             }
+
+//
+//            JsonArray data = jsonResult.getAsJsonArray();
+//            for (JsonElement el:data)
+//            {
+//                JsonObject obj=(JsonObject)el;
+//                stuff.add(new String[]{obj.get("date").toString(), obj.get("hours").toString() });
+//            }
 
         }
         return stuff;
@@ -168,6 +183,67 @@ public class Utilities
             return null;
         }
         return  jsonResult;
+    }
+
+    private JsonArray convertStringToJsonArray(String stringToConvert)
+    {
+        JsonArray jsonResult = null;
+        JsonParser jsonParser = new JsonParser();
+        try
+        {
+            jsonResult = (JsonArray)jsonParser.parse(stringToConvert);
+        }
+        catch (Exception e)
+        {
+            Log.e(Config.TAG, " JSON response cann't be read.." + stringToConvert);
+        }
+
+        if(jsonResult == null)
+        {
+            Log.e(Config.TAG, "Unable to convert string to JsonObject");
+            return null;
+        }
+        return  jsonResult;
+    }
+
+    public HashMap<String, String> getUsers()
+    {
+        String params = "";
+        Transporter transporter = new Transporter();
+        transporter.execute(Config.GET_USERS_ENDPOINT, "GET", params);
+
+        JsonArray jsonResult = convertStringToJsonArray(readTransporter(transporter));
+        HashMap<String, String> resultSet = new HashMap<>();
+
+        if(jsonResult == null)
+        {
+            Log.e(Config.TAG, "Result check is null");
+            return null;
+        }
+        else
+        {
+            for(int i = 0; i < jsonResult.size(); i++)
+            {
+                Set<Map.Entry<String,JsonElement>> entrySet = jsonResult.get(i).getAsJsonObject().entrySet();
+                for(Map.Entry<String,JsonElement> entry:entrySet){
+                    resultSet.put(entry.getValue().toString().replace("\"", ""), entry.getKey().replace("\"", ""));
+
+                }
+            }
+
+        }
+        return resultSet;
+    }
+
+    public boolean saveSchedule(String startShift, String endShift, String userId)
+    {
+        String objectToSend = "{\"schedule\":[{\"clockIn\":\""+ startShift + "\"," +
+                "\"clockOut\":\"" + endShift + "\", \"id\":\"" + userId + "\"}]}";
+
+        String params = "id=" + userId + "&schedule=" + objectToSend;
+        Transporter transporter = new Transporter();
+        transporter.execute(Config.SAVE_SCHEDULE_ENDPOINT, "POST", params);
+        return true;
     }
 
 }

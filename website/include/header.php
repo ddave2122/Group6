@@ -18,7 +18,7 @@ if(empty($_SESSION['access_granted']) || (!empty($_SESSION['access_granted']) &&
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Group 6</title>
+    <title>Clocking Web App</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -27,8 +27,10 @@ if(empty($_SESSION['access_granted']) || (!empty($_SESSION['access_granted']) &&
     <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../dist/css/custom.css" rel="stylesheet">
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+
 
     <!-- Custom Fonts -->
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -47,6 +49,7 @@ if(empty($_SESSION['access_granted']) || (!empty($_SESSION['access_granted']) &&
 <div id="wrapper">
 
     <?php include_once("../include/topnavbar.php"); ?>
+    
 
     <div id="page-wrapper">
         <div class="row">

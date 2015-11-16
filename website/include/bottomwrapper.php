@@ -27,7 +27,55 @@
     $('.nav-tabs > .active').prev('li').find('a').trigger('click');
   });
   /* End Schedule Tabs */
+  
+  /* Edit Employee Handler*/
 
+  function myFunction(val) {
+
+    var formData = {
+        'userId' : val
+    };
+
+    $.ajax({
+        type        : 'GET', // define the type of HTTP verb we want to use (POST for our form)
+        url         : 'edituserlistener.php', // the url where we want to POST
+        data        : formData, // our data object
+        dataType    : 'json', // what type of data do we expect back from the server
+        encode      : true
+    })
+
+    .done(function(data) {
+      console.log(data); 
+      
+      for(var i =0;i < data.employee.length;i++) {
+        var item = data.employee[i];
+
+        if (item.statusId == 1){
+          var status = "Manager";
+        } else{
+          var status = "Employee";
+        }
+
+        document.getElementById("firstname").value = item.fname;
+        document.getElementById("lastname").value = item.lname;
+        document.getElementById("username").value = item.username;
+        document.getElementById("password").value = item.password;
+        document.getElementById("status").value = status;
+
+      }
+                  
+    })
+
+    // using the fail promise callback
+    .fail(function(data) {
+
+        // show any errors
+        // best to remove for production
+        console.log("FAILURE" + data);
+    });
+
+  }
+ 
 
   /* View Schedule Handler*/
   $(document).ready(function() {
@@ -43,7 +91,7 @@
               'startDate'             : $('input[name=startDate]').val(),
               'endDate'    : $('input[name=endDate]').val()
           };
-
+          //alert($('input[name=startDate]').val());
           
           // process the form
           $.ajax({
@@ -51,7 +99,7 @@
               url         : 'readschedule.php', // the url where we want to POST
               data        : formData, // our data object
               dataType    : 'json', // what type of data do we expect back from the server
-                          encode          : true
+              encode      : true
           })
               // using the done promise callback
               .done(function(data) {
@@ -63,16 +111,18 @@
                   var day = days[date.getDay()];
                   var d = date.getDay()+1;
                   var y = date.getFullYear();
+                  var currentDate = moment().format();
                   
-
-                  for(var i =0;i < data.schedule.length-1;i++)
+                  counter = 0;
+                  
+                  for(var i =0;i < data.schedule.length;i++)
                   {
                     var item = data.schedule[i];
                     console.log(item.startTime);
-
+                    console.log(item.endTime);
 
                     var start = moment(item.startTime).tz('America/Phoenix').format('YYYY-MM-DD[T]HH:mm:ss');
-                    var end = moment(item.endDate).tz('America/Phoenix').format('YYYY-MM-DD[T]HH:mm:ss');
+                    var end = moment(item.endTime).tz('America/Phoenix').format('YYYY-MM-DD[T]HH:mm:ss');
                     //var date2 = new Date(test).toISOString().substring(0,23);
                    
                     
@@ -115,8 +165,9 @@
                       '</div>';*/
                     
                     console.log(item.startTime + " " + item.endTime);
-                    $("#content").show();
+                   
                   }
+                  $("#content").show(); 
                   console.log(data); 
 
                   // here we will handle errors and validation messages
@@ -125,7 +176,7 @@
                 if ( ! data.success) {
                     
                     // handle errors for name ---------------
-                    if (data.errors.userId) {
+                    if (data.errors.schedule.userId) {
                         alert(data.errors.userId);// add the actual error message under our input
                     }
 
@@ -174,11 +225,11 @@
 
     $('#addForm').on('submit', function (e) {
 
-      e.preventDefault();
+      //e.preventDefault();
       
       $.ajax({
         type: 'post',
-        url: 'manageuser.php',
+        url: 'adduser.php',
         data: $('#addForm').serialize(),
         success: function () {
           $("#addForm")[0].reset();
@@ -187,6 +238,46 @@
       });
 
     });
+
+    $('#editForm').on('submit', function (e) {
+
+      e.preventDefault();
+    
+      $.ajax({
+        type: 'post',
+        url: 'edituser.php',
+        data: $('#editForm').serialize(),
+        success: function (data) {
+          $("#editForm")[0].reset();
+
+          if(data == "UPDATED"){
+            alert("WORKED");
+            $("#submitMsg").show();
+          } else if (data == "DELETED"){
+            $("#deleteMsg").show();
+          }
+
+          console.log(data);
+          
+          
+        }
+      });
+
+    });
+
+    $("#removeuser").change(function() {
+        if(this.checked) {
+          document.getElementById("editUser").className = "btn btn-lg btn-danger";
+          document.getElementById("editUser").innerHTML = "Remove";
+        }
+
+        if(!this.checked){
+          document.getElementById("editUser").className = "btn btn-lg btn-primary";
+          document.getElementById("editUser").innerHTML = "Update";
+        }
+    });
+    
+
     /* End User Management Form Handler */
 
     /* Create Schedule Handler*/
@@ -473,6 +564,7 @@
 <!-- Morris Charts JavaScript -->
 <script src="../bower_components/raphael/raphael-min.js"></script>
 <script src="../bower_components/morrisjs/morris.min.js"></script>
+
 <script src="../js/morris-data.js"></script>
 <script src="../js/moment.js"></script>
 <script src="../js/moment-timezone.js"></script>

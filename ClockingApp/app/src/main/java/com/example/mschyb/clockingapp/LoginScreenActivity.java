@@ -26,8 +26,8 @@ public class LoginScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         //Start the GPS Service
-        Intent intent = new Intent(getApplicationContext(), GPSTrackingService.class);
-        startService(intent);
+        //Intent intent = new Intent(getApplicationContext(), GPSTrackingService.class);
+        //startService(intent);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
@@ -53,10 +53,10 @@ public class LoginScreenActivity extends AppCompatActivity {
                    login = loginET.getText().toString();
                    password = passwordET.getText().toString();
 
-                   //new Utilities().checkCredentials(login, password)
+
                    if (new Utilities().checkCredentials(login, password))
                    {
-//                       Config.setUserId(2);
+                      // Config.setUserId(2);
                        loginError.setText("Success!");
                        Intent intent = new Intent(getApplicationContext(), HomeScreenActivity.class);
                        startActivity(intent);

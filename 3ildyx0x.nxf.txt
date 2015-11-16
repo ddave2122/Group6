@@ -1,0 +1,53 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch DharaSchool
+# Changes to be committed:
+#	deleted:    .idea/Group6.iml
+#	new file:   .idea/compiler.xml
+#	new file:   .idea/copyright/profiles_settings.xml
+#	deleted:    .idea/encodings.xml
+#	new file:   .idea/libraries/gradle_wrapper.xml
+#	new file:   .idea/libraries/libs.xml
+#	modified:   .idea/misc.xml
+#	modified:   .idea/modules.xml
+#	deleted:    .idea/scopes/scope_settings.xml
+#	modified:   .idea/vcs.xml
+#	modified:   .idea/workspace.xml
+#	modified:   ClockingApp/.idea/gradle.xml
+#	deleted:    ClockingApp/.idea/inspectionProfiles/Project_Default.xml
+#	deleted:    ClockingApp/.idea/inspectionProfiles/profiles_settings.xml
+#	modified:   ClockingApp/.idea/vcs.xml
+#	modified:   ClockingApp/app/app.iml
+#	modified:   ClockingApp/app/build.gradle
+#	modified:   ClockingApp/app/src/main/AndroidManifest.xml
+#	modified:   ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/ClockInOutActivity.java
+#	modified:   ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/EnterAddressActivity.java
+#	modified:   ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/HoursWorkedActivity.java
+#	modified:   ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/ScheduleDateActivity.java
+#	modified:   ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/SetAlarmsActivity.java
+#	modified:   ClockingApp/app/src/main/java/com/example/mschyb/clockingapp/ViewScheduleActivity.java
+#	new file:   ClockingApp/app/src/main/res/drawable/clock1.jpg
+#	new file:   ClockingApp/app/src/main/res/drawable/clockdark.jpg
+#	new file:   ClockingApp/app/src/main/res/drawable/clocklight.jpg
+#	new file:   ClockingApp/app/src/main/res/drawable/clocklight1.jpg
+#	new file:   ClockingApp/app/src/main/res/drawable/clocklight2.jpg
+#	modified:   ClockingApp/app/src/main/res/layout/activity_clock_in_out.xml
+#	modified:   ClockingApp/app/src/main/res/layout/activity_enter_address.xml
+#	modified:   ClockingApp/app/src/main/res/layout/activity_hours_worked.xml
+#	modified:   ClockingApp/app/src/main/res/layout/activity_schedule_date.xml
+#	modified:   ClockingApp/app/src/main/res/layout/activity_set_alarms.xml
+#	modified:   ClockingApp/app/src/main/res/layout/activity_view_schedule.xml
+#	new file:   ClockingApp/app/src/main/res/layout/content_logout.xml
+#	new file:   ClockingApp/app/src/main/res/values-v21/TestTheme.xml
+#	new file:   ClockingApp/app/src/main/res/values-v21/styles.xml
+#	new file:   ClockingApp/app/src/main/res/values/TestTheme.xml
+#	modified:   ClockingApp/app/src/main/res/values/dimens.xml
+#	modified:   ClockingApp/app/src/main/res/values/strings.xml
+#	modified:   ClockingApp/app/src/main/res/values/styles.xml
+#	new file:   Group6_ Requirements Functional Specifications.docx
+#
+# Untracked files:
+#	~$MobAppFinalPresent.pptx
+#
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Define a theme using the AppCompat.Light theme as a base theme -->
+    <style name="Theme.TestTheme" parent="Theme.AppCompat.Light">
+        <!-- For Titanium SDK 3.2.x and earlier, use the Holo.Light or Light theme
+        <style name="Theme.MyTheme" parent="@android:style/Theme.Holo.Light">
+        -->
+        <item name="android:windowBackground">@drawable/clocklight</item>
+        <item name="android:textStyle">bold</item>
+        <item name="colorPrimary">#5E978C</item>
+        <item name="colorPrimaryDark">#2F6A5E</item>
+        <item name="colorAccent">#FF80AB</item>
+        <item name="colorControlNormal">#757575</item>
+        <item name="colorControlActivated">#FF6E40</item>
+        <item name="colorControlHighlight">#FF4081</item>
+        <item name="colorSwitchThumbNormal">#ABB5B3</item>
+        <item name="android:colorButtonNormal">#8C9AA9</item>
+        <item name="android:colorEdgeEffect">#FF4081</item>
+    </style>
+    <!-- Overrides the default cursor color -->
+    <style name="editText" parent="@android:style/Widget.EditText">
+        <item name="android:textCursorDrawable">@null</item>
+
+
+        <!--
+       -->
+    </style>
+</resources>

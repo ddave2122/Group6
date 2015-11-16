@@ -44,7 +44,7 @@ $jsonSchedule = json_decode($rawSchedule, true);
 $scheduleCount = count($jsonSchedule['schedule']);
 if($scheduleCount < 1)
 {
-    echo("0");
+    echo($_POST['schedule']);
     return;
 }
 
@@ -63,7 +63,7 @@ $insertValues = rtrim($insertValues, ",");
 $sql = "INSERT INTO user_schedule (user_id, scheduled_clock_in, scheduled_clock_out) VALUES " . $insertValues . ";";
 
 if (!$conn->query($sql) ) {
-    echo "0";
+    echo $sql;
 }
 else
     echo $scheduleCount;
